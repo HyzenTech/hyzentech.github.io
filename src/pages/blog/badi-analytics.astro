@@ -1,0 +1,226 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+---
+
+<BaseLayout 
+  title="BADI Analytics - Hafiz" 
+  description="BADI - Business Analytics Daily Income. A product-based machine learning solution developed during Bangkit Academy."
+  activeNav="blog"
+>
+  <article class="section">
+    <div class="container">
+      <div class="blog-post">
+        
+        <header class="blog-post__header">
+          <div class="blog-post__tags">
+            <span class="tag">Machine Learning</span>
+            <span class="tag">Bangkit Academy</span>
+            <span class="tag">Capstone</span>
+          </div>
+          <h1 class="blog-post__title">BADI: Building a Business Analytics Solution with Machine Learning</h1>
+          <p class="blog-post__meta">July 20, 2022 • 6 min read</p>
+        </header>
+        
+        <div class="blog-post__content">
+          
+          <p>
+            During my time at Bangkit Academy, Google's premier machine learning program in Indonesia, I had the opportunity to lead the development of BADI (Business Analytics Daily Income)—a product-based capstone project that applied machine learning to solve real business problems.
+          </p>
+          
+          <h2>The Problem</h2>
+          
+          <p>
+            Small and medium businesses often struggle with understanding their income patterns and making data-driven decisions. Many lack the technical expertise or resources to implement sophisticated analytics solutions. We wanted to create an accessible tool that could help businesses:
+          </p>
+          
+          <ul>
+            <li>Track and visualize their daily income patterns</li>
+            <li>Predict future income trends</li>
+            <li>Identify factors affecting their business performance</li>
+            <li>Make informed decisions based on data insights</li>
+          </ul>
+          
+          <h2>Our Solution</h2>
+          
+          <p>
+            BADI is a comprehensive business analytics platform that combines data visualization with machine learning-powered predictions. The system includes:
+          </p>
+          
+          <ol>
+            <li><strong>Data Collection:</strong> Easy-to-use interface for recording daily sales and income data</li>
+            <li><strong>Analytics Dashboard:</strong> Visual representations of business trends over time</li>
+            <li><strong>ML Prediction Engine:</strong> Income forecasting using regression models</li>
+            <li><strong>Insights Generator:</strong> Actionable recommendations based on data analysis</li>
+          </ol>
+          
+          <h2>Technical Implementation</h2>
+          
+          <p>
+            The project was built using a modern tech stack:
+          </p>
+          
+          <ul>
+            <li><strong>Backend:</strong> Python with Flask for API development</li>
+            <li><strong>ML Pipeline:</strong> Scikit-learn for model training and inference</li>
+            <li><strong>Data Processing:</strong> Pandas and NumPy for data manipulation</li>
+            <li><strong>Model Deployment:</strong> TensorFlow for production-ready models</li>
+          </ul>
+          
+          <h2>Key Features</h2>
+          
+          <p>
+            BADI includes several innovative features that set it apart:
+          </p>
+          
+          <ul>
+            <li><strong>Time Series Forecasting:</strong> Predict income trends for the next 7-30 days</li>
+            <li><strong>Anomaly Detection:</strong> Automatically flag unusual income patterns</li>
+            <li><strong>Seasonal Analysis:</strong> Identify peak and low-performing periods</li>
+            <li><strong>Comparative Analytics:</strong> Compare performance across different time periods</li>
+          </ul>
+          
+          <h2>Team Collaboration</h2>
+          
+          <p>
+            As the ML lead, I coordinated with team members across three learning paths:
+          </p>
+          
+          <ul>
+            <li>Machine Learning: Model development and optimization</li>
+            <li>Mobile Development: Android app interface</li>
+            <li>Cloud Computing: Backend infrastructure and deployment</li>
+          </ul>
+          
+          <h2>Results & Learnings</h2>
+          
+          <p>
+            The project was successfully completed and presented as part of the Bangkit Academy graduation. Key achievements include:
+          </p>
+          
+          <ul>
+            <li>Working prototype with functional ML predictions</li>
+            <li>User-friendly mobile application</li>
+            <li>Scalable cloud infrastructure</li>
+            <li>Comprehensive documentation</li>
+          </ul>
+          
+          <p>
+            This experience taught me valuable lessons about team collaboration, product development lifecycle, and applying ML to real-world problems.
+          </p>
+          
+          <h2>View Project</h2>
+          
+          <p>
+            <a href="https://github.com/BADI-C22-PS174" class="cta-link" target="_blank" rel="noopener">
+              View Project on GitHub
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+              </svg>
+            </a>
+          </p>
+          
+        </div>
+        
+      </div>
+    </div>
+  </article>
+</BaseLayout>
+
+<style>
+.blog-post {
+  max-width: var(--max-width);
+  margin: 0 auto;
+}
+
+.blog-post__header {
+  text-align: center;
+  margin-bottom: var(--space-12);
+  opacity: 0;
+  animation: fadeInUp 0.8s ease 0.1s forwards;
+}
+
+.blog-post__tags {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+  margin-bottom: var(--space-4);
+}
+
+.tag {
+  display: inline-block;
+  padding: var(--space-1) var(--space-3);
+  background-color: transparent;
+  color: var(--color-text-muted);
+  font-size: var(--text-sm);
+  border: 1px solid var(--color-border);
+  border-radius: 4px;
+}
+
+.blog-post__title {
+  font-family: var(--font-heading);
+  font-size: var(--text-5xl);
+  font-weight: 400;
+  margin-bottom: var(--space-4);
+}
+
+.blog-post__meta {
+  color: var(--color-text-light);
+  font-size: var(--text-base);
+  font-style: italic;
+}
+
+.blog-post__content {
+  font-size: var(--text-lg);
+  line-height: 2;
+  opacity: 0;
+  animation: fadeIn 0.8s ease 0.3s forwards;
+}
+
+.blog-post__content p {
+  margin-bottom: var(--space-6);
+}
+
+.blog-post__content h2 {
+  font-family: var(--font-heading);
+  margin-top: var(--space-12);
+  margin-bottom: var(--space-6);
+}
+
+.blog-post__content ul,
+.blog-post__content ol {
+  margin-bottom: var(--space-6);
+  padding-left: var(--space-6);
+}
+
+.blog-post__content li {
+  margin-bottom: var(--space-3);
+}
+
+.blog-post__content ul li {
+  list-style-type: disc;
+}
+
+.blog-post__content ol li {
+  list-style-type: decimal;
+}
+
+.cta-link {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  font-weight: 500;
+  color: var(--color-text);
+  font-size: var(--text-base);
+}
+
+.cta-link svg {
+  width: 18px;
+  height: 18px;
+  transition: transform var(--transition-base);
+}
+
+.cta-link:hover svg {
+  transform: translateX(6px);
+}
+</style>

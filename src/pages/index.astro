@@ -1,0 +1,41 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import ProjectCard from '../components/ProjectCard.astro';
+
+const projects = [
+  {
+    title: "CNN-XGBoost Hybrid Model for Breast Thermal Image Classification",
+    href: "/blog/breast-thermal-classification",
+    image: "/images/project-thermal.svg",
+    tags: ["Computer Vision", "Deep Learning", "XGBoost", "TensorFlow"],
+    excerpt: "Research collaboration with Prof. Dr. Ir. Roslidar on medical image classification using CNN-XGBoost with VGG16 and ResNet50 architectures, achieving 73%+ validation accuracy. Published in IEEE CENIM Conference 2024."
+  },
+  {
+    title: "BADI - Business Analytics Daily Income",
+    href: "/blog/badi-analytics",
+    image: "/images/project-badi.svg",
+    tags: ["Machine Learning", "Data Analytics", "Python"],
+    excerpt: "Product-based machine learning solution developed during Bangkit Academy program. Applied advanced ML techniques for income prediction and comprehensive business insights generation."
+  }
+];
+---
+
+<BaseLayout title="Hafiz - Projects" activeNav="projects">
+  <section class="section">
+    <div class="container">
+      <div class="projects">
+        {projects.map((project, index) => (
+          <ProjectCard {...project} delay={index * 0.15} />
+        ))}
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+.projects {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-20);
+}
+</style>

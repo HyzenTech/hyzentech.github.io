@@ -1,0 +1,255 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Timeline from '../components/Timeline.astro';
+import SkillsGrid from '../components/SkillsGrid.astro';
+
+const education = [
+  {
+    title: "Universitas Syiah Kuala",
+    date: "Aug 2019 - Nov 2024",
+    subtitle: "Bachelor of Computer Engineering",
+    description: "Coursework: Machine Learning, Deep Learning, Computer Vision, Data Structures & Algorithms, Software Engineering"
+  },
+  {
+    title: "Academic Exchange Programs",
+    date: "Kampus Merdeka - Government Funded",
+    subtitle: "Software Engineering Exchange",
+    items: [
+      "Universitas AMIKOM Yogyakarta: Ethical Hacking and Cybersecurity (Grade: 4.0/4.0)",
+      "Universitas Dian Nuswantoro: Mobile Computing, Data Mining (Grade: 3.79/4.0)",
+      "Universitas Gadjah Mada: Digital Image Processing (Grade: 3.25/4.0)",
+      "Universitas Indonesia: Information Security (Grade: 3.0/4.0)"
+    ]
+  }
+];
+
+const experience = [
+  {
+    title: "Research Assistant",
+    date: "May 2022 - Nov 2024",
+    subtitle: "Universitas Syiah Kuala, Banda Aceh, Indonesia",
+    items: [
+      "Collaborated with Prof. Dr. Ir. Roslidar on breast thermal image classification research using CNN-XGBoost",
+      "Developed balanced dataset of 1,842 images (614 per class across 3 classes)",
+      "Implemented deep learning feature extraction using VGG16 and ResNet50 architectures",
+      "Achieved 72.89% validation accuracy with VGG16-XGBoost and 73.17% with ResNet50-XGBoost",
+      "Co-authored research paper published in 2024 IEEE CENIM Conference"
+    ]
+  },
+  {
+    title: "Machine Learning Student",
+    date: "Feb 2022 - Jul 2022",
+    subtitle: "Bangkit Academy (Google-led Program), Indonesia",
+    items: [
+      "Selected as 1 of 3,100 students for Google's premier academy program",
+      "Mastered key AI concepts and applications for machine learning problems",
+      "Led development of BADI (Business Analytics Daily Income) - Capstone Project",
+      "Earned TensorFlow Developer Certificate"
+    ]
+  },
+  {
+    title: "Internship Trainee",
+    date: "Jul 2022 - Aug 2022",
+    subtitle: "Telkom Indonesia, Banda Aceh, Indonesia",
+    items: [
+      "Assigned to Integrated Operation Center (IOC) at Plasa Telkom",
+      "Analyzed and optimized telecommunications services across Aceh region",
+      "Gained experience in network operations and service delivery optimization"
+    ]
+  }
+];
+
+const certifications = [
+  {
+    title: "IEEE Conference Publication",
+    date: "2024",
+    description: "Co-authored research paper in IEEE CENIM Conference, indexed in IEEE Xplore"
+  },
+  {
+    title: "TensorFlow Developer Certificate",
+    date: "2022",
+    description: "Proficiency in Computer Vision, CNNs, NLP, and real-world image processing"
+  },
+  {
+    title: "Bangkit Academy Graduate",
+    date: "2022",
+    description: "Selected from competitive pool for Google-led Machine Learning program"
+  },
+  {
+    title: "Machine Learning Specialization",
+    date: "2022",
+    description: "5 certificates completed through Coursera"
+  }
+];
+
+const skills = [
+  {
+    title: "Programming",
+    skills: ["Python", "SQL", "JavaScript"]
+  },
+  {
+    title: "Machine Learning",
+    skills: ["TensorFlow", "Scikit-learn", "XGBoost", "Pandas", "NumPy", "CNN", "VGG16", "ResNet50"]
+  },
+  {
+    title: "Tools",
+    skills: ["Google Colab", "Jupyter", "Git", "GitHub"]
+  },
+  {
+    title: "Specializations",
+    skills: ["Deep Learning", "Computer Vision", "Data Processing", "Model Evaluation"]
+  }
+];
+---
+
+<BaseLayout 
+  title="Hafiz - About Me" 
+  description="About Muhammad Hafiz - AI/ML Engineer with research experience in Computer Vision and Deep Learning."
+  activeNav="about"
+>
+  <section class="section">
+    <div class="container">
+      
+      <!-- About Header -->
+      <div class="about-header">
+        <img 
+          src="/images/profile.png" 
+          alt="Muhammad Hafiz" 
+          class="about-photo"
+        />
+        <h1>About Me</h1>
+        <p class="about-bio">
+          Recent Computer Engineering graduate with 2+ years of research experience in Artificial Intelligence and Machine Learning. Published researcher in IEEE conference with expertise in deep learning, computer vision, and medical image classification.
+        </p>
+      </div>
+
+      <!-- Education Section -->
+      <div class="about-section">
+        <h2 class="about-section__title">Education</h2>
+        <Timeline items={education} />
+      </div>
+
+      <!-- Experience Section -->
+      <div class="about-section">
+        <h2 class="about-section__title">Experience</h2>
+        <Timeline items={experience} />
+      </div>
+
+      <!-- Skills Section -->
+      <div class="about-section">
+        <h2 class="about-section__title">Skills</h2>
+        <SkillsGrid categories={skills} />
+      </div>
+
+      <!-- Certifications -->
+      <div class="about-section">
+        <h2 class="about-section__title">Certifications & Achievements</h2>
+        <Timeline items={certifications} />
+      </div>
+
+      <!-- LinkedIn CTA -->
+      <div class="text-center cta-section">
+        <a href="https://linkedin.com/in/muhammadhafiz1206" class="cta-link" target="_blank" rel="noopener">
+          View LinkedIn Profile
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+          </svg>
+        </a>
+      </div>
+
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+.about-header {
+  text-align: center;
+  margin-bottom: var(--space-16);
+  opacity: 0;
+  animation: fadeInUp 0.8s ease 0.1s forwards;
+}
+
+.about-photo {
+  width: 180px;
+  height: 180px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin: 0 auto var(--space-8);
+  transition: transform var(--transition-slow), box-shadow var(--transition-slow);
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+}
+
+.about-photo:hover {
+  transform: scale(1.05) rotate(2deg);
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
+}
+
+.about-bio {
+  max-width: 640px;
+  margin: 0 auto;
+  font-size: 1.125rem;
+  line-height: 1.9;
+  color: var(--color-text-muted);
+}
+
+.about-section {
+  margin-bottom: var(--space-16);
+  opacity: 0;
+  animation: fadeInUp 0.8s ease forwards;
+}
+
+.about-section:nth-of-type(1) { animation-delay: 0.2s; }
+.about-section:nth-of-type(2) { animation-delay: 0.3s; }
+.about-section:nth-of-type(3) { animation-delay: 0.4s; }
+.about-section:nth-of-type(4) { animation-delay: 0.5s; }
+
+.about-section__title {
+  font-family: var(--font-heading);
+  font-size: var(--text-2xl);
+  font-weight: 400;
+  margin-bottom: var(--space-8);
+  padding-bottom: var(--space-3);
+  border-bottom: 1px solid var(--color-border);
+  position: relative;
+}
+
+.about-section__title::after {
+  content: '';
+  position: absolute;
+  bottom: -1px;
+  left: 0;
+  width: 60px;
+  height: 2px;
+  background-color: var(--color-text);
+}
+
+.cta-section {
+  margin-top: var(--space-8);
+}
+
+.cta-link {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  font-weight: 500;
+  color: var(--color-text);
+  font-size: var(--text-base);
+}
+
+.cta-link svg {
+  width: 18px;
+  height: 18px;
+  transition: transform var(--transition-base);
+}
+
+.cta-link:hover svg {
+  transform: translateX(6px);
+}
+
+@media (max-width: 768px) {
+  .about-photo {
+    width: 140px;
+    height: 140px;
+  }
+}
+</style>

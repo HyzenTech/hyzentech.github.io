@@ -1,0 +1,150 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+const posts = [
+  {
+    title: "Building a CNN-XGBoost Hybrid Model for Medical Image Classification",
+    href: "/blog/breast-thermal-classification",
+    date: "December 15, 2024",
+    readTime: "8 min read",
+    excerpt: "A deep dive into combining the feature extraction power of Convolutional Neural Networks with the classification prowess of XGBoost. Learn how we achieved 73%+ accuracy on breast thermal image classification.",
+    tags: ["Deep Learning", "Computer Vision", "Research"]
+  },
+  {
+    title: "BADI: Building a Business Analytics Solution with Machine Learning",
+    href: "/blog/badi-analytics",
+    date: "July 20, 2022",
+    readTime: "6 min read",
+    excerpt: "How my team developed BADI (Business Analytics Daily Income) during the Bangkit Academy program. From ideation to implementation of a product-based ML solution for business insights.",
+    tags: ["Machine Learning", "Bangkit Academy", "Capstone"]
+  },
+  {
+    title: "How I Got Selected for Bangkit Academy - Google's ML Program",
+    href: "/blog/getting-into-bangkit",
+    date: "March 5, 2022",
+    readTime: "4 min read",
+    excerpt: "Sharing my experience of applying and getting selected as 1 of 3,100 students for Google's premier academy program. What I learned and how it shaped my career in AI/ML.",
+    tags: ["Career", "Bangkit Academy", "Google"]
+  }
+];
+---
+
+<BaseLayout 
+  title="Hafiz - Blog" 
+  description="Blog posts by Muhammad Hafiz on AI, Machine Learning, Computer Vision, and Deep Learning."
+  activeNav="blog"
+>
+  <section class="section">
+    <div class="container">
+      
+      <h1 class="page-title text-center">Blog</h1>
+      
+      <div class="blog-list">
+        {posts.map((post, index) => (
+          <article class="blog-card" style={`animation-delay: ${index * 0.1}s`}>
+            <div class="blog-card__meta">
+              <span>{post.date}</span>
+              <span>•</span>
+              <span>{post.readTime}</span>
+            </div>
+            <h2 class="blog-card__title">
+              <a href={post.href}>{post.title}</a>
+            </h2>
+            <p class="blog-card__excerpt">{post.excerpt}</p>
+            <div class="blog-card__tags">
+              {post.tags.map(tag => (
+                <span class="tag">{tag}</span>
+              ))}
+            </div>
+          </article>
+        ))}
+      </div>
+
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+.page-title {
+  margin-bottom: 3rem;
+  opacity: 0;
+  animation: fadeInUp 0.8s ease forwards;
+}
+
+.blog-list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-12);
+}
+
+.blog-card {
+  padding-bottom: var(--space-12);
+  border-bottom: 1px solid var(--color-border-light);
+  opacity: 0;
+  animation: fadeInUp 0.8s ease forwards;
+  transition: all var(--transition-base);
+}
+
+.blog-card:last-child {
+  border-bottom: none;
+}
+
+.blog-card:hover {
+  transform: translateX(10px);
+}
+
+.blog-card__meta {
+  display: flex;
+  gap: var(--space-4);
+  font-size: var(--text-sm);
+  color: var(--color-text-light);
+  margin-bottom: var(--space-3);
+  font-style: italic;
+}
+
+.blog-card__title {
+  font-family: var(--font-heading);
+  font-size: var(--text-3xl);
+  font-weight: 400;
+  margin-bottom: var(--space-3);
+}
+
+.blog-card__title a {
+  color: var(--color-text);
+  text-decoration: none;
+  transition: color var(--transition-fast);
+}
+
+.blog-card__title a:hover {
+  color: var(--color-text-muted);
+}
+
+.blog-card__excerpt {
+  color: var(--color-text-muted);
+  line-height: 1.8;
+  margin-bottom: var(--space-4);
+}
+
+.blog-card__tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+}
+
+.tag {
+  display: inline-block;
+  padding: var(--space-1) var(--space-3);
+  background-color: transparent;
+  color: var(--color-text-muted);
+  font-size: var(--text-sm);
+  border: 1px solid var(--color-border);
+  border-radius: 4px;
+  transition: all var(--transition-fast);
+}
+
+.tag:hover {
+  background-color: var(--color-text);
+  color: var(--color-bg);
+  border-color: var(--color-text);
+}
+</style>

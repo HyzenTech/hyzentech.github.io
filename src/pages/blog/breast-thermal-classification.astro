@@ -1,0 +1,233 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+---
+
+<BaseLayout 
+  title="CNN-XGBoost Hybrid Model - Hafiz" 
+  description="Deep dive into CNN-XGBoost hybrid model for breast thermal image classification achieving 73%+ accuracy. Research published in IEEE CENIM 2024."
+  activeNav="blog"
+>
+  <article class="section">
+    <div class="container">
+      <div class="blog-post">
+        
+        <header class="blog-post__header">
+          <div class="blog-post__tags">
+            <span class="tag">Deep Learning</span>
+            <span class="tag">Computer Vision</span>
+            <span class="tag">Research</span>
+          </div>
+          <h1 class="blog-post__title">Building a CNN-XGBoost Hybrid Model for Medical Image Classification</h1>
+          <p class="blog-post__meta">December 15, 2024 • 8 min read</p>
+        </header>
+        
+        <div class="blog-post__content">
+          
+          <p>
+            Medical image classification presents unique challenges that require both robust feature extraction and reliable classification. In this post, I share insights from my research on combining Convolutional Neural Networks (CNNs) with XGBoost for breast thermal image classification—work that was published in the 2024 IEEE CENIM Conference.
+          </p>
+          
+          <h2>The Challenge</h2>
+          
+          <p>
+            Breast cancer remains one of the leading causes of cancer-related deaths worldwide. Early detection is crucial, and thermal imaging offers a non-invasive screening approach. However, interpreting thermal images accurately requires sophisticated analysis techniques.
+          </p>
+          
+          <p>
+            Traditional CNN approaches, while powerful at feature extraction, sometimes struggle with the final classification step. This is where the hybrid approach becomes valuable—combining CNN's feature extraction capabilities with XGBoost's classification strength.
+          </p>
+          
+          <h2>Our Approach</h2>
+          
+          <p>
+            Working under the guidance of Prof. Dr. Ir. Roslidar, S.T., M.Sc., IPM., ASEAN Eng., we developed a hybrid model architecture:
+          </p>
+          
+          <ol>
+            <li><strong>Feature Extraction:</strong> We used pre-trained VGG16 and ResNet50 architectures to extract deep features from thermal images.</li>
+            <li><strong>Classification:</strong> Instead of the traditional fully-connected layers, we fed the extracted features into an XGBoost classifier.</li>
+            <li><strong>Hyperparameter Optimization:</strong> Extensive tuning to maximize classification performance.</li>
+          </ol>
+          
+          <h2>Dataset Preparation</h2>
+          
+          <p>
+            We curated a high-quality, balanced dataset of 1,842 thermal images:
+          </p>
+          
+          <ul>
+            <li>614 images per class across 3 classification categories</li>
+            <li>Careful preprocessing to normalize intensity values</li>
+            <li>Data augmentation to increase robustness</li>
+          </ul>
+          
+          <h2>Results</h2>
+          
+          <p>
+            Our experiments showed promising results:
+          </p>
+          
+          <ul>
+            <li><strong>VGG16-XGBoost:</strong> 72.89% validation accuracy</li>
+            <li><strong>ResNet50-XGBoost:</strong> 73.17% validation accuracy</li>
+          </ul>
+          
+          <p>
+            The ResNet50-based model slightly outperformed VGG16, likely due to its deeper architecture and residual connections that preserve gradient flow during training.
+          </p>
+          
+          <h2>Key Takeaways</h2>
+          
+          <p>
+            This research demonstrated several important insights:
+          </p>
+          
+          <ol>
+            <li><strong>Hybrid models can outperform end-to-end CNNs</strong> for certain medical imaging tasks where interpretability and robustness are crucial.</li>
+            <li><strong>Transfer learning is valuable</strong> even when the source domain (ImageNet) differs significantly from the target domain (thermal images).</li>
+            <li><strong>XGBoost provides explainability</strong> through feature importance scores, which is valuable in medical applications.</li>
+          </ol>
+          
+          <h2>Future Work</h2>
+          
+          <p>
+            There are several directions for extending this research:
+          </p>
+          
+          <ul>
+            <li>Exploring attention mechanisms to highlight relevant regions in thermal images</li>
+            <li>Incorporating multi-modal data (thermal + clinical features)</li>
+            <li>Testing with larger, more diverse datasets</li>
+          </ul>
+          
+          <h2>Resources</h2>
+          
+          <p>
+            <a href="https://www.kaggle.com/code/hyzentech/xgboost-resnet50" class="cta-link" target="_blank" rel="noopener">
+              View Code on Kaggle
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+              </svg>
+            </a>
+          </p>
+          
+          <p>
+            <a href="https://ieeexplore.ieee.org/document/10882662" class="cta-link" target="_blank" rel="noopener">
+              View Publication on IEEE Xplore
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+              </svg>
+            </a>
+          </p>
+          
+          <h2>Acknowledgments</h2>
+          
+          <p>
+            This research was conducted at Universitas Syiah Kuala under the supervision of Prof. Dr. Ir. Roslidar. The paper was published in the IEEE CENIM 2024 Conference and is indexed in IEEE Xplore.
+          </p>
+          
+        </div>
+        
+      </div>
+    </div>
+  </article>
+</BaseLayout>
+
+<style>
+.blog-post {
+  max-width: var(--max-width);
+  margin: 0 auto;
+}
+
+.blog-post__header {
+  text-align: center;
+  margin-bottom: var(--space-12);
+  opacity: 0;
+  animation: fadeInUp 0.8s ease 0.1s forwards;
+}
+
+.blog-post__tags {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+  margin-bottom: var(--space-4);
+}
+
+.tag {
+  display: inline-block;
+  padding: var(--space-1) var(--space-3);
+  background-color: transparent;
+  color: var(--color-text-muted);
+  font-size: var(--text-sm);
+  border: 1px solid var(--color-border);
+  border-radius: 4px;
+}
+
+.blog-post__title {
+  font-family: var(--font-heading);
+  font-size: var(--text-5xl);
+  font-weight: 400;
+  margin-bottom: var(--space-4);
+}
+
+.blog-post__meta {
+  color: var(--color-text-light);
+  font-size: var(--text-base);
+  font-style: italic;
+}
+
+.blog-post__content {
+  font-size: var(--text-lg);
+  line-height: 2;
+  opacity: 0;
+  animation: fadeIn 0.8s ease 0.3s forwards;
+}
+
+.blog-post__content p {
+  margin-bottom: var(--space-6);
+}
+
+.blog-post__content h2 {
+  font-family: var(--font-heading);
+  margin-top: var(--space-12);
+  margin-bottom: var(--space-6);
+}
+
+.blog-post__content ul,
+.blog-post__content ol {
+  margin-bottom: var(--space-6);
+  padding-left: var(--space-6);
+}
+
+.blog-post__content li {
+  margin-bottom: var(--space-3);
+}
+
+.blog-post__content ul li {
+  list-style-type: disc;
+}
+
+.blog-post__content ol li {
+  list-style-type: decimal;
+}
+
+.cta-link {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  font-weight: 500;
+  color: var(--color-text);
+  font-size: var(--text-base);
+}
+
+.cta-link svg {
+  width: 18px;
+  height: 18px;
+  transition: transform var(--transition-base);
+}
+
+.cta-link:hover svg {
+  transform: translateX(6px);
+}
+</style>
