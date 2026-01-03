@@ -29,56 +29,11 @@ class InteractiveEffects {
     }
 
     // ========================
-    // CUSTOM CURSOR
+    // CUSTOM CURSOR (DISABLED)
     // ========================
     createCursor() {
-        // Only on desktop
-        if (window.matchMedia('(hover: hover) and (pointer: fine)').matches) {
-            // Main cursor ring
-            this.cursor = document.createElement('div');
-            this.cursor.className = 'custom-cursor';
-            document.body.appendChild(this.cursor);
-
-            // Inner dot
-            this.cursorDot = document.createElement('div');
-            this.cursorDot.className = 'custom-cursor-dot';
-            document.body.appendChild(this.cursorDot);
-
-            document.addEventListener('mousemove', (e) => {
-                this.targetX = e.clientX;
-                this.targetY = e.clientY;
-
-                // Instant movement for dot
-                this.cursorDot.style.left = `${e.clientX}px`;
-                this.cursorDot.style.top = `${e.clientY}px`;
-            });
-
-            // Hover effects
-            const interactiveElements = document.querySelectorAll('a, button, .project-card, .tag, .social-link, .skill-category');
-
-            interactiveElements.forEach(el => {
-                el.addEventListener('mouseenter', () => {
-                    this.cursor.classList.add('cursor-hover');
-                    this.cursorDot.classList.add('cursor-hover');
-                });
-
-                el.addEventListener('mouseleave', () => {
-                    this.cursor.classList.remove('cursor-hover');
-                    this.cursorDot.classList.remove('cursor-hover');
-                });
-            });
-
-            // Hide on mouse leave
-            document.addEventListener('mouseleave', () => {
-                this.cursor.style.opacity = '0';
-                this.cursorDot.style.opacity = '0';
-            });
-
-            document.addEventListener('mouseenter', () => {
-                this.cursor.style.opacity = '1';
-                this.cursorDot.style.opacity = '1';
-            });
-        }
+        // Custom cursor disabled - use normal system cursor
+        return;
     }
 
     // ========================

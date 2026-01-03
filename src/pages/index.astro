@@ -8,23 +8,45 @@ const projects = [
   {
     title: "CNN-XGBoost Hybrid Model for Breast Thermal Image Classification",
     href: `${base}blog/breast-thermal-classification`,
-    image: `${base}images/project-thermal.svg`,
+    image: `${base}images/project-thermal.png`,
     tags: ["Computer Vision", "Deep Learning", "XGBoost", "TensorFlow"],
     excerpt: "Research collaboration with Prof. Dr. Ir. Roslidar on medical image classification using CNN-XGBoost with VGG16 and ResNet50 architectures, achieving 73%+ validation accuracy. Published in IEEE CENIM Conference 2024."
   },
   {
     title: "BADI - Business Analytics Daily Income",
     href: `${base}blog/badi-analytics`,
-    image: `${base}images/project-badi.svg`,
+    image: `${base}images/project-badi.png`,
     tags: ["Machine Learning", "Data Analytics", "Python"],
     excerpt: "Product-based machine learning solution developed during Bangkit Academy program. Applied advanced ML techniques for income prediction and comprehensive business insights generation."
   }
 ];
 ---
 
-<BaseLayout title="Hafiz - Projects" activeNav="projects">
-  <section class="section">
+<BaseLayout title="Hafiz - AI/ML Engineer & Researcher" activeNav="projects">
+  <!-- Hero Section - Anthropic-inspired typography-driven design -->
+  <section class="hero">
+    <div class="hero__container">
+      <p class="hero__eyebrow">AI/ML Engineer & Researcher</p>
+      <h1 class="hero__title">
+        Building <span class="hero__highlight">intelligent</span> solutions that bridge research and real-world impact
+      </h1>
+      <p class="hero__subtitle">
+        I specialize in computer vision, deep learning, and applied machine learning—transforming complex problems into elegant, deployable solutions.
+      </p>
+      <div class="hero__cta">
+        <a href={`${base}about`} class="btn-secondary">Learn more about me</a>
+        <a href={`${base}contact`} class="btn-cta">Get in Touch</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Featured Projects Section -->
+  <section class="section projects-section">
     <div class="container">
+      <div class="section__header">
+        <h2 class="section__title">Featured Work</h2>
+        <p class="section__subtitle">Research and projects I'm proud of</p>
+      </div>
       <div class="projects">
         {projects.map((project, index) => (
           <ProjectCard {...project} delay={index * 0.15} />
@@ -35,9 +57,150 @@ const projects = [
 </BaseLayout>
 
 <style>
+/* Hero Section - Typography-driven Anthropic style */
+.hero {
+  padding: var(--space-24) 0 var(--space-20);
+  background-color: var(--color-bg);
+}
+
+.hero__container {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 0 var(--space-6);
+  text-align: center;
+}
+
+.hero__eyebrow {
+  font-family: var(--font-heading);
+  font-size: var(--text-sm);
+  font-weight: 500;
+  color: var(--color-text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  margin-bottom: var(--space-6);
+}
+
+.hero__title {
+  font-family: var(--font-heading);
+  font-size: var(--text-5xl);
+  font-weight: 600;
+  line-height: 1.15;
+  color: var(--color-text);
+  margin-bottom: var(--space-6);
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.hero__highlight {
+  position: relative;
+  display: inline;
+}
+
+.hero__highlight::after {
+  content: '';
+  position: absolute;
+  bottom: 4px;
+  left: 0;
+  right: 0;
+  height: 8px;
+  background-color: var(--color-accent-sage);
+  opacity: 0.4;
+  z-index: -1;
+  border-radius: 2px;
+}
+
+.hero__subtitle {
+  font-family: var(--font-body);
+  font-size: var(--text-xl);
+  color: var(--color-text-secondary);
+  line-height: 1.7;
+  max-width: 600px;
+  margin: 0 auto var(--space-10);
+}
+
+.hero__cta {
+  display: flex;
+  gap: var(--space-4);
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.btn-secondary {
+  display: inline-flex;
+  align-items: center;
+  padding: var(--space-3) var(--space-6);
+  font-family: var(--font-heading);
+  font-size: var(--text-base);
+  font-weight: 500;
+  color: var(--color-text);
+  border: 1px solid var(--color-border);
+  border-radius: var(--border-radius-full);
+  transition: all var(--transition-base);
+}
+
+.btn-secondary:hover {
+  background-color: var(--color-bg-alt);
+  border-color: var(--color-text);
+}
+
+/* Section Styling */
+.projects-section {
+  padding: var(--space-16) 0 var(--space-24);
+  background-color: var(--color-bg-alt);
+}
+
+.section__header {
+  text-align: center;
+  margin-bottom: var(--space-12);
+}
+
+.section__title {
+  font-family: var(--font-heading);
+  font-size: var(--text-4xl);
+  font-weight: 600;
+  color: var(--color-text);
+  margin-bottom: var(--space-2);
+}
+
+.section__subtitle {
+  font-family: var(--font-body);
+  font-size: var(--text-lg);
+  color: var(--color-text-muted);
+  margin-bottom: 0;
+}
+
 .projects {
   display: flex;
   flex-direction: column;
-  gap: var(--space-20);
+  gap: var(--space-12);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .hero {
+    padding: var(--space-16) 0 var(--space-12);
+  }
+  
+  .hero__title {
+    font-size: var(--text-4xl);
+  }
+  
+  .hero__subtitle {
+    font-size: var(--text-lg);
+  }
+  
+  .hero__cta {
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .projects-section {
+    padding: var(--space-12) 0 var(--space-16);
+  }
+  
+  .section__title {
+    font-size: var(--text-3xl);
+  }
 }
 </style>

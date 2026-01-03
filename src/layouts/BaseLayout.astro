@@ -27,10 +27,10 @@ const {
   
   <title>{title}</title>
   
-  <!-- Fonts - Matching Jona style -->
+  <!-- Fonts - Anthropic-style typography (DM Sans + Lora) -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Source+Sans+Pro:wght@400;500;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&family=Lora:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
   
   <!-- Interactive Styles -->
   <link rel="stylesheet" href={`${import.meta.env.BASE_URL}styles/interactive.css`}>
@@ -46,11 +46,42 @@ const {
         <a href={import.meta.env.BASE_URL} class="nav__logo">Hafiz</a>
         
         <ul class="nav__menu" id="navMenu">
-          <li><a href={import.meta.env.BASE_URL} class:list={["nav__link", { "nav__link--active": activeNav === "projects" }]}>Projects</a></li>
-          <li><a href={`${import.meta.env.BASE_URL}about`} class:list={["nav__link", { "nav__link--active": activeNav === "about" }]}>About Me</a></li>
-          <li><a href={`${import.meta.env.BASE_URL}blog`} class:list={["nav__link", { "nav__link--active": activeNav === "blog" }]}>Blog</a></li>
-          <li><a href={`${import.meta.env.BASE_URL}contact`} class:list={["nav__link", { "nav__link--active": activeNav === "contact" }]}>Contact</a></li>
+          <li><a href={`${import.meta.env.BASE_URL}`} class:list={["nav__link", { "nav__link--active": activeNav === "projects" }]}>Projects</a></li>
+          <li><a href={`${import.meta.env.BASE_URL}about/`} class:list={["nav__link", { "nav__link--active": activeNav === "about" }]}>About Me</a></li>
+          <li><a href={`${import.meta.env.BASE_URL}blog/`} class:list={["nav__link", { "nav__link--active": activeNav === "blog" }]}>Blog</a></li>
         </ul>
+        
+        <!-- Theme Toggle -->
+        <div class="theme-toggle" id="themeToggle">
+          <button class="theme-toggle__btn" aria-label="Toggle theme" id="themeBtn">
+            <svg class="theme-icon theme-icon--light" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="12" cy="12" r="5"/>
+              <line x1="12" y1="1" x2="12" y2="3"/>
+              <line x1="12" y1="21" x2="12" y2="23"/>
+              <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/>
+              <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/>
+              <line x1="1" y1="12" x2="3" y2="12"/>
+              <line x1="21" y1="12" x2="23" y2="12"/>
+              <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/>
+              <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/>
+            </svg>
+            <svg class="theme-icon theme-icon--dark" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
+            </svg>
+          </button>
+          <div class="theme-toggle__menu" id="themeMenu">
+            <button class="theme-toggle__option theme-toggle__option--light" data-theme="light">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+              <span>Light</span>
+            </button>
+            <button class="theme-toggle__option theme-toggle__option--dark" data-theme="dark">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+              <span>Dark</span>
+            </button>
+          </div>
+        </div>
+        
+        <a href={`${import.meta.env.BASE_URL}contact/`} class="btn-cta nav__cta">Get in Touch</a>
         
         <button class="nav__toggle" id="navToggle" aria-label="Toggle navigation">
           <span></span>
@@ -66,10 +97,41 @@ const {
     <slot />
   </main>
 
-  <!-- Footer -->
+  <!-- Footer - Anthropic-inspired dark design -->
   <footer class="footer">
-    <div class="container">
-      <p class="footer__text">© {new Date().getFullYear()} Muhammad Hafiz. All rights reserved.</p>
+    <div class="footer__container">
+      <div class="footer__grid">
+        <!-- Brand Column -->
+        <div class="footer__brand">
+          <a href={import.meta.env.BASE_URL} class="footer__logo">Hafiz</a>
+          <p class="footer__tagline">AI/ML Engineer & Researcher focused on building impactful solutions.</p>
+        </div>
+        
+        <!-- Navigation Column -->
+        <div class="footer__column">
+          <h4 class="footer__heading">Navigation</h4>
+          <ul class="footer__links">
+            <li><a href={`${import.meta.env.BASE_URL}`}>Projects</a></li>
+            <li><a href={`${import.meta.env.BASE_URL}about/`}>About</a></li>
+            <li><a href={`${import.meta.env.BASE_URL}blog/`}>Blog</a></li>
+            <li><a href={`${import.meta.env.BASE_URL}contact/`}>Contact</a></li>
+          </ul>
+        </div>
+        
+        <!-- Connect Column -->
+        <div class="footer__column">
+          <h4 class="footer__heading">Connect</h4>
+          <ul class="footer__links">
+            <li><a href="https://github.com/hyzen-dev" target="_blank" rel="noopener">GitHub</a></li>
+            <li><a href="https://linkedin.com/in/hafizmuhammad" target="_blank" rel="noopener">LinkedIn</a></li>
+            <li><a href="mailto:hafiz@example.com">Email</a></li>
+          </ul>
+        </div>
+      </div>
+      
+      <div class="footer__bottom">
+        <p class="footer__copyright">© {new Date().getFullYear()} Muhammad Hafiz. All rights reserved.</p>
+      </div>
     </div>
   </footer>
 
@@ -104,6 +166,66 @@ const {
       }, { passive: true });
     }
 
+    // Theme Toggle
+    const themeBtn = document.getElementById('themeBtn');
+    const themeMenu = document.getElementById('themeMenu');
+    const themeOptions = document.querySelectorAll('.theme-toggle__option');
+    
+    // Get saved theme or default to system
+    const getPreferredTheme = () => {
+      const savedTheme = localStorage.getItem('theme');
+      if (savedTheme) return savedTheme;
+      return 'system';
+    };
+    
+    // Apply theme to document
+    const applyTheme = (theme: string) => {
+      if (theme === 'system') {
+        const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+        document.documentElement.setAttribute('data-theme', prefersDark ? 'dark' : 'light');
+      } else {
+        document.documentElement.setAttribute('data-theme', theme);
+      }
+      
+      // Update active state in menu
+      themeOptions.forEach(option => {
+        option.classList.toggle('active', option.getAttribute('data-theme') === theme);
+      });
+    };
+    
+    // Initialize theme
+    applyTheme(getPreferredTheme());
+    
+    // Toggle menu
+    if (themeBtn && themeMenu) {
+      themeBtn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        themeMenu.classList.toggle('active');
+      });
+      
+      // Handle option selection
+      themeOptions.forEach(option => {
+        option.addEventListener('click', () => {
+          const theme = option.getAttribute('data-theme') || 'system';
+          localStorage.setItem('theme', theme);
+          applyTheme(theme);
+          themeMenu.classList.remove('active');
+        });
+      });
+      
+      // Close menu on outside click
+      document.addEventListener('click', () => {
+        themeMenu.classList.remove('active');
+      });
+    }
+    
+    // Listen for system theme changes
+    window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', () => {
+      if (getPreferredTheme() === 'system') {
+        applyTheme('system');
+      }
+    });
+
     // Page load animation
     document.body.classList.add('page-loaded');
   </script>
@@ -112,15 +234,15 @@ const {
 
 <style is:global>
 /* ================================================
-   PORTFOLIO - Design System (Jona Style)
+   PORTFOLIO - Design System (Anthropic-Inspired)
    ================================================ */
 
 :root {
-  /* Typography - Matching Jona's style */
-  --font-heading: 'Cormorant Garamond', 'Georgia', 'Times New Roman', serif;
-  --font-body: 'Source Sans Pro', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  /* Typography - Anthropic-style fonts (DM Sans + Lora) */
+  --font-heading: 'DM Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-body: 'Lora', Georgia, 'Times New Roman', serif;
   
-  /* Font Sizes */
+  /* Font Sizes - Refined scale */
   --text-xs: 0.75rem;
   --text-sm: 0.875rem;
   --text-base: 1rem;
@@ -131,37 +253,177 @@ const {
   --text-4xl: 2.25rem;
   --text-5xl: 3rem;
   --text-6xl: 4rem;
+  --text-7xl: 5rem;
   
-  /* Colors */
-  --color-bg: #ffffff;
-  --color-bg-alt: #fafafa;
-  --color-text: #222222;
-  --color-text-muted: #555555;
-  --color-text-light: #888888;
-  --color-accent: #1a1a1a;
-  --color-border: #e0e0e0;
-  --color-border-light: #f0f0f0;
+  /* Colors - Anthropic warm palette */
+  --color-bg: #FAF9F5;
+  --color-bg-alt: #F5F4F0;
+  --color-bg-card: #FFFFFF;
+  --color-bg-dark: #141413;
+  --color-text: #141413;
+  --color-text-secondary: #4A4A49;
+  --color-text-muted: #6B6B6B;
+  --color-text-light: #8A8A8A;
+  --color-text-inverse: #FAF9F5;
+  --color-accent-sage: #9BA88D;
+  --color-accent-lavender: #B8A9C9;
+  --color-accent-terracotta: #C4A589;
+  --color-border: rgba(20, 20, 19, 0.12);
+  --color-border-light: rgba(20, 20, 19, 0.06);
   
-  /* Spacing */
-  --space-1: 0.25rem;
-  --space-2: 0.5rem;
-  --space-3: 0.75rem;
-  --space-4: 1rem;
-  --space-5: 1.25rem;
-  --space-6: 1.5rem;
-  --space-8: 2rem;
-  --space-10: 2.5rem;
-  --space-12: 3rem;
-  --space-16: 4rem;
-  --space-20: 5rem;
+  /* Spacing - 8px base grid */
+  --space-1: 0.25rem;   /* 4px */
+  --space-2: 0.5rem;    /* 8px */
+  --space-3: 0.75rem;   /* 12px */
+  --space-4: 1rem;      /* 16px */
+  --space-5: 1.25rem;   /* 20px */
+  --space-6: 1.5rem;    /* 24px */
+  --space-8: 2rem;      /* 32px */
+  --space-10: 2.5rem;   /* 40px */
+  --space-12: 3rem;     /* 48px */
+  --space-16: 4rem;     /* 64px */
+  --space-20: 5rem;     /* 80px */
+  --space-24: 6rem;     /* 96px */
+  --space-32: 8rem;     /* 128px */
   
   /* Layout */
-  --max-width: 800px;
+  --max-width: 720px;
+  --max-width-wide: 1200px;
+  --border-radius: 12px;
+  --border-radius-lg: 16px;
+  --border-radius-full: 9999px;
   
   /* Transitions */
   --transition-fast: 150ms ease;
   --transition-base: 300ms cubic-bezier(0.4, 0, 0.2, 1);
   --transition-slow: 500ms cubic-bezier(0.4, 0, 0.2, 1);
+  
+  /* Shadows */
+  --shadow-sm: 0 2px 8px rgba(20, 20, 19, 0.04);
+  --shadow-md: 0 4px 16px rgba(20, 20, 19, 0.06);
+  --shadow-lg: 0 8px 32px rgba(20, 20, 19, 0.08);
+  --shadow-xl: 0 16px 48px rgba(20, 20, 19, 0.12);
+}
+
+/* Dark Mode Colors */
+[data-theme="dark"] {
+  --color-bg: #1A1A19;
+  --color-bg-alt: #242423;
+  --color-bg-card: #2A2A29;
+  --color-bg-dark: #FAF9F5;
+  --color-text: #FAF9F5;
+  --color-text-secondary: #C9C9C7;
+  --color-text-muted: #9A9A98;
+  --color-text-light: #7A7A78;
+  --color-text-inverse: #1A1A19;
+  --color-border: rgba(250, 249, 245, 0.15);
+  --color-border-light: rgba(250, 249, 245, 0.08);
+  --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.15);
+  --shadow-md: 0 4px 16px rgba(0, 0, 0, 0.2);
+  --shadow-lg: 0 8px 32px rgba(0, 0, 0, 0.25);
+  --shadow-xl: 0 16px 48px rgba(0, 0, 0, 0.3);
+}
+
+/* Theme Toggle Styles */
+.theme-toggle {
+  position: relative;
+}
+
+.theme-toggle__btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  padding: 0;
+  background: var(--color-bg-card);
+  border: 1px solid var(--color-border);
+  border-radius: var(--border-radius);
+  color: var(--color-text);
+  cursor: pointer;
+  transition: all var(--transition-base);
+}
+
+.theme-toggle__btn:hover {
+  background-color: var(--color-bg-alt);
+  border-color: var(--color-text-muted);
+}
+
+.theme-icon--dark {
+  display: none;
+}
+
+[data-theme="dark"] .theme-icon--light {
+  display: none;
+}
+
+[data-theme="dark"] .theme-icon--dark {
+  display: block;
+}
+
+.theme-toggle__menu {
+  position: absolute;
+  top: 100%;
+  right: 0;
+  margin-top: var(--space-2);
+  background: var(--color-bg-card);
+  border: 1px solid var(--color-border);
+  border-radius: var(--border-radius);
+  box-shadow: var(--shadow-lg);
+  padding: var(--space-2);
+  min-width: 140px;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-8px);
+  transition: all var(--transition-fast);
+  z-index: 1000;
+}
+
+.theme-toggle__menu.active {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+.theme-toggle__option {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  width: 100%;
+  padding: var(--space-2) var(--space-3);
+  background: transparent;
+  border: none;
+  border-radius: 8px;
+  color: #141413;
+  font-family: var(--font-heading);
+  font-size: var(--text-sm);
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+/* Light option - Anthropic warm off-white background */
+.theme-toggle__option--light {
+  background-color: #FAF9F5;
+  border: 1px solid #E5E5E5;
+}
+
+.theme-toggle__option--light:hover {
+  background-color: #F5F4F0;
+}
+
+/* Dark option - black background */
+.theme-toggle__option--dark {
+  background-color: #1A1A19;
+  color: #FAF9F5;
+}
+
+.theme-toggle__option--dark:hover {
+  background-color: #2A2A29;
+}
+
+.theme-toggle__option.active {
+  outline: 2px solid #141413;
+  outline-offset: 2px;
 }
 
 /* Animations */
@@ -261,7 +523,7 @@ p { margin-bottom: var(--space-4); }
   position: sticky;
   top: 0;
   z-index: 100;
-  background-color: rgba(255, 255, 255, 0.95);
+  background-color: var(--color-bg);
   backdrop-filter: blur(10px);
   border-bottom: 1px solid transparent;
   transition: all var(--transition-base);
@@ -269,7 +531,7 @@ p { margin-bottom: var(--space-4); }
 
 .header.scrolled {
   border-bottom-color: var(--color-border-light);
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+  box-shadow: var(--shadow-sm);
 }
 
 .nav {
@@ -282,9 +544,9 @@ p { margin-bottom: var(--space-4); }
 .nav__logo {
   font-family: var(--font-heading);
   font-size: var(--text-3xl);
-  font-weight: 400;
+  font-weight: 600;
   color: var(--color-text);
-  letter-spacing: 0.02em;
+  letter-spacing: -0.01em;
   transition: transform var(--transition-base);
 }
 
@@ -358,21 +620,121 @@ p { margin-bottom: var(--space-4); }
   transform: translateY(-8px) rotate(-45deg);
 }
 
-/* Footer */
+/* Footer - Theme-aware design (light in light mode, dark in dark mode) */
 .footer {
-  padding: var(--space-12) 0;
-  border-top: 1px solid var(--color-border-light);
-  text-align: center;
+  background-color: var(--color-bg-alt);
+  color: var(--color-text);
+  padding: var(--space-16) 0 var(--space-8);
+  border-top: 1px solid var(--color-border);
 }
 
-.footer__text {
+.footer__container {
+  width: 100%;
+  max-width: var(--max-width-wide);
+  margin: 0 auto;
+  padding: 0 var(--space-6);
+}
+
+.footer__grid {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr;
+  gap: var(--space-12);
+  margin-bottom: var(--space-12);
+}
+
+.footer__brand {
+  max-width: 320px;
+}
+
+.footer__logo {
+  font-family: var(--font-heading);
+  font-size: var(--text-2xl);
+  font-weight: 600;
+  color: var(--color-text);
+  display: inline-block;
+  margin-bottom: var(--space-4);
+}
+
+.footer__logo:hover {
+  opacity: 0.8;
+}
+
+.footer__tagline {
+  font-family: var(--font-body);
+  font-size: var(--text-base);
+  color: var(--color-text-muted);
+  line-height: 1.7;
+  margin-bottom: 0;
+}
+
+.footer__column {
+  display: flex;
+  flex-direction: column;
+}
+
+.footer__heading {
+  font-family: var(--font-heading);
   font-size: var(--text-sm);
+  font-weight: 600;
   color: var(--color-text-light);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  margin-bottom: var(--space-4);
+}
+
+.footer__links {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+}
+
+.footer__links a {
+  font-family: var(--font-body);
+  font-size: var(--text-base);
+  color: var(--color-text);
+  transition: opacity var(--transition-fast);
+}
+
+.footer__links a:hover {
+  opacity: 0.7;
+}
+
+.footer__bottom {
+  padding-top: var(--space-8);
+  border-top: 1px solid var(--color-border);
+}
+
+.footer__copyright {
+  font-family: var(--font-heading);
+  font-size: var(--text-sm);
+  color: var(--color-text-muted);
+  margin: 0;
+}
+
+/* CTA Button */
+.btn-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  padding: var(--space-2) var(--space-5);
+  background-color: var(--color-text);
+  color: var(--color-bg);
+  font-family: var(--font-heading);
+  font-size: var(--text-sm);
+  font-weight: 500;
+  border-radius: var(--border-radius-full);
+  transition: all var(--transition-base);
+}
+
+.btn-cta:hover {
+  background-color: var(--color-text-secondary);
+  transform: translateY(-1px);
 }
 
 /* Responsive */
 @media (max-width: 768px) {
   :root {
+    --text-7xl: 3rem;
     --text-6xl: 2.5rem;
     --text-5xl: 2rem;
     --text-4xl: 1.75rem;
@@ -403,12 +765,26 @@ p { margin-bottom: var(--space-4); }
     display: flex;
   }
   
+  .nav__cta {
+    display: none;
+  }
+  
   .nav__link {
     font-size: var(--text-xl);
   }
   
   .section {
     padding: var(--space-12) 0;
+  }
+  
+  /* Footer responsive */
+  .footer__grid {
+    grid-template-columns: 1fr;
+    gap: var(--space-8);
+  }
+  
+  .footer__brand {
+    max-width: 100%;
   }
 }
 
