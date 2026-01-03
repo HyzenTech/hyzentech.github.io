@@ -1,8 +1,18 @@
 # Muhammad Hafiz - Portfolio
 
-🌐 **Live Site:** [https://hyzentech.github.io/portfolio-astro/](https://hyzentech.github.io/portfolio-astro/)
+🌐 **Live Site:** [https://hyzentech.github.io](https://hyzentech.github.io)
 
-A personal portfolio website showcasing my work as an AI/ML Engineer & Researcher.
+A personal portfolio website showcasing my work as an AI/ML Engineer & Researcher, featuring research publications, machine learning projects, and technical blog posts.
+
+---
+
+## ✨ Features
+
+- **Anthropic-Inspired Design** — Modern, minimalist aesthetic with warm color palette
+- **Dark/Light Mode** — Theme toggle with full site adaptation
+- **Responsive** — Mobile-first design with hamburger navigation
+- **Blog with Illustrations** — Story-driven articles with theme-adaptive infographics
+- **Performance** — Static site generation with Astro
 
 ---
 
@@ -10,28 +20,18 @@ A personal portfolio website showcasing my work as an AI/ML Engineer & Researche
 
 | Page | Description |
 |------|-------------|
-| [**Projects**](https://hyzentech.github.io/portfolio-astro/) | Featured ML research projects |
-| [**About Me**](https://hyzentech.github.io/portfolio-astro/about) | Background, education & skills |
-| [**Blog**](https://hyzentech.github.io/portfolio-astro/blog) | Technical articles & insights |
-| [**Contact**](https://hyzentech.github.io/portfolio-astro/contact) | Get in touch |
-
----
-
-## ✨ Features
-
-- **Modern Design** — Minimalist aesthetic inspired by [Jona](https://jonaac.github.io/)
-- **Interactive Effects** — Custom cursor, magnetic buttons, scroll animations (inspired by [Lusion](https://lusion.co/))
-- **Responsive** — Mobile-first design with hamburger menu
-- **Performance** — Static site generation with Astro
-- **Accessibility** — Respects `prefers-reduced-motion`
+| [**Home**](https://hyzentech.github.io/) | Featured ML research projects |
+| [**About**](https://hyzentech.github.io/about/) | Background, education & skills |
+| [**Blog**](https://hyzentech.github.io/blog/) | Technical articles & research insights |
+| [**Contact**](https://hyzentech.github.io/contact/) | Get in touch |
 
 ---
 
 ## 🛠️ Tech Stack
 
 - **Framework:** [Astro](https://astro.build/) v5
-- **Typography:** Cormorant Garamond + Source Sans Pro
-- **Animations:** Vanilla JS with Intersection Observer
+- **Typography:** DM Sans + Lora
+- **Styling:** Vanilla CSS with CSS custom properties
 - **Deployment:** GitHub Pages + GitHub Actions
 
 ---
@@ -59,20 +59,18 @@ npm run preview
 ```
 src/
 ├── layouts/
-│   └── BaseLayout.astro      # Global layout
+│   └── BaseLayout.astro      # Global layout with theme toggle
 ├── components/
-│   ├── ProjectCard.astro     # Project cards
-│   ├── Timeline.astro        # Experience/education timeline
-│   └── SkillsGrid.astro      # Skills display
+│   └── ProjectCard.astro     # Project cards
 └── pages/
-    ├── index.astro           # Projects page
+    ├── index.astro           # Home page
     ├── about.astro           # About page
     ├── blog.astro            # Blog listing
     ├── contact.astro         # Contact page
     └── blog/                 # Individual blog posts
 public/
-├── images/                   # Profile & project images
-├── scripts/interactive.js    # Lusion-style effects
+├── images/                   # Project & blog images
+├── scripts/interactive.js    # Interactive effects
 └── styles/interactive.css    # Effect styles
 ```
 
