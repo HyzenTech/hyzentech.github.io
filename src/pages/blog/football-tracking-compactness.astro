@@ -1,0 +1,140 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+
+const base = import.meta.env.BASE_URL;
+---
+
+<BaseLayout
+  title="Reading the Shape of a Turnover | Hafiz"
+  description="An evidence-led football tracking case study of team compactness during an 11-second transition sequence, using Metrica Sports sample data."
+  activeNav="blog"
+>
+  <article class="case-study">
+    <header class="case-hero">
+      <div class="case-hero__container">
+        <div class="case-hero__copy">
+          <div class="case-hero__meta">
+            <span>September 25, 2026</span><span aria-hidden="true">•</span><span>9 min read</span>
+          </div>
+          <h1>Reading the Shape of a Turnover</h1>
+          <p class="case-hero__subtitle">A tracking-data case study of how one team’s compactness changed during 11.24 seconds of unstable possession.</p>
+          <div class="case-hero__tags" aria-label="Article tags">
+            <span class="tag">Football Analytics</span>
+            <span class="tag">Tracking Data</span>
+            <span class="tag">Team Compactness</span>
+            <span class="tag">Python</span>
+          </div>
+        </div>
+        <figure class="figure figure--hero">
+          <img src={`${base}images/football-tracking-hero.png`} alt="Football pitch view showing Home and Away player positions around the ball during a transition sequence" />
+          <figcaption>The selected passage from Metrica Sports Sample Game 1: two recoveries, a contested phase, and an off-target shot in 11.24 seconds.</figcaption>
+        </figure>
+      </div>
+    </header>
+
+    <div class="article-body">
+      <section class="article-section article-section--lead">
+        <p class="lead">A turnover is often described with a single event label. Tracking data shows the more useful story: where every player was, how quickly the team moved, and whether its structure stretched or contracted while the ball changed hands. This case study examines one short sequence from Metrica Sports Sample Game 1, covering period 1 from 298.88 to 310.12 seconds.</p>
+        <p>The passage lasts 11.24 seconds and contains 257 valid tracking frames. Home recover the ball and lose it immediately at 298.88. Away recover and pass at 300.76, play another pass at 304.12, enter a contested phase at 307.92, regain possession at 308.96, and shoot off target at 310.12. Rather than assign tactical intent, I use the sequence to ask a narrower question: how did Home’s outfield shape change as the possession became unstable?</p>
+      </section>
+
+      <section class="article-section">
+        <h2>Defining compactness before interpreting it</h2>
+        <p>“Compactness” can refer to several different ideas. A single number cannot represent a team’s defensive organisation in full, so I separated the shape into transparent measurements. Team width is the distance between the widest Home outfield players along the pitch’s lateral axis. Team length is the equivalent distance along the longitudinal axis. The outfield centroid is the mean position of the ten analysed outfield players, while centroid-to-ball distance measures how far that collective reference point sits from the ball.</p>
+        <p>These metrics answer different questions. Width and length describe the outer bounds of the unit, but they do not reveal whether most players are clustered centrally or whether one player creates the range. The centroid summarises collective movement, but it can hide opposite movements within the team. Centroid-to-ball distance adds ball context, though it still says nothing about pressure angle, cover shadows, body orientation, or the space between individual lines.</p>
+        <div class="metric-grid" aria-label="Sequence summary metrics">
+          <div class="metric-card"><span class="metric-card__value">11.24 s</span><span class="metric-card__label">Sequence duration</span></div>
+          <div class="metric-card"><span class="metric-card__value">257</span><span class="metric-card__label">Valid frames</span></div>
+          <div class="metric-card"><span class="metric-card__value">5.073 m</span><span class="metric-card__label">Centroid displacement</span></div>
+          <div class="metric-card"><span class="metric-card__value">33.802 m</span><span class="metric-card__label">Maximum width</span></div>
+        </div>
+      </section>
+
+      <section class="article-section">
+        <h2>A collective retreat, with lateral adjustment</h2>
+        <figure class="figure figure--wide">
+          <img src={`${base}images/football-tracking-shape.png`} alt="Home outfield compactness geometry at 307.08 seconds, showing the convex hull, width, length, centroid, and ball" />
+          <figcaption>Home’s outfield geometry at the sequence’s maximum recorded width: 33.802 metres at 307.08 seconds.</figcaption>
+        </figure>
+        <p>Home’s outfield centroid began at (24.311, 44.604) metres and ended at (20.435, 41.330) metres. The total displacement was 5.073 metres. Of that movement, 3.876 metres came along the x-axis toward Home’s defended goal at x = 0, while the y coordinate decreased by 3.273 metres. The direction matters: the group did not simply drop in a straight line. It retreated and shifted laterally as Away progressed the possession.</p>
+        <p>The team’s width fell from 30.861 to 24.900 metres between the first and final frames. That endpoint comparison suggests a narrower finishing shape, but the time series prevents an overly neat reading. Width first expanded and reached 33.802 metres at 307.08, shortly before the contested phase. Home therefore widened before contracting. This may reflect individual reactions to ball movement or nearby opponents, but the metric alone cannot establish why.</p>
+        <p>Length changed less from endpoint to endpoint, moving from 25.481 to 24.180 metres. The minimum was 21.660 metres at 303.36, soon before Away’s second recorded pass. Home briefly compressed front to back, then lengthened again as the sequence developed. A final-frame summary would miss that intermediate contraction and could wrongly imply a nearly static block.</p>
+      </section>
+
+      <section class="article-section">
+        <h2>The ball separated from the team before the shot</h2>
+        <figure class="figure figure--wide">
+          <img src={`${base}images/football-tracking-timeline.png`} alt="Timeline chart of Home team width, length, and centroid-to-ball distance with possession events marked from 298.88 to 310.12 seconds" />
+          <figcaption>Width, length, and centroid-to-ball distance across the sequence. The shaded break marks the interval where ball tracking is unavailable rather than interpolating through it.</figcaption>
+        </figure>
+        <p>Centroid-to-ball distance started at 4.853 metres and ended at 6.594 metres, but its maximum was much larger: 22.007 metres at 303.08. That peak occurred between Away’s recovery/pass at 300.76 and the next pass at 304.12. For this brief interval, the ball was far from Home’s collective centre even though the team’s length was moving toward its minimum.</p>
+        <p>Read together, those measurements describe separation rather than a simple loss of compactness. Home’s outfield unit became shorter front to back while the ball moved away from its centroid. The data does not identify which player should have engaged, whether the ball carrier had a clear passing lane, or whether Home deliberately protected a central zone. It does show that team shape and ball access were not moving in lockstep.</p>
+        <p>After the 22.007-metre peak, centroid-to-ball distance reduced as the passage approached the contested phase at 307.92. Ball coordinates are then unavailable until 308.96, so the timeline breaks across that 1.04-second observation gap instead of drawing a continuous change. Away recovered again at 308.96 and shot off target at 310.12. By the shot, Home were narrower than at the initial turnover and their centroid had moved goal-side, yet Away still completed the sequence with an attempt. This is useful descriptive evidence, not proof that the compactness values caused the shot.</p>
+      </section>
+
+      <section class="article-section">
+        <h2>Methodology and source notes</h2>
+        <p>The analysis uses the anonymised Home and Away teams in Metrica Sports Sample Game 1. I selected the period 1 sequence from 298.88 to 310.12 seconds and retained 257 frames with valid positions for the required entities. Metrica’s normalised coordinates were converted to a 105 by 68 metre pitch so that every distance is reported in metres. Because the source origin is top-left, the y-axis is flipped during conversion for the conventional bottom-left pitch used in the figures.</p>
+        <p>Home Player 11 was excluded as the goalkeeper. The identification rule used each player’s median x position and selected the player closest to Home’s defended goal at x = 0. All team metrics therefore use outfield players only. Event timestamps provide the sequence landmarks, while tracking frames supply the positional measurements between those events.</p>
+        <p>The figures and calculations were produced from source commit <code>e706dd506b360d69d9d123d5b8026e7294b13996</code>. The planned public repository is <a href="https://github.com/HyzenTech/football-tracking-compactness-analysis" target="_blank" rel="noopener">github.com/HyzenTech/football-tracking-compactness-analysis</a>. <strong>The repository link is provided as the intended publication location; it is not yet published at the time of writing.</strong></p>
+      </section>
+
+      <section class="article-section limitations">
+        <h2>Limitations</h2>
+        <p>This is a single descriptive sequence from sample data, not an evaluation of either team. Eleven seconds cannot establish a tactical pattern, and anonymised players prevent role-based interpretation. The width and length measures use extrema, which makes them sensitive to one player standing outside the main unit. A convex hull, inter-player distances, line detection, or density-based measure could add detail, but each would introduce its own assumptions.</p>
+        <p>The analysis also excludes goalkeeper positioning from the team shape. That choice keeps the compactness calculation focused on the outfield unit, but it removes information about defensive depth and space behind the line. Event labels are used as temporal anchors rather than a complete account of every touch or duel. No claim is made about tactical intent, player quality, causal responsibility, or recruitment value.</p>
+      </section>
+
+      <section class="article-section article-section--closing">
+        <h2>What the sequence supports</h2>
+        <p>The strongest conclusion is modest. During this transition, Home’s outfield centroid moved 5.073 metres, mostly toward their own goal. The team finished narrower, briefly reached its smallest length before Away’s second pass, and experienced a sharp centroid-to-ball separation midway through the move. Those changes were not linear, and the event sequence matters when reading them.</p>
+        <p>That is the practical value of tracking data for analysis: it replaces a static label such as “the block lost compactness” with measurements that can be checked frame by frame. The next step would be to repeat the method across many comparable turnovers, define the game states consistently, and test whether the same shape changes recur. Until then, this sequence should remain what it is: a precise account of one passage, with the interpretation kept inside the evidence.</p>
+      </section>
+    </div>
+  </article>
+</BaseLayout>
+
+<style>
+.case-study { overflow-x: clip; }
+.case-hero { padding: var(--space-16) 0 var(--space-12); border-bottom: 1px solid var(--color-border-light); }
+.case-hero__container { width: 100%; max-width: var(--max-width-wide); margin: 0 auto; padding: 0 var(--space-6); display: grid; grid-template-columns: minmax(0, .9fr) minmax(0, 1.1fr); gap: var(--space-12); align-items: center; }
+.case-hero__copy, .figure--hero { min-width: 0; }
+.case-hero__copy { opacity: 1; }
+.case-hero__meta { display: flex; flex-wrap: wrap; gap: var(--space-3); margin-bottom: var(--space-4); color: var(--color-text-light); font-size: var(--text-sm); font-style: italic; }
+.case-hero h1 { margin-bottom: var(--space-4); color: var(--color-text); opacity: 1; visibility: visible; font-family: var(--font-heading); font-size: clamp(2.5rem, 5vw, 4rem); font-weight: 400; line-height: 1.08; overflow-wrap: anywhere; }
+.case-hero__subtitle { margin-bottom: var(--space-6); color: var(--color-text-muted); font-size: var(--text-xl); line-height: 1.6; }
+.case-hero__tags { display: flex; flex-wrap: wrap; gap: var(--space-2); }
+.tag { display: inline-block; padding: var(--space-1) var(--space-3); border: 1px solid var(--color-border); border-radius: 20px; color: var(--color-text-muted); font-size: var(--text-sm); }
+.article-body { max-width: var(--max-width); margin: 0 auto; padding: var(--space-16) var(--space-6); }
+.article-section { margin-bottom: var(--space-16); }
+.article-section h2 { margin-bottom: var(--space-6); color: var(--color-text); font-family: var(--font-heading); font-size: var(--text-3xl); font-weight: 400; }
+.article-section p { margin-bottom: var(--space-6); color: var(--color-text-muted); font-size: var(--text-lg); line-height: 1.9; }
+.article-section .lead { color: var(--color-text); font-size: var(--text-xl); line-height: 1.8; }
+.article-section a { color: var(--color-text); text-decoration-color: var(--color-border); text-underline-offset: .2em; }
+.article-section a:hover { color: var(--color-text-muted); }
+.article-section code { overflow-wrap: anywhere; padding: var(--space-1) var(--space-2); border: 1px solid var(--color-border-light); border-radius: 4px; background: var(--color-bg-alt); color: var(--color-text); font-size: var(--text-sm); }
+.figure { margin: 0; }
+.figure img { display: block; width: 100%; height: auto; border: 1px solid var(--color-border); border-radius: var(--border-radius-lg); background: var(--color-bg-card); }
+.figure figcaption { margin-top: var(--space-3); color: var(--color-text-light); font-size: var(--text-sm); font-style: italic; line-height: 1.6; text-align: center; }
+.figure--hero { opacity: 1; }
+.figure--wide { margin: var(--space-8) 0; }
+.metric-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: var(--space-4); margin-top: var(--space-8); }
+.metric-card { padding: var(--space-5); border: 1px solid var(--color-border); border-radius: var(--border-radius-lg); background: var(--color-bg-card); text-align: center; }
+.metric-card__value, .metric-card__label { display: block; }
+.metric-card__value { margin-bottom: var(--space-2); color: var(--color-text); font-family: var(--font-heading); font-size: var(--text-2xl); font-weight: 600; }
+.metric-card__label { color: var(--color-text-muted); font-size: var(--text-sm); line-height: 1.5; }
+.limitations { padding: var(--space-8); border: 1px solid var(--color-border); border-radius: var(--border-radius-lg); background: var(--color-bg-alt); }
+.limitations p:last-child, .article-section--closing p:last-child { margin-bottom: 0; }
+.article-section--closing { padding-top: var(--space-12); border-top: 1px solid var(--color-border); }
+@keyframes fadeInUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
+@keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+@media (max-width: 900px) {
+  .case-hero__container { display: flex; flex-direction: column; width: 100%; max-width: 100%; }
+  .case-hero__copy, .figure--hero { width: 100%; max-width: 100%; min-width: 0; }
+  .figure--hero { order: -1; }
+  .figure img { width: 100%; max-width: 100%; }
+  .case-hero__subtitle { overflow-wrap: anywhere; }
+  .metric-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+@media (max-width: 600px) { .case-hero { padding: var(--space-10) 0; } .case-hero h1 { font-size: 2.25rem; } .metric-grid { grid-template-columns: 1fr; } .limitations { padding: var(--space-6); } }
+</style>
