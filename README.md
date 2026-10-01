@@ -85,3 +85,10 @@ public/
 ---
 
 Built with ❤️ using Astro
+
+
+## Local football recruitment portfolio preparation
+
+Stage D adds a featured project and dedicated project page. Publication remains
+pending; see [integration handoff](docs/RECRUITMENT_PORTFOLIO_HANDOFF.md) and
+[validation evidence](docs/STAGE_D_VALIDATION.json).
