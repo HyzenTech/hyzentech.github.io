@@ -4,8 +4,8 @@ import SourceCredit from '../../components/SourceCredit.astro';
 import ProjectActions from '../../components/ProjectActions.astro';
 const base = import.meta.env.BASE_URL;
 const actions = [
-  { label: 'Live Demo', status: 'Local preview · publication pending' },
-  { label: 'GitHub', status: 'Repository release pending' },
+  { label: 'Run locally', href: 'https://github.com/HyzenTech/football-recruitment-intelligence-engine#reproduce-and-run' },
+  { label: 'GitHub', href: 'https://github.com/HyzenTech/football-recruitment-intelligence-engine' },
   { label: 'Case Study', href: `${base}blog/football-recruitment-intelligence-engine/` }
 ];
 const experiences = [
@@ -34,13 +34,13 @@ const experiences = [
         {['Python 3.12', 'FastAPI', 'Pydantic', 'pytest', 'HTML / CSS / JavaScript'].map(tag => <li>{tag}</li>)}
       </ul>
       <ProjectActions actions={actions} />
-      <p class="release-note">Prepared for local review. Public demo data rights and provider registration remain unresolved.</p>
+      <p class="release-note">Public source code and case study. The full analytical application runs locally; provider datasets and derived player-data downloads are excluded.</p>
       <SourceCredit />
     </header>
 
     <figure class="interface-figure">
       <img src={`${base}images/recruitment-interface-empty.jpg`} width="637" height="715" alt="Actual local V1 interface showing Player Explorer with an empty search result; no player statistics are displayed" fetchpriority="high" />
-      <figcaption>Actual local V1 application, captured in an empty-search state. Data-backed demo views have been verified locally; their public release remains pending.</figcaption>
+      <figcaption>Actual local V1 application, captured in an empty-search state. The four analytical views were verified locally. This public release shows the interface without player statistics.</figcaption>
     </figure>
 
     <section aria-labelledby="problem-title" class="project-section problem">
@@ -51,7 +51,7 @@ const experiences = [
     <section aria-labelledby="views-title" class="project-section">
       <p class="eyebrow">THE PRODUCT</p><h2 id="views-title">Four ways to inspect the evidence</h2>
       <div class="experience-grid">{experiences.map(([n,title,copy]) => <div class="experience"><span class="number" aria-hidden="true">{n}</span><h3>{title}</h3><p>{copy}</p></div>)}</div>
-      <p class="caption">The static interface presents exported Python results from a frozen verified V1 snapshot. It runs without a Python backend and does not recalculate the analytical model in JavaScript.</p>
+      <p class="caption">The locally verified static interface presents exported Python results from a frozen V1 snapshot. The public release shares its code and local-run instructions. It runs without a Python backend and does not recalculate the analytical model in JavaScript.</p>
     </section>
 
     <section aria-labelledby="architecture-title" class="project-section">
@@ -64,13 +64,13 @@ const experiences = [
       <p class="eyebrow">WHAT IS VERIFIED</p><h2 id="evidence-title">Engineering evidence, with clear limits</h2>
       <dl class="evidence-grid"><div><dt>220</dt><dd>Original V1 tests passing</dd></div><div><dt>303</dt><dd>Player/team profiles in the frozen cohort</dd></div><div><dt>8</dt><dd>Verified recruitment scenarios</dd></div><div><dt>2</dt><dd>Canonical clean builds with matching receipts</dd></div></dl>
       <p>Stage C adds six export-boundary tests, bringing the local suite to 226 passing tests. Every exported profile, similarity result and ranking scenario was compared against the frozen artifacts. Twenty cohort perturbations test sensitivity, not prediction accuracy.</p>
-      <div class="validation-note"><h3>Football validation remains limited</h3><p>CASE-03 is one limited qualitative human review of Kadeisha Buchanan, based on a sampled match with skipped portions and unknown continuous viewing duration. It found agreement around interceptions and tackling activity, while surfacing positioning, risky possession decisions, pressure and score-state context that activity scores cannot adequately capture.</p><p>No recalibration followed. Expert/scout and predictive validation remain pending. General model accuracy and transfer suitability have not been established.</p></div>
+      <div class="validation-note"><h3>Football validation remains limited</h3><p>CASE-03 is one limited qualitative human review of a centre-back, based on a sampled match with skipped portions and unknown continuous viewing duration. It found agreement around interceptions and tackling activity, while surfacing positioning, risky possession decisions, pressure and score-state context that activity scores cannot adequately capture.</p><p>No recalibration followed. Expert/scout and predictive validation remain pending. General model accuracy and transfer suitability have not been established.</p></div>
     </section>
 
     <section aria-labelledby="limits-title" class="project-section limits">
       <p class="eyebrow">BOUNDARIES</p><h2 id="limits-title">Historical activity is only part of the picture.</h2>
       <ul><li>One historical Women’s Super League cohort: 2023/24. This is not a current global player database.</li><li>Broad positional groups, with no possession, opponent, score-state or tactical-context adjustment.</li><li>Incomplete components remain unavailable; small complete peer groups suppress comparisons and rankings.</li><li>Goalkeeper analysis covers distribution. Shot-stopping ability is unsupported.</li><li>No age, market-value, contract, injury, salary or current-availability intelligence.</li></ul>
-      <p>Source: <a href="https://github.com/hudl/open-data">StatsBomb Open Data</a>, pinned revision <code>4b73468fc5b0f1950f9f66fada70ad3a4f9327cb</code>. Noncommercial historical analysis; provider-data rights are separate from the project’s MIT code license. Exact derived-data publication scope and registration remain unresolved. The official logo is included for source attribution.</p>
+      <p>Source: <a href="https://github.com/hudl/open-data">StatsBomb Open Data</a>, pinned revision <code>4b73468fc5b0f1950f9f66fada70ad3a4f9327cb</code>. Noncommercial historical analysis; provider-data rights are separate from the project’s MIT code license. The public release contains no provider datasets or derived player-data files. The official logo is included for source attribution; local reproduction remains subject to provider terms.</p>
     </section>
     <footer class="project-footer"><p>Analytical V1 is frozen. This project page reflects implemented work and verified evidence; future providers, expert validation and a natural-language scouting interface remain deferred.</p><ProjectActions actions={actions} /></footer>
   </article>
