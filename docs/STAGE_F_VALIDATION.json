@@ -1,0 +1,129 @@
+{
+  "stage": "F",
+  "status": "PASS",
+  "build_pages": 9,
+  "added_skills": [
+    "uv",
+    "Football Analytics",
+    "Statistical Similarity",
+    "FastAPI",
+    "Pydantic",
+    "pytest",
+    "Data Pipelines",
+    "Data Quality"
+  ],
+  "previous_skills_preserved": 19,
+  "evidence_links": 5,
+  "broken_local_links_or_anchors": [],
+  "about_content_outside_skills_unchanged": true,
+  "other_portfolio_source_preserved": true,
+  "private_captures_in_default_build": 0,
+  "browser": {
+    "desktop_1440": "PASS",
+    "tablet_768": "PASS",
+    "mobile_390": "PASS",
+    "horizontal_overflow": false,
+    "keyboard_focus": "PASS",
+    "evidence_navigation": "PASS",
+    "console_errors": []
+  },
+  "public_deployment": "NOT_PERFORMED",
+  "evidence": {
+    "uv": [
+      {
+        "path": "pyproject.toml",
+        "sha256": "2edb2a01031af3ca297162ea83e6a372237912a535e959c015fe2c2a330942b3"
+      },
+      {
+        "path": "uv.lock",
+        "sha256": "9a3a6bfe4a6d4fdcc5ef9cd812c3f94669ba60934ae83c2f1e3c062baf1e8693"
+      },
+      {
+        "path": "README.md",
+        "sha256": "063a7766b1d2aea1b45ecfc616def535650ebd535959c14641d468eff9c39cd1"
+      }
+    ],
+    "Football Analytics": [
+      {
+        "path": "src/football_recruitment/features/pipeline.py",
+        "sha256": "1bc0e658018acc415dff1a77ec3eb393296546511a36a9f397afd63d589b3e82"
+      },
+      {
+        "path": "src/football_recruitment/features/metrics.py",
+        "sha256": "57efb468b49d941d29a27a69d7b1678db7de877c7810fc3a82352505083d7c24"
+      }
+    ],
+    "Statistical Similarity": [
+      {
+        "path": "src/football_recruitment/similarity/engine.py",
+        "sha256": "9423885a18f2b5eaa534c5fd689a7cfbd050818cbea503c857a27a526ee91cb4"
+      }
+    ],
+    "FastAPI": [
+      {
+        "path": "pyproject.toml",
+        "sha256": "2edb2a01031af3ca297162ea83e6a372237912a535e959c015fe2c2a330942b3"
+      },
+      {
+        "path": "uv.lock",
+        "sha256": "9a3a6bfe4a6d4fdcc5ef9cd812c3f94669ba60934ae83c2f1e3c062baf1e8693"
+      },
+      {
+        "path": "src/football_recruitment/api/app.py",
+        "sha256": "8264254538e187ed00d1811646c1c954a2f7c68561b865f98411b1f2d173e985"
+      }
+    ],
+    "Pydantic": [
+      {
+        "path": "pyproject.toml",
+        "sha256": "2edb2a01031af3ca297162ea83e6a372237912a535e959c015fe2c2a330942b3"
+      },
+      {
+        "path": "uv.lock",
+        "sha256": "9a3a6bfe4a6d4fdcc5ef9cd812c3f94669ba60934ae83c2f1e3c062baf1e8693"
+      },
+      {
+        "path": "src/football_recruitment/domain/models.py",
+        "sha256": "fea5d4189c437e29d7578906f50971e4c833d40d2f2021c56d5e8bd8ad7fbf78"
+      }
+    ],
+    "pytest": [
+      {
+        "path": "pyproject.toml",
+        "sha256": "2edb2a01031af3ca297162ea83e6a372237912a535e959c015fe2c2a330942b3"
+      },
+      {
+        "path": "uv.lock",
+        "sha256": "9a3a6bfe4a6d4fdcc5ef9cd812c3f94669ba60934ae83c2f1e3c062baf1e8693"
+      },
+      {
+        "path": "tests/test_api.py",
+        "sha256": "51b785f75d8a2a7e8a76e2a6f7be2bfa3cfe79b95ebd3aee37487de4b73c1ea2"
+      },
+      {
+        "path": "tests/test_similarity.py",
+        "sha256": "28e4532188ba9f76495518897152d12dfc0819f94304976224b318d06ec5185c"
+      }
+    ],
+    "Data Pipelines": [
+      {
+        "path": "src/football_recruitment/ingestion/pipeline.py",
+        "sha256": "4d7d0d1a091fac217fa409c85f313049008f8cbfb3f4e7f2f6e47247febef0fa"
+      },
+      {
+        "path": "src/football_recruitment/features/pipeline.py",
+        "sha256": "1bc0e658018acc415dff1a77ec3eb393296546511a36a9f397afd63d589b3e82"
+      }
+    ],
+    "Data Quality": [
+      {
+        "path": "src/football_recruitment/validation/pipeline.py",
+        "sha256": "6763bb7cc02c5c38c8c001ff64d42157eb6050a8d0a1c8339e6c7e8b24189c95"
+      },
+      {
+        "path": "src/football_recruitment/preprocessing/minutes.py",
+        "sha256": "7bc0ea328a4e42cb609cd1b559e7e65d96ec1124c9d7c04edc67f186cea3a447"
+      }
+    ]
+  }
+}
