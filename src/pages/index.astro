@@ -6,6 +6,21 @@ const base = import.meta.env.BASE_URL;
 
 const projects = [
   {
+    title: "Football Recruitment Intelligence Engine",
+    href: `${base}projects/football-recruitment-intelligence-engine/`,
+    image: `${base}images/recruitment-interface-empty.jpg`,
+    imageAlt: "Actual local recruitment application in an empty-search state, with no player statistics shown",
+    imageFit: 'contain' as const,
+    tags: ["Python", "FastAPI", "Pydantic", "pytest", "Football Analytics"],
+    excerpt: "A reproducible pipeline from historical football events to positional player profiles, explained similarity and requirement-based rankings. Frozen V1 preserves provenance, missing values and the benchmark behind each result.",
+    linkLabel: "Explore the project",
+    actions: [
+      { label: 'Run locally', href: 'https://github.com/HyzenTech/football-recruitment-intelligence-engine#reproduce-and-run' },
+      { label: 'GitHub', href: 'https://github.com/HyzenTech/football-recruitment-intelligence-engine' },
+      { label: "Case Study", href: `${base}blog/football-recruitment-intelligence-engine/` }
+    ]
+  },
+  {
     title: "When Heat Reveals What Eyes Cannot See",
     href: `${base}blog/breast-thermal-classification`,
     image: `${base}images/project-thermal.png`,

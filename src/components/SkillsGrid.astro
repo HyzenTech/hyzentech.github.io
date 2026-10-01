@@ -2,6 +2,7 @@
 interface SkillCategory {
   title: string;
   skills: string[];
+  evidence?: { label: string; href: string };
 }
 
 interface Props {
@@ -20,6 +21,7 @@ const { categories } = Astro.props;
           <span class="skill-tag">{skill}</span>
         ))}
       </div>
+      {category.evidence && <a class="skill-evidence" href={category.evidence.href}>{category.evidence.label} <span aria-hidden="true">→</span></a>}
     </div>
   ))}
 </div>
@@ -62,6 +64,21 @@ const { categories } = Astro.props;
   flex-wrap: wrap;
   gap: var(--space-2);
 }
+
+.skill-evidence {
+  display: block;
+  margin-top: var(--space-4);
+  font-family: var(--font-heading);
+  font-size: var(--text-sm);
+  line-height: 1.6;
+  color: var(--color-text-secondary);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  overflow-wrap: anywhere;
+}
+
+.skill-evidence:hover { color: var(--color-text); }
+.skill-evidence:focus-visible { outline: 2px solid var(--color-text); outline-offset: 4px; border-radius: 2px; }
 
 .skill-tag {
   display: inline-block;

@@ -85,3 +85,25 @@ public/
 ---
 
 Built with ❤️ using Astro
+
+
+## Local football recruitment portfolio preparation
+
+Stage D adds a featured project and dedicated project page. Publication remains
+pending; see [integration handoff](docs/RECRUITMENT_PORTFOLIO_HANDOFF.md) and
+[validation evidence](docs/STAGE_D_VALIDATION.json).
+
+
+## Local technical article - Stage E
+
+The recruitment case study is integrated into the blog listing and project links.
+This remains a local review draft. See [article handoff](docs/RECRUITMENT_ARTICLE_HANDOFF.md)
+and [Stage E validation](docs/STAGE_E_VALIDATION.json). Private review captures
+are kept outside this source tree and excluded from the source archive.
+
+
+## Local Skills update - Stage F
+
+Eight source-supported skills and five project evidence links extend the existing
+Skills grid; all prior tags remain. See [Skills audit and handoff](docs/RECRUITMENT_SKILLS_HANDOFF.md)
+and [validation](docs/STAGE_F_VALIDATION.json). This branch remains local.

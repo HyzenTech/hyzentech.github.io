@@ -22,3 +22,6 @@ pnpm-debug.log*
 
 # jetbrains setting folder
 .idea/
+
+# Data-backed article captures are private until provider rights/attribution review.
+public/images/recruitment-private/

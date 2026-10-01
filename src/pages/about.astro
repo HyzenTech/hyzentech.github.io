@@ -82,10 +82,14 @@ const certifications = [
   }
 ];
 
+const projectEvidence = `${import.meta.env.BASE_URL}projects/football-recruitment-intelligence-engine/`;
+const articleEvidence = `${import.meta.env.BASE_URL}blog/football-recruitment-intelligence-engine/`;
+
 const skills = [
   {
     title: "Programming",
-    skills: ["Python", "SQL", "JavaScript"]
+    skills: ["Python", "SQL", "JavaScript"],
+    evidence: { label: "Python & JavaScript in the recruitment engine", href: projectEvidence }
   },
   {
     title: "Machine Learning",
@@ -93,11 +97,23 @@ const skills = [
   },
   {
     title: "Tools",
-    skills: ["Google Colab", "Jupyter", "Git", "GitHub"]
+    skills: ["Google Colab", "Jupyter", "Git", "GitHub", "uv"],
+    evidence: { label: "Locked Python environment with uv", href: articleEvidence + "#verification" }
   },
   {
     title: "Specializations",
-    skills: ["Deep Learning", "Computer Vision", "Data Processing", "Model Evaluation"]
+    skills: ["Deep Learning", "Computer Vision", "Data Processing", "Model Evaluation", "Football Analytics", "Statistical Similarity"],
+    evidence: { label: "Football profiles & statistical retrieval", href: articleEvidence + "#similarity" }
+  },
+  {
+    title: "Software Engineering",
+    skills: ["FastAPI", "Pydantic", "pytest"],
+    evidence: { label: "Validated local API & automated checks", href: projectEvidence }
+  },
+  {
+    title: "Data Engineering",
+    skills: ["Data Pipelines", "Data Quality"],
+    evidence: { label: "Canonical contracts & quality gates", href: articleEvidence + "#architecture" }
   }
 ];
 ---
@@ -136,7 +152,7 @@ const skills = [
       </div>
 
       <!-- Skills Section -->
-      <div class="about-section">
+      <div class="about-section" id="skills">
         <h2 class="about-section__title">Skills</h2>
         <SkillsGrid categories={skills} />
       </div>

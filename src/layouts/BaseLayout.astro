@@ -3,13 +3,21 @@ interface Props {
   title: string;
   description?: string;
   activeNav?: string;
+  canonicalPath?: string;
+  socialImage?: string;
+  socialImageAlt?: string;
 }
 
 const { 
   title, 
   description = "Muhammad Hafiz - AI/ML Engineer & Researcher. Explore my projects in Machine Learning, Computer Vision, and Deep Learning.",
-  activeNav = ""
+  activeNav = "",
+  canonicalPath,
+  socialImage,
+  socialImageAlt
 } = Astro.props;
+const canonical = canonicalPath && Astro.site ? new URL(canonicalPath, Astro.site).href : undefined;
+const imageUrl = socialImage && Astro.site ? new URL(socialImage, Astro.site).href : undefined;
 ---
 
 <!DOCTYPE html>
@@ -24,6 +32,16 @@ const {
   <meta property="og:title" content={title}>
   <meta property="og:description" content={description}>
   <meta property="og:type" content="website">
+  {canonical && <><link rel="canonical" href={canonical} /><meta property="og:url" content={canonical} /></>}
+  {imageUrl && <>
+    <meta property="og:image" content={imageUrl} />
+    <meta property="og:image:alt" content={socialImageAlt || title} />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={imageUrl} />
+    <meta name="twitter:image:alt" content={socialImageAlt || title} />
+  </>}
   
   <title>{title}</title>
   
@@ -39,6 +57,7 @@ const {
   <script src={`${import.meta.env.BASE_URL}scripts/interactive.js`} defer></script>
 </head>
 <body>
+  <a class="skip-link" href="#main-content">Skip to content</a>
   <!-- Header -->
   <header class="header">
     <div class="container">
@@ -83,7 +102,7 @@ const {
         
         <a href={`${import.meta.env.BASE_URL}contact/`} class="btn-cta nav__cta">Get in Touch</a>
         
-        <button class="nav__toggle" id="navToggle" aria-label="Toggle navigation">
+        <button class="nav__toggle" id="navToggle" aria-label="Toggle navigation" aria-controls="navMenu" aria-expanded="false">
           <span></span>
           <span></span>
           <span></span>
@@ -93,7 +112,7 @@ const {
   </header>
 
   <!-- Main Content -->
-  <main>
+  <main id="main-content" tabindex="-1">
     <slot />
   </main>
 
@@ -141,15 +160,24 @@ const {
     const navMenu = document.getElementById('navMenu');
     
     if (navToggle && navMenu) {
+      const setMenu = (open: boolean) => {
+        navMenu.classList.toggle('active', open);
+        navToggle.classList.toggle('active', open);
+        navToggle.setAttribute('aria-expanded', String(open));
+      };
       navToggle.addEventListener('click', () => {
-        navMenu.classList.toggle('active');
-        navToggle.classList.toggle('active');
+        setMenu(!navMenu.classList.contains('active'));
       });
       
       document.addEventListener('click', (e) => {
         if (!navMenu.contains(e.target as Node) && !navToggle.contains(e.target as Node)) {
-          navMenu.classList.remove('active');
-          navToggle.classList.remove('active');
+          setMenu(false);
+        }
+      });
+      document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && navMenu.classList.contains('active')) {
+          setMenu(false);
+          navToggle.focus();
         }
       });
     }
@@ -233,6 +261,9 @@ const {
 </html>
 
 <style is:global>
+.skip-link{position:fixed;top:-100px;left:16px;z-index:1000;padding:12px 18px;background:var(--color-text);color:var(--color-bg);font-family:var(--font-heading)}
+.skip-link:focus{top:12px}
+a:focus-visible,button:focus-visible,summary:focus-visible,main:focus-visible{outline:3px solid var(--color-text);outline-offset:4px}
 /* ================================================
    PORTFOLIO - Design System (Anthropic-Inspired)
    ================================================ */
@@ -744,7 +775,8 @@ p { margin-bottom: var(--space-4); }
   .nav__menu {
     position: fixed;
     top: 0;
-    right: -100%;
+    right: 0;
+    display: none;
     width: 75%;
     max-width: 320px;
     height: 100vh;
@@ -752,13 +784,13 @@ p { margin-bottom: var(--space-4); }
     flex-direction: column;
     justify-content: center;
     gap: var(--space-8);
-    transition: right var(--transition-slow);
     box-shadow: -10px 0 40px rgba(0, 0, 0, 0.1);
     z-index: 200;
   }
   
   .nav__menu.active {
     right: 0;
+    display: flex;
   }
   
   .nav__toggle {
