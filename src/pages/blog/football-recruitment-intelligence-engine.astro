@@ -1,0 +1,149 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+const base = import.meta.env.BASE_URL;
+const privatePreview = process.env.RECRUITMENT_PRIVATE_PREVIEW === '1';
+const heroImage = privatePreview ? 'images/recruitment-private/explorer.jpg' : 'images/recruitment-interface-empty.jpg';
+const sections = [
+  ['scope','A constrained cohort first'], ['architecture','The architecture'],
+  ['quality','The data was not clean'], ['profiles','From events to positional profiles'],
+  ['similarity','Similarity with a declared reference population'], ['ranking','A score that expresses a requirement'],
+  ['verification','Verification is not prediction accuracy'], ['review','What the human review exposed'],
+  ['delivery','One analytical implementation, two interfaces'], ['lessons','What I would carry into the next system']
+];
+const contributions = [
+  { metric:'Interceptions', percentile:'98.4375', weight:'1/2', contribution:49.21875 },
+  { metric:'Tackles', percentile:'98.4375', weight:'1/3', contribution:32.8125 },
+  { metric:'Long-pass attempts', percentile:'57.8125', weight:'1/6', contribution:9.635416666666666 }
+];
+---
+<BaseLayout
+  title="Building a Football Recruitment Intelligence Engine from Raw Event Data | Hafiz"
+  description="An engineering case study of frozen V1: quality-gated minutes, positional benchmarks, explained similarity, weighted ranking, replay verification and limited football validation."
+  activeNav="blog"
+  canonicalPath={`${base}blog/football-recruitment-intelligence-engine/`}
+  socialImage={`${base}${heroImage}`}
+  socialImageAlt={privatePreview ? 'Verified historical WSL player profile in the local frozen V1 demo' : 'Actual local V1 interface in an empty-search state'}
+>
+  <article class="recruitment-article">
+    <header class="article-hero container">
+      <a class="back" href={`${base}blog/`}>← All articles</a>
+      <p class="meta"><time datetime="2026-10-01">October 1, 2026</time> · Local draft · 12 min read</p>
+      <h1 class="no-reveal">Building a Football Recruitment Intelligence Engine from Raw Event Data</h1>
+      <p class="deck">Why the useful part of a shortlist is the evidence you can inspect behind it.</p>
+      <p class="review-status">Local review draft. Publication, provider attribution and the exact data-backed image scope remain pending.</p>
+      <figure><img src={`${base}${heroImage}`} width={privatePreview ? '1265' : '637'} height={privatePreview ? '712' : '715'} alt={privatePreview ? 'Actual local frozen V1 Player Explorer showing Maya Le Tissier’s historical Manchester United profile, validated minutes and eligibility' : 'Actual V1 interface in an empty-search state without player statistics'} fetchpriority="high" /><figcaption>{privatePreview ? 'Player Explorer in the verified local static demo. This is a historical event profile, not a current scouting assessment.' : 'Actual local V1 application in an empty-search state. Private data-backed review captures are withheld from the source package.'}</figcaption></figure>
+    </header>
+
+    <div class="reading-layout container">
+      <nav class="contents" aria-label="Article contents"><strong>In this case study</strong><ol>{sections.map(([id,title]) => <li><a href={`#${id}`}>{title}</a></li>)}</ol></nav>
+      <div class="article-body">
+        <p class="lead">A ranked list is easy to present and harder to trust. Before acting on it, an analyst needs to know which players were compared, whether their playing time is credible, what missing observations changed, and how a different requirement would alter the result. I built V1 around those questions.</p>
+        <p>The result is a Python pipeline with positional profiles, within-role similarity and explained recruitment rankings, presented through four local views. The difficult work sits underneath the interface: preserving the meaning of uncertain source evidence, defining a reference population and making the calculation replayable. There is no trained predictive model or invented overall player rating.</p>
+
+        <section id="scope"><h2>A constrained cohort first</h2>
+          <p>V1 uses the Women’s Super League 2023/24 cohort from <a href="https://github.com/hudl/open-data/tree/4b73468fc5b0f1950f9f66fada70ad3a4f9327cb">StatsBomb Open Data</a>, pinned to revision <code>4b73468fc5b0f1950f9f66fada70ad3a4f9327cb</code>. The frozen ingestion contains 132 matches and 495,189 events. Quality-gated processing produces 303 player/team-season profiles representing 295 players, with 139 profiles eligible under the basic peer policy.</p>
+          <p>A single season made the assumptions inspectable before adding providers or claiming broad coverage. A transfer keeps separate team spells, and eligibility is only the first gate: the complete peer population for a particular metric or requirement can be smaller. This is a historical research cohort, not a current global recruitment database.</p>
+          <p>Provider data is not covered by the project’s MIT code license. StatsBomb’s <a href="https://github.com/hudl/open-data/blob/4b73468fc5b0f1950f9f66fada70ad3a4f9327cb/LICENSE.pdf">pinned agreement</a> and <a href="https://github.com/hudl/open-data/tree/4b73468fc5b0f1950f9f66fada70ad3a4f9327cb#terms--conditions">source/logo instructions</a> govern its use. The release remains local while derived-data publication scope, provider registration and official-logo attribution are unresolved. A JSON table being derived rather than raw does not itself establish redistribution permission.</p>
+        </section>
+
+        <section id="architecture"><h2>The architecture: contracts before scores</h2>
+          <figure><img src={`${base}images/recruitment-architecture.svg`} width="1120" height="740" loading="lazy" alt="Frozen V1 architecture: pinned provider inputs, canonical mapping, quality-gated minutes, missingness-aware features and positional profiles feed explained similarity and ranking, with hashed manifests and replay checks" /><figcaption>A source-derived view of the analytical pipeline. The static interface is a separate presentation layer.</figcaption></figure>
+          <p>The provider adapter maps inputs into strict canonical contracts. Later modules work with those contracts instead of arbitrary provider fields. Pydantic validates structure; immutable artifacts and manifests connect each stage to its upstream inputs, configuration and method version.</p>
+          <p>That separation creates a useful failure boundary. A source or schema problem is identified before it becomes a profile; an invalid processed artifact cannot simply be served as trusted data. A future provider could enter through another adapter, but no additional provider was added to V1. The current implementation remains Python 3.12, FastAPI, Pydantic and standard-library numerical code, with uv, pytest and Ruff. It does not use pandas, NumPy or scikit-learn.</p>
+        </section>
+
+        <section id="quality"><h2>The data was not clean</h2>
+          <p>The most consequential choice was to resist uncertain repairs. Event clocks, lineup positions and dismissal evidence did not always agree. Summing durations could produce a plausible total while hiding an impossible timeline. I reconstructed presence from event-state changes and independently cross-checked the position observations over their boundaries.</p>
+          <div class="table-wrap" tabindex="0" role="region" aria-label="Evidence problems and responses"><table><caption>Observed problems and the V1 response</caption><thead><tr><th scope="col">Evidence problem</th><th scope="col">Decision</th><th scope="col">Analytical consequence</th></tr></thead><tbody>
+            <tr><th scope="row">Lineup/card-clock inconsistencies</th><td>Resolve only against unique matching event evidence; preserve original and corrected observations separately.</td><td>Unresolved contradictions quarantine the appearance.</td></tr>
+            <tr><th scope="row">Zero-length position intervals</th><td>Retain a diagnostic warning; contribute no duration if the remaining evidence is consistent.</td><td>A source observation is not invented playing time.</td></tr>
+            <tr><th scope="row">Reversed intervals or overlapping positions</th><td>Detect the contradiction before interval union; do not clip or reverse it into a plausible interval.</td><td>Affected appearances expose no usable minutes.</td></tr>
+            <tr><th scope="row">Unclassified pass outcomes</th><td>Keep attempts and coverage explicit; do not assign success or failure.</td><td>Incomplete completion-derived totals and rates stay unavailable.</td></tr>
+          </tbody></table></div>
+          <p>One match was quarantined because a ball action occurred after the recorded first-period end. Other contradictions were localized to affected appearances. A quarantined appearance contributes to neither the feature numerator nor its minute denominator. Removing only its minutes would inflate per-90 activity; removing only its events would depress it.</p>
+          <p>These rules trade coverage for interpretability. A cleaner-looking table would have been easier to display, but it would imply evidence the source did not supply. The quality flags are part of the result, not a temporary inconvenience to erase.</p>
+        </section>
+
+        <section id="profiles"><h2>From events to positional profiles</h2>
+          <p>The minute convention is elapsed presence including stoppage time and excluding recorded temporary absences. It is not nominal minutes capped at 90, nor a promise to match a commercial provider’s published minutes. Counts and sums are aggregated over validated appearances first, then scaled as <code>90 × total / validated minutes</code>. Means and percentages retain their native units.</p>
+          <p>V1 implements 41 metrics. Passing attempts can be available while completion-derived fields are unavailable because some outcomes are unclassified. The interface retains units, observation coverage, metric status and peer count so that a blank percentile can be understood rather than read as zero performance.</p>
+          <p>Positional exposure uses declared broad groups. Basic peer eligibility requires at least 450 validated minutes, at least 60% dominant positional exposure and no disqualifying partial-season evidence. Complete metric populations need at least ten peers. References select the longest eligible team spell per player within a role, with deterministic tie-breaking, so transfers do not automatically create duplicate benchmarks.</p>
+          <p>For an eligible complete population, the direction-aware midrank percentile is <code>100 × (count below + 0.5 × count equal) / n</code>; lower-is-better dimensions reverse it. A percentile measures position within that benchmark. It is neither a probability nor evidence that two roles are interchangeable.</p>
+          {privatePreview && <figure><img src={`${base}images/recruitment-private/comparison.jpg`} width="1265" height="712" loading="lazy" alt="Verified comparison of Maya Le Tissier and Guro Bergsvand with positional interception percentile bars and a metric table" /><figcaption>Comparison retains the positional benchmark. Missing or descriptive-only values receive an explicit status instead of an invented percentile.</figcaption></figure>}
+          <p>Category summaries combine declared metric percentiles without producing a universal rating. Goalkeeper profiles cover distribution; shot stopping is explicitly unsupported. AM and CM populations are too small for the relevant baseline outputs, so those views report insufficient peers.</p>
+        </section>
+
+        <section id="similarity"><h2>Similarity with a declared reference population</h2>
+          <p>Similarity answers a narrower question than “who could replace this player?” It retrieves within-role profiles close on a fixed complete vector of event activity. Before fitting the scaler, the engine excludes every team spell belonging to the query player and deduplicates candidate spells. Standardization uses those complete candidates, not the query or every profile in the database.</p>
+          <p>For each active metric, the engine divides the query–candidate difference by the candidate population’s standard deviation. Euclidean distance combines the squared differences. A zero-scale metric contributes no discrimination and is omitted with a warning. The proximity index is <code>100 / (1 + distance)</code>; its numerical range does not turn it into match probability.</p>
+          <p>For Maya Le Tissier’s Manchester United spell, the verified query has 31 complete CB peers and 12 active metrics. Its closest returned profile is Maren Nævdal Mjelde’s Chelsea spell: distance 2.68 and proximity index 27.20, rounded for display. Box actions, tackles and shots are among the closest dimensions; long-pass activity, interceptions and non-penalty xG are among the larger standardized differences.</p>
+          {privatePreview && <figure><img src={`${base}images/recruitment-private/similarity.jpg`} width="1265" height="712" loading="lazy" alt="Actual similarity result for Maya Le Tissier showing five verified CB neighbors, distances, proximity indices and explanatory differences" /><figcaption>The retrieved neighbors are similar event profiles within this historical reference set. They are not transfer recommendations.</figcaption></figure>}
+          <p>The explanation matters as much as the order. A neighbor can be close overall and still differ sharply in one dimension; contribution shares expose which differences dominate distance. Team opportunity, style and correlated activity metrics can influence proximity. None of those effects is removed by standardization.</p>
+        </section>
+
+        <section id="ranking"><h2>A score that expresses a requirement</h2>
+          <p>The CB defensive-activity preset asks for interceptions, tackles and long-pass attempts with priorities 3, 2 and 1. Positive weights are normalized; zero-weight dimensions do not constrain completeness. The engine constructs one common complete role population for all active dimensions, rather than combining independently calculated Explorer percentiles with different populations.</p>
+          <p>The baseline preset has 32 complete reference players. Its top returned record is Kadeisha Buchanan’s Chelsea spell, with 502.49 validated minutes. The score is a weighted sum of common-population percentiles:</p>
+          <div class="table-wrap" tabindex="0" role="region" aria-label="Buchanan score contributions"><table><caption>Verified Buchanan contribution breakdown; display values are rounded</caption><thead><tr><th scope="col">Metric</th><th scope="col">Percentile</th><th scope="col">Normalized weight</th><th scope="col">Contribution</th></tr></thead><tbody>{contributions.map(row => <tr><th scope="row">{row.metric}</th><td>{row.percentile}</td><td>{row.weight}</td><td>{row.contribution.toFixed(4)}</td></tr>)}</tbody></table></div>
+          <figure class="contribution-figure"><figcaption>Requirement score: <strong>91.6667</strong> / 100. Segment lengths are contributions to that score, not independent player ratings.</figcaption><div class="score-bar" role="img" aria-label="Interceptions contribute 49.21875 points, tackles 32.8125 and long-pass attempts 9.6354166667, totaling 91.6666666667"><span class="interceptions" style="width:49.21875%"></span><span class="tackles" style="width:32.8125%"></span><span class="long-passes" style="width:9.635416666666666%"></span></div><ul class="legend"><li>Interceptions · 49.2188</li><li>Tackles · 32.8125</li><li>Long-pass attempts · 9.6354</li></ul></figure>
+          <p>The weaker requested dimension is long-pass activity at the 57.8125 percentile, compared with 98.4375 for interceptions and tackles. “Weaker” means lower among the requested dimensions; it does not establish a football weakness. Likewise, a 91.67 requirement score is not 91.67% scouting accuracy or an overall ability score.</p>
+          {privatePreview && <figure><img src={`${base}images/recruitment-private/ranking.jpg`} width="1265" height="712" loading="lazy" alt="Actual CB defensive-activity recruitment results with fixed priorities, complete reference population and explained candidate rankings" /><figcaption>Fixed verified priorities: interceptions 3, tackles 2, long-pass attempts 1. The full Python application supports editable priorities; the static release begins with eight verified scenarios.</figcaption></figure>}
+          <p>Minimum-minute and excluded-team candidate filters run after reference selection so filtering the shortlist does not silently redefine the benchmark. Changing the active weights can change completeness and reference membership. That is why arbitrary JavaScript weight sliders would need more than exported Explorer percentiles to reproduce Python faithfully.</p>
+        </section>
+
+        <section id="verification"><h2>Verification is not prediction accuracy</h2>
+          <p>The original V1 suite has 220 passing tests, covering contracts, exact calculations, boundary cases, exclusions, corruption, replay and API behavior. The canonical package includes two clean analytical builds with matching receipts and manifests. A separately installed wheel was checked outside the checkout to verify that the delivered application did not rely on accidental source imports.</p>
+          <p>Hashes detect changed bytes; replay checks address a different failure mode. Rehashing an altered derived value should not make it analytically valid. Verifiers check lineage, invariants and recomputed results, rather than treating a self-consistent file hash as proof of a correct method.</p>
+          <p>Twenty deterministic player-cohort perturbations test sensitivity to reference composition. ST similarity remains available in 202 of 280 attempts; ST shooting ranking is available in 18 of 20. An overlap average calculated only on available lists must be read alongside those failures. These experiments are not predictive validation, bootstrap confidence intervals or a measured scouting success rate.</p>
+          <p>Stage C adds six export-boundary tests, giving 226 passing local tests. Independent artifact comparison verifies all 303 exported profiles, all 303 full similarity results and all eight full ranking results. A repeat export produces identical manifest bytes and payload digests. This establishes presentation parity within frozen V1’s scope, not general football validity.</p>
+        </section>
+
+        <section id="review"><h2>What the human review exposed</h2>
+          <p>CASE-03 is one limited qualitative review of Kadeisha Buchanan in a sampled match with skipped portions, 30 timestamped observations and unknown continuous viewing duration. It found agreement around interceptions and tackling/defensive activity, but also positioning mistakes, risky possession decisions, pressure context, score state and the consequences of decisions that event-activity scores cannot adequately capture.</p>
+          <p>A high activity score can coexist with a costly decision. The ranking may count an action without knowing whether the player’s preceding position made it necessary, whether possession risk was appropriate, or what alternative was available. Video review revealed that gap; it did not measure the model’s general accuracy.</p>
+          <div class="boundary"><strong>Validation boundary</strong><p>No recalibration followed this single case. Numerical review ratings remain unassessed. Expert/scout and predictive validation are pending, and neither general model accuracy nor transfer suitability has been established. Raw review notes, viewing links and reviewer identifiers remain private.</p></div>
+        </section>
+
+        <section id="delivery"><h2>One analytical implementation, two interfaces</h2>
+          <p>The full local application uses FastAPI to serve verified profiles and compute queries through the frozen engines. GitHub Pages cannot execute that Python backend, so the static interface presents exported results instead. Profiles and similarity results load on demand; recruitment exposes the eight exact preset scenarios, with their original exclusions, references and contributions.</p>
+          <p>The exporter verifies the full frozen cohort, configurations and baseline hashes. It rejects an existing output directory to preserve previous exports, and writes its success manifest last. The browser checks each payload’s hash and byte count against a pinned snapshot contract before rendering. Missing or damaged data produces an explicit error and no fallback statistics.</p>
+          <p>That narrower interface is a deliberate trade-off. It preserves analytical semantics while keeping the initial load small. Editable weights remain in the Python application until an authorized static implementation can prove exact parity. Neither interface includes age, contract, market-value, injury, salary or current-availability intelligence.</p>
+        </section>
+
+        <section id="lessons"><h2>What I would carry into the next system</h2>
+          <p>The strongest engineering lesson is to make uncertainty survive every layer. A quality flag should affect the calculation and remain visible in the interface. A benchmark should be named before a score is interpreted. A packaged application should be tested in isolation, and a public presentation should be verified against the analytical implementation it claims to represent.</p>
+          <p>The next evidence step would be structured expert review with declared role expectations and independent observations, followed by a decision about which context or data would address the disagreements. Additional providers, learned roles and a natural-language scouting interface remain future directions. V1 is frozen; none was introduced for this portfolio release.</p>
+          <p><a class="project-link" href={`${base}projects/football-recruitment-intelligence-engine/`}>Explore the project and its validation boundaries →</a></p>
+        </section>
+
+        <section class="source-notes" aria-labelledby="sources-title"><h2 id="sources-title">Evidence and source notes</h2>
+          <p>Worked examples come from the frozen profile manifest <code>166bde6549efa2e42cff2ae9a1865fb707b56082cb6f67464d6ec950f653763a</code> and its verified similarity/ranking artifacts. Displayed values are rounded; ordering uses full precision and deterministic ID tie-breaks.</p>
+          <ul><li>Provider semantics: pinned <a href="https://github.com/hudl/open-data/blob/4b73468fc5b0f1950f9f66fada70ad3a4f9327cb/doc/Open%20Data%20Events%20v4.0.0.pdf">event specification</a> and <a href="https://github.com/hudl/open-data/blob/4b73468fc5b0f1950f9f66fada70ad3a4f9327cb/doc/Open%20Data%20Lineups%20v2.0.0.pdf">lineup specification</a>.</li><li>Project implementation: <code>preprocessing/minutes.py</code>, <code>features/metrics.py</code>, <code>normalization/engine.py</code>, <code>similarity/engine.py</code> and <code>ranking/engine.py</code> in the frozen package.</li><li>Verification and review: <code>docs/EVALUATION.md</code>, <code>docs/VALIDATION.md</code> and <code>docs/FOOTBALL_VALIDATION.md</code>. Repository and demo publication remain pending.</li></ul>
+        </section>
+      </div>
+    </div>
+  </article>
+</BaseLayout>
+<style>
+  .recruitment-article{padding-bottom:var(--space-20)}.article-hero{padding-top:var(--space-12);padding-bottom:var(--space-12);max-width:1120px}
+  .back,.meta,.review-status,figcaption,.contents{font-family:var(--font-heading);font-size:var(--text-sm);color:var(--color-text-muted)}
+  .back{display:inline-block;margin-bottom:var(--space-8)}.meta{margin-bottom:var(--space-4)}
+  h1{font-family:var(--font-heading);font-size:clamp(2.1rem,4.5vw,3.4rem);line-height:1.15;letter-spacing:-.035em;max-width:950px;margin:0 0 var(--space-5)}
+  .deck{font-size:var(--text-2xl);line-height:1.5;max-width:850px}.review-status{border-left:3px solid var(--color-accent-sage);background:var(--color-bg-alt);padding:var(--space-4);margin:var(--space-6) 0}
+  .reading-layout{display:grid;grid-template-columns:minmax(0,210px) minmax(0,760px);gap:var(--space-12);max-width:1120px;align-items:start}
+  .contents{position:sticky;top:110px;line-height:1.5}.contents strong{color:var(--color-text);font-weight:600}.contents ol{padding-left:18px;margin-top:var(--space-4)}.contents li{margin-bottom:var(--space-3)}.contents a:hover{text-decoration:underline}
+  .article-body{min-width:0}.article-body .lead{font-size:var(--text-xl);color:var(--color-text)}
+  section{padding-top:var(--space-8);scroll-margin-top:110px}h2{font-family:var(--font-heading);font-size:var(--text-2xl);line-height:1.35;margin-bottom:var(--space-5)}
+  p{margin-bottom:var(--space-5)}figure{margin:var(--space-8) 0}figure img{width:100%;height:auto;border:1px solid var(--color-border);border-radius:var(--border-radius)}
+  .article-hero figure img{max-width:1000px}.article-hero figure:has(img[src$="recruitment-interface-empty.jpg"]) img{max-width:637px}
+  figcaption{line-height:1.6;margin-top:var(--space-3)}.article-body a{text-decoration:underline;text-underline-offset:4px}
+  code{font-size:var(--text-sm);overflow-wrap:anywhere;background:var(--color-bg-alt);padding:2px 4px;border-radius:4px}
+  .table-wrap:focus-visible{outline:2px solid var(--color-text);outline-offset:4px}.table-wrap{overflow:auto;margin:var(--space-6) 0}table{width:100%;border-collapse:collapse;font-family:var(--font-heading);font-size:var(--text-sm);line-height:1.6}
+  caption{text-align:left;font-weight:600;margin-bottom:var(--space-3);color:var(--color-text-secondary)}th,td{padding:12px;text-align:left;border-bottom:1px solid var(--color-border);vertical-align:top}thead th{background:var(--color-bg-alt)}tbody th{font-weight:500}
+  .score-bar{display:flex;height:32px;border-radius:6px;overflow:hidden;background:var(--color-bg-alt);margin:var(--space-4) 0}.interceptions{background:#344f3d}.tackles{background:#829575}.long-passes{background:#b8a9c9}
+  .legend{list-style:none;display:flex;flex-wrap:wrap;gap:var(--space-3);padding:0;font-family:var(--font-heading);font-size:var(--text-sm);margin:0}.legend li{margin:0}
+  .boundary{padding:var(--space-6);background:var(--color-bg-alt);border-left:3px solid var(--color-accent-sage);margin:var(--space-6) 0}.boundary strong{font-family:var(--font-heading)}.boundary p{margin:var(--space-3) 0 0}
+  .source-notes{border-top:1px solid var(--color-border);margin-top:var(--space-8);font-size:var(--text-base)}.source-notes li{margin-bottom:var(--space-4)}
+  @media(max-width:900px){.reading-layout{grid-template-columns:minmax(0,1fr);gap:var(--space-4);max-width:820px}.contents{position:static;border-bottom:1px solid var(--color-border);padding-bottom:var(--space-4)}.contents ol{columns:2;column-gap:var(--space-6)}.contents li{break-inside:avoid}}
+  @media(max-width:600px){.article-hero{padding-top:var(--space-8);padding-bottom:var(--space-6)}.deck{font-size:var(--text-xl)}.contents ol{columns:1}.table-wrap table{font-size:var(--text-xs)}th,td{padding:9px 7px}.table-wrap{max-width:100%}section{scroll-margin-top:100px}.boundary{padding:var(--space-4)}}
+</style>

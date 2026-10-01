@@ -1,0 +1,43 @@
+{
+  "stage": "E",
+  "status": "PASS",
+  "builds": {
+    "default": {
+      "pages": 9,
+      "broken_links": [],
+      "broken_anchors": [],
+      "missing_alt": [],
+      "private_capture_count": 0,
+      "metadata": "PASS"
+    },
+    "private": {
+      "pages": 9,
+      "broken_links": [],
+      "broken_anchors": [],
+      "missing_alt": [],
+      "private_capture_count": 4,
+      "metadata": "PASS"
+    }
+  },
+  "fact_checks": {
+    "status": "PASS",
+    "cohort_and_worked_examples_verified": true,
+    "frozen_files_unchanged": 65,
+    "estimated_article_words": 2207,
+    "reading_minutes_at_200_wpm": 12,
+    "snapshot_profile_hash": "166bde6549efa2e42cff2ae9a1865fb707b56082cb6f67464d6ec950f653763a"
+  },
+  "sensitive_pattern_findings": [],
+  "previous_articles_and_skills_preserved": true,
+  "dependencies_base_path_and_layout_unchanged": true,
+  "browser_checks": {
+    "desktop": "PASS",
+    "tablet_768": "PASS",
+    "mobile_375": "PASS",
+    "contents_anchors": "PASS",
+    "reciprocal_project_article_links": "PASS",
+    "console_errors": []
+  },
+  "public_deployment": "NOT_PERFORMED",
+  "rights_attribution_status": "UNRESOLVED; LOCAL_REVIEW_ONLY"
+}
