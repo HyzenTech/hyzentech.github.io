@@ -1,0 +1,43 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Filters from '../../components/Filters.astro';
+import WritingRow from '../../components/WritingRow.astro';
+import { publishedWriting, categories } from '../../lib/content';
+const entries = await publishedWriting();
+---
+
+<BaseLayout
+  title="Writing"
+  activeNav="writing"
+  description="Engineering stories and research explanations by Muhammad Hafiz."
+>
+  <div class="container">
+    <header class="page-head">
+      <p class="eyebrow">Interactive technical stories</p>
+      <h1>
+        Follow a question.
+        <br />
+        Watch the evidence change.
+      </h1>
+      <p>
+        Research, engineering, and football analysis — explained through data,
+        movement, and short narrative steps. Open the technical details to go
+        deeper.
+      </p>
+    </header>
+    <Filters
+      label="Filter writing by category"
+      options={categories.map((c) => c[1])}
+    />
+    <section class="list-section" aria-label="Published writing">
+      {entries.map((entry) => (
+        <WritingRow level={2} entry={entry} />
+      ))}
+    </section>
+    <nav class="publication-line" aria-label="Writing category archives">
+      {categories.map(([slug, name]) => (
+        <a href={'/writing/' + slug + '/'}>{name} →</a>
+      ))}
+    </nav>
+  </div>
+</BaseLayout>

@@ -1,0 +1,234 @@
+{
+  "breast-thermal-classification": {
+    "theme": "thermal",
+    "hero": {
+      "eyebrow": "Research / IEEE CENIM 2024",
+      "title": "Seeing heat.",
+      "accent": "Learning patterns.",
+      "premise": "Can a learned image representation distinguish three thermal-image classes?",
+      "note": "The opening is a schematic temperature field, not a patient image or calibrated measurement.",
+      "metrics": [
+        {
+          "value": "3",
+          "label": "research classes"
+        },
+        {
+          "value": "1,842",
+          "label": "curated images, reported"
+        },
+        {
+          "value": "2024",
+          "label": "IEEE CENIM"
+        }
+      ]
+    },
+    "ending": {
+      "title": "A method is only as strong as its evaluation.",
+      "text": "The useful outcome is a traceable experiment: representations, classifier, split, and reported evidence. Next I would reconcile the final result, establish patient-level separation, and evaluate an external cohort."
+    },
+    "scenes": [
+      {
+        "id": "heat",
+        "label": "Seeing heat",
+        "title": "A different kind of image.",
+        "caption": "Colour encodes relative intensity in a schematic field. No measured temperatures or patient sample are displayed.",
+        "wide": false
+      },
+      {
+        "id": "dataset",
+        "label": "The experiment",
+        "title": "Three classes. One curated experiment.",
+        "caption": "The source write-up reports 614 images per class: 430 train, 123 validation, 61 test. These are image counts, not independent patient counts.",
+        "wide": false
+      },
+      {
+        "id": "features",
+        "label": "Representation",
+        "title": "Pixels become a representation.",
+        "caption": "Conceptual convolution and feature extraction, not an exported activation map. The selected image becomes input to a learned representation.",
+        "wide": false
+      },
+      {
+        "id": "extractors",
+        "label": "Two pathways",
+        "title": "Same input. Different extractors.",
+        "caption": "VGG16 and ResNet50 provide alternative representations. Branches are methodological diagrams, not measured feature values.",
+        "wide": true
+      },
+      {
+        "id": "classifier",
+        "label": "Hybrid model",
+        "title": "Represent first. Classify second.",
+        "caption": "CNN features feed XGBoost. This tree diagram explains the architecture; it is not a trained decision tree or a patient prediction.",
+        "wide": false
+      },
+      {
+        "id": "experiment",
+        "label": "Results",
+        "title": "A larger number needs a source.",
+        "caption": "Reported training and validation accuracies. ResNet50 validation differs between the original article (85.63%) and About (73.17%); neither is reconciled.",
+        "wide": false
+      },
+      {
+        "id": "confusion",
+        "label": "Class-level evidence",
+        "title": "Which mistakes does accuracy hide?",
+        "caption": "No numeric confusion matrix is available in the inspected sources. Question marks mark unknown counts; they are not zeros or implied predictions.",
+        "wide": false
+      },
+      {
+        "id": "outcome",
+        "label": "Research outcome",
+        "title": "Keep the evidence with the claim.",
+        "caption": "IEEE CENIM 2024 publication; result reconciliation, patient independence, and external validation remain questions to investigate."
+      }
+    ],
+    "preview": "heat"
+  },
+  "football-tracking-compactness": {
+    "theme": "tracking",
+    "hero": {
+      "eyebrow": "Football analytics / Metrica Sample Game 1",
+      "title": "Eleven seconds.",
+      "accent": "A changing shape.",
+      "premise": "How did the home outfield shape change through one observed passage?",
+      "note": "Actual Home coordinates on a 105 × 68 m pitch. Snapshot transitions explain change; they are not a continuous tracking replay.",
+      "metrics": [
+        {
+          "value": "11.24 s",
+          "label": "selected passage"
+        },
+        {
+          "value": "257",
+          "label": "valid analysis frames"
+        },
+        {
+          "value": "1.04 s",
+          "label": "missing ball interval"
+        }
+      ]
+    },
+    "ending": {
+      "title": "Measure the shape. Keep the context.",
+      "text": "A narrower team shape is a descriptive result. It does not prove successful defending or reveal tactical intent. The passage ends with an Away off-target shot, and the missing ball interval stays visible."
+    },
+    "scenes": [
+      {
+        "id": "positions",
+        "label": "One passage",
+        "title": "Start with observed positions.",
+        "caption": "Home outfield positions at 298.88 s; Player11 excluded as goalkeeper. Metrica anonymized identifiers are retained.",
+        "wide": false
+      },
+      {
+        "id": "shape",
+        "label": "Team structure",
+        "title": "A team has a boundary.",
+        "caption": "Actual convex hull and centroid of the Home outfield players at 298.88 s. Hull is spatial context; compactness measurements use width and length.",
+        "wide": false
+      },
+      {
+        "id": "disruption",
+        "label": "The ball changes the picture",
+        "title": "The centre is far from the ball.",
+        "caption": "Observed 303.08 s snapshot: centroid-to-ball distance peaks at 22.007 m. Positions and ball come from the pinned source.",
+        "wide": false
+      },
+      {
+        "id": "compactness",
+        "label": "Measure change",
+        "title": "Less width. A different position.",
+        "caption": "At 310.12 s, Home width is 24.900 m versus 30.861 m initially. Centroid displacement is 5.073 m. Width and length are axis-aligned spread, not hull area.",
+        "wide": true
+      },
+      {
+        "id": "gap",
+        "label": "Missing evidence",
+        "title": "A gap is part of the story.",
+        "caption": "A 1.04-second gap separates valid analysis frames at 307.92 and 308.96 s. The trace breaks across the missing interior. Away recovers at 308.96 s, correcting the legacy Home-regain wording.",
+        "wide": false
+      },
+      {
+        "id": "interpretation",
+        "label": "Tactical restraint",
+        "title": "Shape describes. It does not explain intent.",
+        "caption": "The source event window and measurement trace support a descriptive claim about one passage. They do not establish a team-wide defensive rating.",
+        "wide": false
+      }
+    ],
+    "preview": "shape"
+  },
+  "badi-analytics": {
+    "theme": "badi",
+    "hero": {
+      "eyebrow": "Earlier work / Bangkit 2022",
+      "title": "Records become patterns.",
+      "accent": "Patterns need a product.",
+      "premise": "What does it take to turn analytical work into something a business owner can use?",
+      "note": "The plotted series is the repository’s monthly item_sold example, not verified customer revenue.",
+      "metrics": [
+        {
+          "value": "12",
+          "label": "input time steps"
+        },
+        {
+          "value": "18",
+          "label": "held-out time steps"
+        },
+        {
+          "value": "3",
+          "label": "team disciplines"
+        }
+      ]
+    },
+    "ending": {
+      "title": "The contract is part of the model.",
+      "text": "Machine learning, cloud, and Android must agree on what a request means and what the response contains. The prototype and source code preserve that learning; they do not establish business impact or production reliability."
+    },
+    "scenes": [
+      {
+        "id": "records",
+        "label": "Business records",
+        "title": "A record is not yet an insight.",
+        "caption": "Last 36 monthly item_sold observations from the repository example. Units are items sold, not income; no forecast values are invented.",
+        "wide": false
+      },
+      {
+        "id": "window",
+        "label": "Preparation",
+        "title": "The model sees a window.",
+        "caption": "The checked-in code uses MinMax scaling fit on training data, a 12-step input, and an 18-step held-out tail. The diagram describes that implementation.",
+        "wide": false
+      },
+      {
+        "id": "forecast",
+        "label": "Prediction",
+        "title": "One output becomes the next input.",
+        "caption": "The training script uses an LSTM with 64 units and Dense(1), then rolls predictions forward for 12 monthly steps. No saved prediction series or accuracy is displayed.",
+        "wide": false
+      },
+      {
+        "id": "insights",
+        "label": "Basket analysis",
+        "title": "Different records. Different questions.",
+        "caption": "Top item-row counts and Coffee/Bread basket co-occurrence derived from Bakery.csv. 852 of 9,465 baskets contain both. Co-occurrence is not causation or a recommendation score.",
+        "wide": false
+      },
+      {
+        "id": "contract",
+        "label": "Team integration",
+        "title": "A forecast has to cross a boundary.",
+        "caption": "Python model work, Flask service, cloud integration, and Android. The inspected prediction route calculates forecasts but returns original dataframe records; returned forecasts are not claimed.",
+        "wide": true
+      },
+      {
+        "id": "evidence",
+        "label": "Prototype outcome",
+        "title": "A prototype is one kind of evidence.",
+        "caption": "Bangkit graduation prototype, source code, and integration learning are recorded. Verified deployment, customer adoption, and reproducible model-performance figures are absent.",
+        "wide": false
+      }
+    ],
+    "preview": "records"
+  }
+}

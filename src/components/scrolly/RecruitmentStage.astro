@@ -1,0 +1,12 @@
+---
+import { renderScene } from '../../visual/recruitment/renderer';
+import { scenes } from '../../data/scrolly/recruitment-story';
+import StoryStage from '../writing/StoryStage.astro';
+---
+
+<StoryStage
+  chapters={scenes}
+  visual={renderScene('population', false, true)}
+  prefix="recruitment"
+  label="Recruitment story visualization"
+/>

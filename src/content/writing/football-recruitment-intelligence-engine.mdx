@@ -1,0 +1,147 @@
+---
+title: 'Similar players are not always the right recruits'
+summary: 'Follow real profiles from a season of match events to similarity, a recruitment brief, and an explainable shortlist.'
+date: 2026-10-01
+category: 'Engineering'
+tags: [Football Analytics, Reproducibility, Python]
+featured: true
+draft: false
+work: football-recruitment-engine
+status: Published
+authors: [Muhammad Hafiz]
+cover: /previews/football-recruitment-intelligence-engine.svg
+story:
+  type: scrolly
+  id: football-recruitment-intelligence-engine
+  estimatedReadTime: 6
+  chapters:
+    - population
+    - profiles
+    - pipeline
+    - similarity
+    - brief
+    - ranking
+    - explanation
+    - system
+sources:
+  - label: Pinned StatsBomb source
+    url: https://github.com/hudl/open-data/tree/4b73468fc5b0f1950f9f66fada70ad3a4f9327cb
+  - label: Recruitment engine repository
+    url: https://github.com/HyzenTech/football-recruitment-intelligence-engine
+---
+
+import Technical from '../../components/Technical.astro';
+import Step from '../../components/scrolly/RecruitmentStep.astro';
+import CandidateEvidence from '../../components/scrolly/CandidateEvidence.astro';
+
+<Step id="population">
+
+Before there is a shortlist, there is a season: **303 profiles for 295 players**. A player can have more than one team spell.
+
+Position and exposure organize that search space. Only **139 profiles** pass baseline eligibility. The dim marks remain visible so the exclusions are part of the story.
+
+<Technical title="Eligibility and coverage">
+  Baseline eligibility requires 450 minutes, 60% dominant positional exposure,
+  and ten complete peers for a comparison. Groups reflect the largest observed
+  positional exposure, not learned tactical roles. AM/CM comparisons are
+  suppressed where peer support is insufficient; goalkeeper coverage is
+  distribution only.
+</Technical>
+
+</Step>
+
+<Step id="profiles">
+
+The centre backs stay. The other groups recede.
+
+Now their positions on the canvas mean something: **long passes and interceptions per 90 minutes**. Sharing a position does not mean sharing a profile. These two dimensions show differences in recorded activity; the similarity calculation will use twelve.
+
+<Technical title="What this view can tell us">
+  Coordinates use actual values from eligible centre-back profiles. Per-90 rates
+  use validated minutes. This is a two-metric scatterplot, not a projection of
+  the full similarity space. Event activity alone does not establish tactical
+  role, defensive quality, or team-context-adjusted ability.
+</Technical>
+
+</Step>
+
+<Step id="pipeline">
+
+Follow **Katrine Veje’s Everton profile** back to its evidence.
+
+The pipeline validates and aggregates match events, then uses playing time to calculate comparable rates. Veje’s profile records **1.11 interceptions per 90**. It emerges from the data rather than a manually assigned player type.
+
+<Technical title="Event flow and normalization">
+  The fixed WSL 2023/24 source contains 132 matches and 495,189 events. Event
+  marks here are schematic; they do not represent an event sample or event
+  frequencies. The released pipeline derives 41 metrics. Veje’s twelve active
+  similarity features come from that larger profile. Per-90 normalization and
+  later candidate-population standardization are separate operations.
+</Technical>
+
+</Step>
+
+<Step id="similarity">
+
+Veje becomes the reference point. **31 complete peers** spread out by their distance from her profile.
+
+Josie Green is the closest, at **2.44**. That answers “who resembles this profile?” It says nothing yet about what a club needs next.
+
+<Technical title="How distance is calculated">
+  Candidate-only standardized Euclidean distance uses twelve active features,
+  omitting zero-variance dimensions. The query does not enter the scaler.
+  Same-player team spells are excluded. The engine’s display index is 100 / (1 +
+  distance), not a probability. Horizontal position shows the exact distance;
+  vertical packing separates overlapping marks and carries no analytical
+  meaning.
+</Technical>
+
+</Step>
+
+<Step id="brief">
+
+**The closest profile is not automatically the best fit for a brief.**
+
+Keep five real candidates in similarity order. Now introduce the stored centre-back brief: interceptions, tackles, and long passes, weighted **3 : 2 : 1**.
+
+</Step>
+
+<Step id="ranking">
+
+The same candidates change places.
+
+Green goes from **closest profile to brief rank 10**. Buchanan goes from **similarity rank 14 to brief rank 1**. No player changed; the question did.
+
+<Technical title="Ranking method and the five examples">
+  Direction-aware midrank percentiles use a common complete reference population
+  of 32 centre-back candidates. Normalize the weights, then sum the percentile
+  contributions. Candidate filters apply after the reference is established. The
+  five displayed players are a selected subset: rank gaps are real. The stored
+  brief expresses project conventions, not validated scouting preferences.
+  <CandidateEvidence />
+</Technical>
+
+</Step>
+
+<Step id="explanation">
+
+Buchanan’s **91.67** is a sum, not a verdict.
+
+Interceptions contribute **49.22** points; tackles, **32.81**; long passes, **9.64**. The smaller final bar reflects both a lower percentile and a lighter weight. The score stays inspectable.
+
+<Technical title="Read the contribution, not an ability rating">
+  Buchanan’s percentiles are 98.4375 for interceptions, 98.4375 for tackles, and
+  57.8125 for long passes. Their normalized weights are 1/2, 1/3, and 1/6. The
+  unrounded contributions sum to 91.6666667. Displayed values are rounded; this
+  score applies to this reference population and brief only.
+</Technical>
+
+</Step>
+
+<Step id="system">
+
+**Make the evidence travel with the result.**
+
+Validated data becomes profiles, comparisons, a local API, and reproducible artifacts. This is decision support. Independent scouting and predictive validation remain unperformed.
+
+</Step>

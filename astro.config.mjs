@@ -1,9 +1,11 @@
 // @ts-check
 import { defineConfig } from 'astro/config';
+import mdx from '@astrojs/mdx';
 
 // https://astro.build/config
 export default defineConfig({
-    site: 'https://hyzentech.github.io',
-    output: 'static',
-    trailingSlash: 'ignore',
+  site: 'https://hyzentech.github.io',
+  output: 'static',
+  trailingSlash: 'ignore',
+  integrations: [mdx()],
 });

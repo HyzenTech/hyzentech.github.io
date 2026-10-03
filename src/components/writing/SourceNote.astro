@@ -1,0 +1,18 @@
+---
+interface Props {
+  sources: { label: string; url: string }[];
+}
+const { sources } = Astro.props;
+---
+
+<section class="story-sources" aria-label="Sources and methodology">
+  <h3>Sources & methodology</h3>
+  <ul>
+    {sources.map((s) => (
+      <li>
+        <a href={s.url}>{s.label} ↗</a>
+      </li>
+    ))}
+  </ul>
+  <slot />
+</section>

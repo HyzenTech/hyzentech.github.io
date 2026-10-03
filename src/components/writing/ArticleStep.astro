@@ -1,0 +1,22 @@
+---
+import StoryStep from './StoryStep.astro';
+import { storyFor } from '../../visual/writing/registry';
+interface Props {
+  story: string;
+  id: string;
+  title?: string;
+}
+const { story, id, title } = Astro.props;
+const definition = storyFor(story);
+const index = definition.scenes.findIndex((c) => c.id === id);
+if (index < 0) throw new Error('Unknown Writing scene ' + story + '/' + id);
+---
+
+<StoryStep
+  config={definition.scenes[index]}
+  index={index}
+  visual={definition.render(id, true)}
+  title={title}
+>
+  <slot />
+</StoryStep>

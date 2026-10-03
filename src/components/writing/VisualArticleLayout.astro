@@ -1,0 +1,49 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import ReadingMode from '../ReadingMode.astro';
+import StoryProgress from './StoryProgress.astro';
+import type { ChapterConfig } from '../../scripts/writing/controller';
+interface Props {
+  title: string;
+  summary: string;
+  story: string;
+  chapters: readonly ChapterConfig[];
+  prefix?: string;
+}
+const { title, summary, story, chapters, prefix = 'story' } = Astro.props;
+---
+
+<BaseLayout
+  title={title}
+  description={summary}
+  activeNav="writing"
+  searchable
+  contentType="Writing"
+>
+  <div
+    class={prefix === 'recruitment' ? 'recruitment-story' : 'visual-writing'}
+    data-visual-writing={story}
+    data-recruitment-story={prefix === 'recruitment' ? '' : undefined}
+  >
+    <slot name="hero" />
+    <div class={prefix + '-controls'}>
+      <ReadingMode />
+      <StoryProgress
+        chapters={chapters}
+        class={prefix + '-progress'}
+        meter
+        label={
+          prefix === 'recruitment' ? 'Recruitment chapters' : 'Story chapters'
+        }
+      />
+    </div>
+    <div class={prefix + '-run'} data-story-run data-scene={chapters[0].id}>
+      <slot name="stage" />
+      <article class={prefix + '-narrative'}>
+        <slot />
+      </article>
+    </div>
+    <slot name="ending" />
+  </div>
+  <slot name="client" />
+</BaseLayout>

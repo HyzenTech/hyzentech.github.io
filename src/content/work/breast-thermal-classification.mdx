@@ -1,0 +1,85 @@
+---
+title: 'Breast Thermal Image Classification'
+summary: 'Research into a three-class thermal-image task using CNN feature extraction and XGBoost, presented at IEEE CENIM 2024.'
+date: 2024-12-15
+year: 2024
+status: 'Published research'
+role: 'Research assistant and researcher, Universitas Syiah Kuala'
+stack: [Python, TensorFlow, VGG16, ResNet50, XGBoost]
+domains: [Research, Computer Vision, Applied AI]
+tags: [Thermal imaging, IEEE CENIM 2024]
+featured: true
+cover: /images/blog-thermal-hero.webp
+paper: https://ieeexplore.ieee.org/document/10882662
+writing: breast-thermal-classification
+---
+
+import Technical from '../../components/Technical.astro';
+
+## What is this?
+
+This research examines whether thermal-image patterns can help distinguish Healthy, Benign, and Malignant classes in a curated DMR dataset. CNNs extract representations from the images, and XGBoost classifies those representations.
+
+It is an experimental classification study, not a clinically validated diagnostic product.
+
+## The problem and why it matters
+
+Images contain many more values than a researcher can assess individually. The central idea is to learn useful visual features, then evaluate whether those features separate the three classes. Thermal imaging records temperature patterns; the research investigates those patterns rather than treating them as a diagnosis by themselves.
+
+## My role
+
+I worked as a research assistant at Universitas Syiah Kuala with Prof. Dr. Ir. Roslidar, alongside Khairun Saddami and Essy Harnelly. The work formed part of my research journey and a publication at IEEE CENIM 2024.
+
+## Dataset
+
+The existing research write-up reports a DMR source of 5,483 images from 425 patients. The curated experiment used 1,842 images: 614 per class.
+
+| Split      | Per class | Total |
+| ---------- | --------- | ----- |
+| Training   | 430       | 1,290 |
+| Validation | 123       | 369   |
+| Test       | 61        | 183   |
+
+These are the numbers recorded in the project write-up. Patient-level separation and broader clinical generalization must be established from the study protocol before making stronger claims.
+
+## Approach and architecture
+
+![CNN feature extraction followed by XGBoost classification.](/images/blog-cnn-xgboost.webp)
+
+VGG16 and ResNet50 provide two feature-extraction approaches. XGBoost then operates on those features. Comparing the pipelines helps separate the choice of representation from the classifier.
+
+<Technical title="Reported experiment settings">
+  The source write-up records ImageNet initialization, a learning rate of 0.001,
+  batch size 32, and 500 XGBoost estimators. These settings describe the
+  reported experiment; the portfolio does not reproduce training or
+  independently verify its artifacts.
+</Technical>
+
+## Experiments and results
+
+| Pipeline           | Training accuracy reported in article | Validation accuracy                                      |
+| ------------------ | ------------------------------------- | -------------------------------------------------------- |
+| VGG16 + XGBoost    | 87.44%                                | 72.89% in both existing pages                            |
+| ResNet50 + XGBoost | 99.45%                                | 85.63% in the article; 73.17% on the original About page |
+
+> The existing sources disagree about ResNet50 validation accuracy. Both values are preserved with their source labels. Neither is presented here as a reconciled, independently verified headline result.
+
+The difference between training and validation is important: a strong fit to training images does not, by itself, show generalization. No test-set accuracy is invented here.
+
+## Limitations
+
+The curated dataset and reported split constrain the interpretation. Balanced image counts do not establish patient independence, clinical sensitivity, external validity, or a deployment-ready screening tool. The conflicting validation metric must be checked against the final paper and experiment records.
+
+## What I learned
+
+Reporting the method and uncertainty together is part of the result. The useful research story is not just which architecture produces a larger number, but which evidence supports that comparison.
+
+## What's next
+
+Reconcile the ResNet50 figure with the final publication and original experiment records before adding a headline comparison. The [research article](/writing/breast-thermal-classification/) explains the pipeline; a [source note](/notes/thermal-metric-reconciliation/) records the discrepancy.
+
+## Publication
+
+[IEEE CENIM 2024 publication](https://ieeexplore.ieee.org/document/10882662). Research support recorded in the original About source: grant 251/UN11.2.1/PG.01.03/SPK/PTNBH/2024.
+
+[Reported ResNet50 experiment notebook](https://www.kaggle.com/code/hyzentech/xgboost-resnet50).

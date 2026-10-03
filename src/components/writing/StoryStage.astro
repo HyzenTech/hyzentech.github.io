@@ -1,0 +1,38 @@
+---
+import StoryProgress from './StoryProgress.astro';
+import type { ChapterConfig } from '../../scripts/writing/controller';
+interface Props {
+  chapters: readonly ChapterConfig[];
+  visual: string;
+  prefix?: string;
+  label?: string;
+}
+const {
+  chapters,
+  visual,
+  prefix = 'story',
+  label = 'Story visualization',
+} = Astro.props;
+---
+
+<aside
+  class={prefix + '-stage'}
+  aria-label={label}
+  data-writing-stage
+  data-recruitment-stage={prefix === 'recruitment' ? '' : undefined}
+>
+  <StoryProgress
+    chapters={chapters}
+    class={prefix + '-progress ' + prefix + '-stage-progress'}
+    label="Story progress"
+  />
+  <div class={prefix + '-stage-inner'}>
+    <p class={prefix + '-stage-label'} data-stage-label>
+      {chapters[0].title}
+    </p>
+    <Fragment set:html={visual} />
+    <p class={prefix + '-stage-caption'} data-stage-caption>
+      {chapters[0].caption}
+    </p>
+  </div>
+</aside>

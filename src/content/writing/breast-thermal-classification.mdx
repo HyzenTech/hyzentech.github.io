@@ -1,0 +1,150 @@
+---
+title: 'How CNN features and XGBoost classify thermal images'
+summary: 'An intuitive route through the DMR three-class study, its experiments, and the limits of the reported results.'
+date: 2024-12-15
+category: 'Research'
+tags: [Computer Vision, CNN, XGBoost, IEEE CENIM 2024]
+featured: true
+draft: false
+work: breast-thermal-classification
+
+updated: 2026-10-03
+status: Published
+authors: [Muhammad Hafiz]
+cover: /previews/breast-thermal-classification.svg
+story:
+  type: scrolly
+  id: breast-thermal-classification
+  estimatedReadTime: 6
+  chapters:
+    - heat
+    - dataset
+    - features
+    - extractors
+    - classifier
+    - experiment
+    - confusion
+    - outcome
+sources:
+  - label: Published paper / IEEE CENIM 2024
+    url: https://ieeexplore.ieee.org/document/10882662
+  - label: ResNet50 notebook / public version 1
+    url: https://www.kaggle.com/code/hyzentech/xgboost-resnet50
+  - label: Metric reconciliation note
+    url: /notes/thermal-metric-reconciliation/
+---
+
+import Step from '../../components/writing/ArticleStep.astro';
+import Technical from '../../components/writing/TechnicalDetail.astro';
+
+<Step story="breast-thermal-classification" id="heat">
+
+A thermal image maps temperature patterns rather than ordinary reflected light. The question is whether those patterns contain information that a classifier can learn.
+
+Here the colour field explains the idea. It is **not a patient image**, a measured temperature scale, or evidence of diagnosis.
+
+<Technical title="Image evidence">
+
+The legacy portfolio images are explanatory illustrations. No raw thermal sample, radiometric array, or extracted activation map is available in the inspected repository sources. The visual therefore labels its schematic encoding explicitly.
+
+</Technical>
+
+</Step>
+
+<Step story="breast-thermal-classification" id="dataset">
+
+The original write-up reports **5,483 DMR images from 425 patients**. Its curated experiment selects **1,842 images**, balanced across Healthy, Benign, and Malignant.
+
+Each class contributes 430 training, 123 validation, and 61 test images. Balancing images does not establish that patients are independent across splits.
+
+<Technical title="Dataset and split">
+
+Totals are 1,290 training, 369 validation, and 183 test images. Counts come from the original research article, not an independently reproduced training run. Patient identifiers and partition artifacts are unavailable here.
+
+</Technical>
+
+</Step>
+
+<Step story="breast-thermal-classification" id="features">
+
+An image contains many pixel values. A convolutional network transforms them into a representation that a second model can use.
+
+The visual compresses the spatial field into a feature-like structure. It explains **representation learning**, without claiming that these coloured marks are measured activations.
+
+<Technical title="Representation in the notebook">
+
+The public ResNet50 notebook uses 224 × 224 RGB inputs, ImageNet weights, include_top=False, and flattened feature tensors. It sets base_model.trainable=False. This portfolio does not run that notebook or expose patient imagery.
+
+</Technical>
+
+</Step>
+
+<Step story="breast-thermal-classification" id="extractors">
+
+The study explores **VGG16 and ResNet50** as alternative feature extractors. Both start from images; their representations feed the same kind of downstream classifier.
+
+The comparison changes the representation pathway, rather than assuming that a deeper architecture must generalize better.
+
+<Technical title="Source-qualified architectures">
+
+The legacy write-up describes both pipelines. The available public notebook documents the ResNet50 pathway only. The branch diagram is conceptual and does not compare unavailable activation values.
+
+</Technical>
+
+</Step>
+
+<Step story="breast-thermal-classification" id="classifier">
+
+**XGBoost learns from the extracted features.** The hybrid method separates learning a visual representation from learning the classification rule.
+
+The branching structure shows how a tree ensemble leads to a class output. No fitted tree thresholds, class probabilities, or patient prediction are invented.
+
+<Technical title="Checked-in classifier settings">
+
+The public notebook uses XGBClassifier with 500 estimators, learning_rate=0.01, max_depth=3, subsample=0.8, and colsample_bytree=0.8. It fits the classifier on training features with training/validation evaluation sets. The legacy write-up lists learning rate 0.001; the two source settings are kept distinct rather than silently equated.
+
+</Technical>
+
+</Step>
+
+<Step story="breast-thermal-classification" id="experiment">
+
+The original article reports **72.89% validation accuracy** for VGG16 + XGBoost and **85.63%** for ResNet50 + XGBoost.
+
+The original About source gives ResNet50 **73.17%** instead. The comparison keeps both figures visible. No final best-model headline is justified until that disagreement is reconciled.
+
+<Technical title="Reported results and their limits">
+
+Training figures are 87.44% and 99.45%. The notebook calculates train, validation, and test metrics, but its publicly retrieved source has no saved outputs. No test accuracy, sensitivity, or independently reproduced result is supplied. See the [source reconciliation note](/notes/thermal-metric-reconciliation/).
+
+</Technical>
+
+</Step>
+
+<Step story="breast-thermal-classification" id="confusion">
+
+Accuracy compresses many decisions into one number. A confusion matrix would show whether a mistake crosses Healthy, Benign, or Malignant classes.
+
+**The required cell counts are unavailable.** The empty matrix makes that missing evidence visible instead of implying that unreported errors are zero.
+
+<Technical title="Why the matrix remains unknown">
+
+The legacy prose mentions 61 correctly classified Normal examples and Benign/Malignant confusion. A complete matrix and saved predictions are absent, so that statement is not expanded into invented class-level counts. The public notebook contains matrix-generating code with no saved matrix outputs.
+
+</Technical>
+
+</Step>
+
+<Step story="breast-thermal-classification" id="outcome">
+
+The research was presented at **IEEE CENIM 2024**, with colleagues at Universitas Syiah Kuala.
+
+The next useful result is stronger evaluation: reconcile the reported metric, verify patient-level separation, and test an external cohort. The publication is a research outcome, not clinical validation.
+
+<Technical title="Publication and research context">
+
+The original source records research with Prof. Dr. Ir. Roslidar, Khairun Saddami, and Essy Harnelly; LPPM grant 251/UN11.2.1/PG.01.03/SPK/PTNBH/2024. [Read the publication](https://ieeexplore.ieee.org/document/10882662). The final paper could not be read through the available public endpoint, so the source discrepancy remains unresolved.
+
+</Technical>
+
+</Step>

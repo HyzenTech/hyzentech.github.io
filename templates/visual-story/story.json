@@ -1,0 +1,22 @@
+{
+  "theme": "investigation",
+  "preview": "representation",
+  "hero": {
+    "eyebrow": "Visual investigation",
+    "title": "Start with a question.",
+    "accent": "Follow the evidence.",
+    "premise": "Replace this premise with the article's central tension.",
+    "note": "Illustrative starter. Replace example marks before publication.",
+    "metrics": []
+  },
+  "scenes": [
+    { "id": "question", "label": "The question", "title": "What are we asking?", "caption": "Illustrative starter; no measured data." },
+    { "id": "representation", "label": "Representation", "title": "See the same evidence differently.", "caption": "The same identities move into a new arrangement." },
+    { "id": "comparison", "label": "Comparison", "title": "What changes the answer?", "caption": "Design a subject-specific comparison.", "wide": true },
+    { "id": "reflection", "label": "Reflection", "title": "What can we conclude?", "caption": "State evidence and limits separately." }
+  ],
+  "ending": {
+    "title": "Replace with a concrete lesson.",
+    "text": "Explain what changed your understanding, and what evidence you would seek next."
+  }
+}

@@ -1,0 +1,50 @@
+---
+title: 'A new visual investigation'
+summary: 'Replace this with the question, the evidence, and what the reader will learn.'
+date: __DATE__
+category: Engineering
+tags: [Investigation]
+draft: true
+status: Draft
+authors: [Muhammad Hafiz]
+cover: /previews/__SLUG__.svg
+story:
+  type: scrolly
+  id: __SLUG__
+  estimatedReadTime: 4
+  chapters: [question, representation, comparison, reflection]
+sources: []
+---
+
+import Step from '../../components/writing/ArticleStep.astro';
+import Technical from '../../components/writing/TechnicalDetail.astro';
+
+<Step story="__SLUG__" id="question">
+
+State one concrete question. Explain why its answer matters.
+
+<Technical title="Evidence and scope">
+
+Replace the illustrative marks with verified data, or explicitly label the diagram as conceptual. Record source URLs, versions, units, and limits.
+
+</Technical>
+
+</Step>
+
+<Step story="__SLUG__" id="representation">
+
+Explain how the same evidence changes representation. Keep one object visible across the transition.
+
+</Step>
+
+<Step story="__SLUG__" id="comparison">
+
+Explain one meaningful comparison. Design the visual around this article's subject.
+
+</Step>
+
+<Step story="__SLUG__" id="reflection">
+
+Explain what the evidence supports, what remains unknown, and what you learned.
+
+</Step>

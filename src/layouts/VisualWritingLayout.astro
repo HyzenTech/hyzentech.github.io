@@ -1,0 +1,63 @@
+---
+import VisualArticleLayout from '../components/writing/VisualArticleLayout.astro';
+import StoryHero from '../components/writing/StoryHero.astro';
+import StoryStage from '../components/writing/StoryStage.astro';
+import StoryEnding from '../components/writing/StoryEnding.astro';
+import { storyFor } from '../visual/writing/registry';
+import '../styles/writing-system.css';
+interface Props {
+  title: string;
+  summary: string;
+  story: string;
+  work?: string;
+  related?: { title: string; url: string }[];
+  sources: { label: string; url: string }[];
+}
+const { title, summary, story, work, related, sources } = Astro.props;
+const definition = storyFor(story);
+const client = {
+  chapters: definition.scenes,
+  states: Object.fromEntries(
+    definition.scenes.map((c) => [c.id, definition.state?.(c.id) || []]),
+  ),
+};
+---
+
+<VisualArticleLayout
+  title={title}
+  summary={summary}
+  story={story}
+  chapters={definition.scenes}
+>
+  <StoryHero
+    slot="hero"
+    hero={definition.hero}
+    theme={definition.theme}
+    first={definition.scenes[0].id}
+  >
+    <Fragment slot="visual" set:html={definition.opening()} />
+  </StoryHero>
+  <StoryStage
+    slot="stage"
+    chapters={definition.scenes}
+    visual={definition.render(definition.scenes[0].id, false, true)}
+  />
+  <slot />
+  <StoryEnding
+    slot="ending"
+    story={definition}
+    work={work}
+    related={related}
+    sources={sources}
+  />
+  <Fragment slot="client">
+    <script
+      type="application/json"
+      data-scene-config
+      set:html={JSON.stringify(client).replace(/</g, '\\u003c')}
+    />
+    <script>
+      import '../scripts/writing/scene-viewer';
+    </script>
+  </Fragment>
+</VisualArticleLayout>

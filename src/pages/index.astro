@@ -1,221 +1,147 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
-import ProjectCard from '../components/ProjectCard.astro';
-
-const base = import.meta.env.BASE_URL;
-
-const projects = [
-  {
-    title: "Football Recruitment Intelligence Engine",
-    href: `${base}projects/football-recruitment-intelligence-engine/`,
-    image: `${base}images/recruitment-architecture.svg`,
-    imageAlt: "Architecture of the recruitment engine: canonical events, validated minutes, features, profiles, similarity and explained rankings",
-    imageFit: 'contain' as const,
-    tags: ["Python", "FastAPI", "Pydantic", "pytest", "Football Analytics"],
-    excerpt: "Built an end-to-end Python system for positional player profiles, similarity search and explainable recruitment ranking, with validated data pipelines, reproducible artifacts and 226 passing tests.",
-    linkLabel: "Explore the project",
-    actions: [
-      { label: 'Run locally', href: 'https://github.com/HyzenTech/football-recruitment-intelligence-engine#reproduce-and-run' },
-      { label: 'GitHub', href: 'https://github.com/HyzenTech/football-recruitment-intelligence-engine' },
-      { label: "Case Study", href: `${base}blog/football-recruitment-intelligence-engine/` }
-    ]
-  },
-  {
-    title: "When Heat Reveals What Eyes Cannot See",
-    href: `${base}blog/breast-thermal-classification`,
-    image: `${base}images/project-thermal.png`,
-    tags: ["Computer Vision", "Deep Learning", "XGBoost", "Medical AI"],
-    excerpt: "Built a CNN-XGBoost hybrid model for breast thermal image classification, combining VGG16/ResNet50 feature extraction with XGBoost classification to achieve 85%+ validation accuracy. Published in IEEE CENIM 2024."
-  },
-  {
-    title: "BADI - Business Analytics Daily Income",
-    href: `${base}blog/badi-analytics`,
-    image: `${base}images/project-badi.png`,
-    tags: ["Machine Learning", "Data Analytics", "Python"],
-    excerpt: "Product-based machine learning solution developed during Bangkit Academy program. Applied advanced ML techniques for income prediction and comprehensive business insights generation."
-  }
+import Ambient from '../components/Ambient.astro';
+import FeatureSection from '../components/FeatureSection.astro';
+import FocusExplorer from '../components/FocusExplorer.astro';
+import WritingRow from '../components/WritingRow.astro';
+import { getCollection } from 'astro:content';
+import { publishedWriting } from '../lib/content';
+const work = await getCollection('work');
+const recruitment = work.find((e) => e.id === 'football-recruitment-engine')!;
+const thermal = work.find((e) => e.id === 'breast-thermal-classification')!;
+const writing = await publishedWriting();
+const signals = [
+  'ML Systems',
+  'Applied AI',
+  'Research',
+  'Football Analytics',
+  'Python',
+  'Computer Vision',
 ];
 ---
 
-<BaseLayout title="Hafiz - AI/ML Engineer & Researcher" activeNav="projects">
-  <!-- Hero Section - Anthropic-inspired typography-driven design -->
-  <section class="hero">
-    <div class="hero__container">
-      <p class="hero__eyebrow">AI/ML Engineer & Researcher</p>
-      <h1 class="hero__title">
-        Building <span class="hero__highlight">intelligent</span> solutions that bridge research and real-world impact
-      </h1>
-      <p class="hero__subtitle">
-        I specialize in computer vision, deep learning, and applied machine learning—transforming complex problems into elegant, deployable solutions.
-      </p>
-      <div class="hero__cta">
-        <a href={`${base}about`} class="btn-secondary">Learn more about me</a>
-        <a href={`${base}contact`} class="btn-cta">Get in Touch</a>
+<BaseLayout
+  title="ML Engineer"
+  description="ML Engineer building research-driven systems, intelligent tools, and data products."
+>
+  <div class="home">
+    <section class="hero">
+      <Ambient />
+      <div class="container hero-inner">
+        <div class="hero-copy">
+          <h1>
+            ML Engineer building research-driven systems, intelligent tools, and
+            data products.
+          </h1>
+          <p class="lead">
+            I explore how machine learning, software systems and data can turn
+            complex problems into useful products — from AI research to football
+            analytics.
+          </p>
+          <div class="hero-cta">
+            <a class="pill-button" href="/work/">
+              Explore my work <span aria-hidden="true">→</span>
+            </a>
+            <a class="pill-button secondary" href="/writing/">
+              Read my writing <span aria-hidden="true">↗</span>
+            </a>
+          </div>
+          <button class="hero-search" data-search-open>
+            <span>Find a project, idea, or method</span>
+            <kbd>⌘ / Ctrl K</kbd>
+          </button>
+          <p class="focus-line">
+            <span>ML Systems</span>
+            <span>Applied AI</span>
+            <span>Research</span>
+            <span>Football Analytics</span>
+          </p>
+        </div>
       </div>
-    </div>
-  </section>
-
-  <!-- Featured Projects Section -->
-  <section class="section projects-section">
-    <div class="container">
-      <div class="section__header">
-        <h2 class="section__title">Featured Work</h2>
-        <p class="section__subtitle">Research and projects I'm proud of</p>
-      </div>
-      <div class="projects">
-        {projects.map((project, index) => (
-          <ProjectCard {...project} delay={index * 0.15} />
+    </section>
+    <div class="signal-strip" aria-label="Areas and tools">
+      <div class="signal-track">
+        {[...signals, ...signals].map((name, i) => (
+          <span aria-hidden={i >= signals.length ? true : undefined}>
+            {name}
+          </span>
         ))}
       </div>
     </div>
-  </section>
+    <div class="container">
+      <div class="section-intro" id="selected-work" data-reveal>
+        <div>
+          <p class="eyebrow">Selected work</p>
+          <h2>Questions turned into systems.</h2>
+        </div>
+        <p>
+          Explore the product, then the thinking behind it. Methods, evidence,
+          and limits stay together.
+        </p>
+      </div>
+      <FeatureSection
+        eyebrow="Flagship · Football analytics"
+        title={recruitment.data.title}
+        summary="Who looks similar? Who meets the recruitment brief? A reproducible system makes the difference visible, from player profiles to explainable rankings."
+        href={'/work/' + recruitment.id + '/'}
+        linkLabel="Explore the engine"
+        id="recruitment"
+      >
+        <a
+          class="work-preview"
+          href={'/work/' + recruitment.id + '/'}
+          aria-label="Open the football recruitment case study"
+        >
+          <img
+            src={recruitment.data.cover}
+            alt="Actual recruitment interface in its empty query state"
+            width="637"
+            height="715"
+            loading="lazy"
+          />
+          <span>Player profiles, similarity, and explainable ranking →</span>
+        </a>
+      </FeatureSection>
+      <FeatureSection
+        eyebrow="Research · IEEE CENIM 2024"
+        title={thermal.data.title}
+        summary="A three-class DMR study exploring CNN representations and XGBoost classification for Healthy, Benign, and Malignant thermal images."
+        href={'/work/' + thermal.id + '/'}
+        linkLabel="Read the research"
+        id="research"
+      >
+        <a
+          class="work-preview"
+          href={'/work/' + thermal.id + '/'}
+          aria-label="Open the thermal research case study"
+        >
+          <img
+            src="/images/blog-cnn-xgboost.webp"
+            alt="CNN feature extraction followed by XGBoost classification"
+            width="800"
+            height="800"
+            loading="lazy"
+          />
+          <span>
+            Representations → classification. Read the method and results →
+          </span>
+        </a>
+      </FeatureSection>
+    </div>
+    <FocusExplorer />
+    <section id="writing" class="container">
+      <div class="section-intro" data-reveal>
+        <div>
+          <p class="eyebrow">Visual writing</p>
+          <h2>Follow the story.</h2>
+        </div>
+        <a class="arrow-link" href="/writing/">
+          All writing ↗
+        </a>
+      </div>
+      {writing.map((entry) => (
+        <WritingRow entry={entry} />
+      ))}
+    </section>
+  </div>
 </BaseLayout>
-
-<style>
-/* Hero Section - Typography-driven Anthropic style */
-.hero {
-  padding: var(--space-24) 0 var(--space-20);
-  background-color: var(--color-bg);
-}
-
-.hero__container {
-  max-width: var(--max-width);
-  margin: 0 auto;
-  padding: 0 var(--space-6);
-  text-align: center;
-}
-
-.hero__eyebrow {
-  font-family: var(--font-heading);
-  font-size: var(--text-sm);
-  font-weight: 500;
-  color: var(--color-text-muted);
-  text-transform: uppercase;
-  letter-spacing: 0.15em;
-  margin-bottom: var(--space-6);
-}
-
-.hero__title {
-  font-family: var(--font-heading);
-  font-size: var(--text-5xl);
-  font-weight: 600;
-  line-height: 1.15;
-  color: var(--color-text);
-  margin-bottom: var(--space-6);
-  max-width: 800px;
-  margin-left: auto;
-  margin-right: auto;
-}
-
-.hero__highlight {
-  position: relative;
-  display: inline;
-}
-
-.hero__highlight::after {
-  content: '';
-  position: absolute;
-  bottom: 4px;
-  left: 0;
-  right: 0;
-  height: 8px;
-  background-color: var(--color-accent-sage);
-  opacity: 0.4;
-  z-index: -1;
-  border-radius: 2px;
-}
-
-.hero__subtitle {
-  font-family: var(--font-body);
-  font-size: var(--text-xl);
-  color: var(--color-text-secondary);
-  line-height: 1.7;
-  max-width: 600px;
-  margin: 0 auto var(--space-10);
-}
-
-.hero__cta {
-  display: flex;
-  gap: var(--space-4);
-  justify-content: center;
-  flex-wrap: wrap;
-}
-
-.btn-secondary {
-  display: inline-flex;
-  align-items: center;
-  padding: var(--space-3) var(--space-6);
-  font-family: var(--font-heading);
-  font-size: var(--text-base);
-  font-weight: 500;
-  color: var(--color-text);
-  border: 1px solid var(--color-border);
-  border-radius: var(--border-radius-full);
-  transition: all var(--transition-base);
-}
-
-.btn-secondary:hover {
-  background-color: var(--color-bg-alt);
-  border-color: var(--color-text);
-}
-
-/* Section Styling */
-.projects-section {
-  padding: var(--space-16) 0 var(--space-24);
-  background-color: var(--color-bg-alt);
-}
-
-.section__header {
-  text-align: center;
-  margin-bottom: var(--space-12);
-}
-
-.section__title {
-  font-family: var(--font-heading);
-  font-size: var(--text-4xl);
-  font-weight: 600;
-  color: var(--color-text);
-  margin-bottom: var(--space-2);
-}
-
-.section__subtitle {
-  font-family: var(--font-body);
-  font-size: var(--text-lg);
-  color: var(--color-text-muted);
-  margin-bottom: 0;
-}
-
-.projects {
-  display: flex;
-  flex-direction: column;
-  gap: var(--space-12);
-}
-
-/* Responsive */
-@media (max-width: 768px) {
-  .hero {
-    padding: var(--space-16) 0 var(--space-12);
-  }
-  
-  .hero__title {
-    font-size: var(--text-4xl);
-  }
-  
-  .hero__subtitle {
-    font-size: var(--text-lg);
-  }
-  
-  .hero__cta {
-    flex-direction: column;
-    align-items: center;
-  }
-  
-  .projects-section {
-    padding: var(--space-12) 0 var(--space-16);
-  }
-  
-  .section__title {
-    font-size: var(--text-3xl);
-  }
-}
-</style>

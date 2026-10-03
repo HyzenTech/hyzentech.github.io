@@ -1,0 +1,30 @@
+---
+import type { ChapterConfig } from '../../scripts/writing/controller';
+interface Props {
+  chapters: readonly ChapterConfig[];
+  class?: string;
+  label?: string;
+  meter?: boolean;
+}
+const {
+  chapters,
+  class: className = 'story-progress',
+  label = 'Story chapters',
+  meter = false,
+} = Astro.props;
+---
+
+<nav class={className} aria-label={label} data-chapter-nav>
+  {chapters.map((s, i) => (
+    <a href={'#' + s.id} aria-label={s.label}>
+      {String(i + 1).padStart(2, '0')}
+    </a>
+  ))}
+  {meter && (
+    <span
+      data-writing-progress
+      data-recruitment-progress
+      aria-hidden="true"
+    ></span>
+  )}
+</nav>

@@ -1,0 +1,11 @@
+---
+import Technical from '../Technical.astro';
+interface Props {
+  title?: string;
+}
+const { title = 'Technical detail' } = Astro.props;
+---
+
+<Technical title={title}>
+  <slot />
+</Technical>

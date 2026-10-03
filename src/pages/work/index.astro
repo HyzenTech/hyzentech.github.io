@@ -1,0 +1,50 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { getCollection } from 'astro:content';
+import WorkRow from '../../components/WorkRow.astro';
+import Filters from '../../components/Filters.astro';
+const work = (await getCollection('work')).sort(
+  (a, b) =>
+    Number(b.data.featured) - Number(a.data.featured) ||
+    b.data.year - a.data.year,
+);
+---
+
+<BaseLayout
+  title="Work"
+  activeNav="work"
+  description="ML systems, applied research, and football analytics work by Muhammad Hafiz."
+>
+  <div class="container">
+    <header class="page-head">
+      <p class="eyebrow">Selected projects</p>
+      <h1>
+        Work built around
+        <br />a real question.
+      </h1>
+      <p>
+        Research and engineering projects, with the problem, approach, evidence,
+        and boundaries in view.
+      </p>
+    </header>
+    <Filters
+      label="Filter work by domain"
+      options={[
+        'ML Systems',
+        'Applied AI',
+        'Research',
+        'Football Analytics',
+        'Computer Vision',
+        'Data',
+      ]}
+    />
+    <section class="list-section" aria-label="Projects">
+      {work.map((entry) => (
+        <WorkRow entry={entry} />
+      ))}
+    </section>
+    <a class="arrow-link" href="/work/future-projects/">
+      Future work →
+    </a>
+  </div>
+</BaseLayout>

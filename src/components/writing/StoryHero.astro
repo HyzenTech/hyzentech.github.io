@@ -1,0 +1,39 @@
+---
+import type { StoryDefinition } from '../../visual/writing/types';
+interface Props {
+  hero: StoryDefinition['hero'];
+  theme: string;
+  first: string;
+}
+const { hero, theme, first } = Astro.props;
+---
+
+<header class={'story-hero story-hero-' + theme}>
+  <div class="story-hero-art" aria-hidden="true">
+    <slot name="visual" />
+  </div>
+  <div class="story-hero-copy">
+    <a class="back-link" href="/writing/">
+      ← All writing
+    </a>
+    <p class="eyebrow">{hero.eyebrow}</p>
+    <h1 data-pagefind-meta="title">
+      {hero.title}
+      <br />
+      <span>{hero.accent}</span>
+    </h1>
+    <p>{hero.premise}</p>
+    <a class="story-begin" href={'#' + first}>
+      Follow the story <span aria-hidden="true">↓</span>
+    </a>
+  </div>
+  <div class="story-hero-metrics">
+    {hero.metrics.map((m) => (
+      <div>
+        <strong>{m.value}</strong>
+        <span>{m.label}</span>
+      </div>
+    ))}
+  </div>
+  <p class="story-hero-note">{hero.note}</p>
+</header>

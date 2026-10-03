@@ -1,0 +1,141 @@
+---
+import VisualArticleLayout from '../components/writing/VisualArticleLayout.astro';
+import RecruitmentStage from '../components/scrolly/RecruitmentStage.astro';
+import RecruitmentDataNote from '../components/scrolly/RecruitmentDataNote.astro';
+import { renderUniverse } from '../visual/recruitment/renderer';
+import { scenes } from '../data/scrolly/recruitment-story';
+import '../styles/recruitment.css';
+interface Props {
+  title: string;
+  summary: string;
+}
+const { title, summary } = Astro.props;
+---
+
+<VisualArticleLayout
+  title={title}
+  summary={summary}
+  story="football-recruitment-intelligence-engine"
+  chapters={scenes}
+  prefix="recruitment"
+>
+  <header class="recruitment-opening" slot="hero">
+    <div class="recruitment-universe" aria-hidden="true">
+      <Fragment set:html={renderUniverse()} />
+    </div>
+    <div class="recruitment-opening-copy">
+      <a class="back-link" href="/writing/">
+        ← All writing
+      </a>
+      <p class="eyebrow">
+        Football Recruitment Intelligence Engine / A visual story
+      </p>
+      <h1 data-pagefind-meta="title">
+        A similar player.
+        <br />
+        <span>A different question.</span>
+      </h1>
+      <p>
+        Who resembles this profile?
+        <br />
+        Who fits the brief?
+      </p>
+      <a class="recruitment-begin" href="#population">
+        Follow the evidence <span aria-hidden="true">↓</span>
+      </a>
+    </div>
+    <div class="recruitment-opening-counts" aria-label="Verified source scale">
+      <div>
+        <strong>303</strong>
+        <span>player–team–season profiles</span>
+      </div>
+      <div>
+        <strong>295</strong>
+        <span>distinct players</span>
+      </div>
+      <div>
+        <strong>495,189</strong>
+        <span>events / WSL 2023/24</span>
+      </div>
+    </div>
+    <p class="recruitment-source-line">
+      Each point is one real profile. Spatial placement in this opening is
+      illustrative.
+    </p>
+  </header>
+  <RecruitmentStage slot="stage" />
+  <slot />
+  <Fragment slot="ending">
+    <section class="recruitment-payoff">
+      <div>
+        <p class="eyebrow">From the method to a working product</p>
+        <h2>The calculation became a system.</h2>
+        <p>
+          The local application exposes player profiles, comparisons,
+          similarity, and recruitment search. This screenshot is interface
+          evidence; the scenes above explain the analytical logic.
+        </p>
+        <a href="/work/football-recruitment-engine/">
+          Explore the product case study ↗
+        </a>
+      </div>
+      <figure>
+        <img
+          src="/images/recruitment-interface-empty.webp"
+          alt="Released recruitment engine Player Explorer interface with its filters and profile search, before choosing a player."
+          width="1000"
+          height="800"
+          loading="lazy"
+        />
+        <figcaption>
+          Actual application interface. No live engine runs on this static
+          website.
+        </figcaption>
+      </figure>
+    </section>
+    <footer class="recruitment-closing">
+      <p class="eyebrow">What this project taught me</p>
+      <h2>A result is useful when its evidence stays visible.</h2>
+      <p>
+        Reference populations, eligibility, contributions, and limitations
+        belong with the score. The next meaningful step is independent review of
+        the evidence.
+      </p>
+      <nav aria-label="Continue exploring">
+        <a
+          href="https://github.com/HyzenTech/football-recruitment-intelligence-engine"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Explore the repository ↗
+        </a>
+        <a href="#system">Technical architecture ↑</a>
+        <a href="#similarity">Methodology ↑</a>
+        <a href="/work/">Return to Work →</a>
+      </nav>
+      <RecruitmentDataNote />
+      <div class="recruitment-attribution">
+        <img
+          src="/images/statsbomb-logo.webp"
+          alt="StatsBomb"
+          width="132"
+          height="44"
+          loading="lazy"
+        />
+        <p>
+          Noncommercial historical analysis from{' '}
+          <a href="https://github.com/hudl/open-data/tree/4b73468fc5b0f1950f9f66fada70ad3a4f9327cb">
+            StatsBomb Open Data
+          </a>
+          , FA Women’s Super League 2023/24. Fixed source revision and artifact
+          hashes are available in the data note. No raw events are served.
+        </p>
+      </div>
+    </footer>
+  </Fragment>
+  <Fragment slot="client">
+    <script>
+      import '../scripts/recruitment-scrolly';
+    </script>
+  </Fragment>
+</VisualArticleLayout>

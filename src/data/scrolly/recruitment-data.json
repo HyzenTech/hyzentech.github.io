@@ -1,0 +1,2707 @@
+{
+  "source": {
+    "provider": "StatsBomb Open Data",
+    "competition": "FA Women’s Super League",
+    "season": "2023/24",
+    "revision": "4b73468fc5b0f1950f9f66fada70ad3a4f9327cb",
+    "verifiedArtifacts": {
+      "profiles": {
+        "manifest": "166bde6549efa2e42cff2ae9a1865fb707b56082cb6f67464d6ec950f653763a",
+        "artifact": "01a4c4334c3ad5650cbce13ac83a928b83da07b5ecaf5e7b8bdd805657672a65",
+        "kind": "profiles"
+      },
+      "ranking": {
+        "manifest": "2d8bdd24fbbf400a18cb7a444d76779a580071faecea560d26ddddb4c2d4b907",
+        "artifact": "20a7f5446ee23162e98071bc97f530accc99a660faabb53e1b2518c75f62f05d",
+        "kind": "rankings"
+      },
+      "similarity": {
+        "manifest": "75563e30f0b243a38b5fdac728ba456fbeae544f5ef91ca542d6fd602be3bd7d",
+        "artifact": "b1d1cff598b0b62042e5926e64004ac925f19b740c425ee2482d688903f2cd39",
+        "kind": "queries"
+      },
+      "ingestion": {
+        "manifest": "380994c3de5306aad9fd7f0e09086264a26398d7072e62015df6d425bd94c935",
+        "matches": 132,
+        "events": 495189
+      }
+    }
+  },
+  "counts": {
+    "profiles": 303,
+    "players": 295,
+    "eligible": 139,
+    "eligibleByPosition": {
+      "AM": 2,
+      "CB": 33,
+      "CM": 9,
+      "DM": 21,
+      "FB": 26,
+      "GK": 17,
+      "ST": 14,
+      "W": 17
+    },
+    "matches": 132,
+    "events": 495189,
+    "metrics": 41,
+    "similarityPeers": 31,
+    "rankingPeers": 32
+  },
+  "points": [
+    {
+      "id": "statsbomb:player:10088:statsbomb:team:967",
+      "group": "CB",
+      "eligible": true,
+      "interceptions": 1.1094410333032454,
+      "longPasses": 7.950994072006592
+    },
+    {
+      "id": "statsbomb:player:10093:statsbomb:team:966",
+      "group": "FB",
+      "eligible": false,
+      "interceptions": null,
+      "longPasses": null
+    },
+    {
+      "id": "statsbomb:player:10100:statsbomb:team:2652",
+      "group": "FB",
+      "eligible": true,
+      "interceptions": null,
+      "longPasses": null
+    },
+    {
+      "id": "statsbomb:player:10158:statsbomb:team:965",
+      "group": "DM",
+      "eligible": true,
+      "interceptions": null,
+      "longPasses": null
+    },
+    {
+      "id": "statsbomb:player:10163:statsbomb:team:746",
+      "group": "FB",
+      "eligible": false,
+      "interceptions": null,
+      "longPasses": null
+    },
+    {
+      "id": "statsbomb:player:10167:statsbomb:team:965",
+      "group": "AM",
+      "eligible": false,
+      "interceptions": null,
+      "longPasses": null
+    },
+    {
+      "id": "statsbomb:player:10179:statsbomb:team:972",
+      "group": "FB",
+      "eligible": false,
+      "interceptions": null,
+      "longPasses": null
+    },
+    {
+      "id": "statsbomb:player:10179:statsbomb:team:973",
+      "group": "W",
+      "eligible": false,
+      "interceptions": null,
+      "longPasses": null
+    },
+    {
+      "id": "statsbomb:player:10183:statsbomb:team:967",
+      "group": "W",
+      "eligible": false,
+      "interceptions": null,
+      "longPasses": null
+    },
+    {
+      "id": "statsbomb:player:10185:statsbomb:team:746",
+      "group": "CB",
+      "eligible": false,
+      "interceptions": null,
+      "longPasses": null
+    },
+    {
+      "id": "statsbomb:player:10192:statsbomb:team:2647",
+      "group": "DM",
+      "eligible": false,
+      "interceptions": null,
+      "longPasses": null
+    },
+    {
+      "id": "statsbomb:player:10196:statsbomb:team:972",
+      "group": "FB",
+      "eligible": false,
+      "interceptions": null,
+      "longPasses": null
+    },
+    {
+      "id": "statsbomb:player:10225:statsbomb:team:967",
+      "group": "DM",
+      "eligible": false,
+      "interceptions": null,
+      "longPasses": null
+    },
+    {
+      "id": "statsbomb:player:10229:statsbomb:team:968",
+      "group": "ST",
+      "eligible": true,
+      "interceptions": null,
+      "longPasses": null
+    },
+    {
+      "id": "statsbomb:player:10237:statsbomb:team:968",
+      "group": "GK",
+      "eligible": true,
+      "interceptions": null,
+      "longPasses": null
+    },
+    {
+      "id": "statsbomb:player:10252:statsbomb:team:746",
+      "group": "CB",
+      "eligible": false,
+      "interceptions": null,
+      "longPasses": null
+    },
+    {
+      "id": "statsbomb:player:10260:statsbomb:team:2652",
+      "group": "ST",
+      "eligible": true,
+      "interceptions": null,
+      "longPasses": null
+    },
+    {
+      "id": "statsbomb:player:10274:statsbomb:team:967",
+      "group": "ST",
+      "eligible": false,
+      "interceptions": null,
+      "longPasses": null
+    },
+    {
+      "id": "statsbomb:player:10395:statsbomb:team:971",
+      "group": "CB",
+      "eligible": true,
+      "interceptions": 1.1711953186889335,
+      "longPasses": 12.297550846233802
+    },
+    {
+      "id": "statsbomb:player:10404:statsbomb:team:2647",
+      "group": "FB",
+      "eligible": false,
+      "interceptions": null,
+      "longPasses": null
+    },
+    {
+      "id": "statsbomb:player:10404:statsbomb:team:968",
+      "group": "FB",
+      "eligible": true,
+      "interceptions": null,
+      "longPasses": null
+    },
+    {
+      "id": "statsbomb:player:10405:statsbomb:team:968",
+      "group": "DM",
+      "eligible": true,
+      "interceptions": null,
+      "longPasses": null
+    },
+    {
+      "id": "statsbomb:player:10418:statsbomb:team:971",
+      "group": "FB",
+      "eligible": true,
+      "interceptions": null,
+      "longPasses": null
+    },
+    {
+      "id": "statsbomb:player:105102:statsbomb:team:965",
+      "group": "W",
+      "eligible": true,
+      "interceptions": null,
+      "longPasses": null
+    },
+    {
+      "id": "statsbomb:player:10514:statsbomb:team:971",
+      "group": "W",
+      "eligible": true,
+      "interceptions": null,
+      "longPasses": null
+    },
+    {
+      "id": "statsbomb:player:10516:statsbomb:team:968",
+      "group": "AM",
+      "eligible": true,
+      "interceptions": null,
+      "longPasses": null
+    },
+    {
+      "id": "statsbomb:player:10648:statsbomb:team:966",
+      "group": "ST",
+      "eligible": true,
+      "interceptions": null,
+      "longPasses": null
+    },
+    {
+      "id": "statsbomb:player:10650:statsbomb:team:746",
+      "group": "CM",
+      "eligible": true,
+      "interceptions": null,
+      "longPasses": null
+    },
+    {
+      "id": "statsbomb:player:107491:statsbomb:team:968",
+      "group": "FB",
+      "eligible": true,
+      "interceptions": null,
+      "longPasses": null
+    },
+    {
+      "id": "statsbomb:player:112522:statsbomb:team:2652",
+      "group": "W",
+      "eligible": true,
+      "interceptions": null,
+      "longPasses": null
+    },
+    {
+      "id": "statsbomb:player:11338:statsbomb:team:968",
+      "group": "W",
+      "eligible": true,
+      "interceptions": null,
+      "longPasses": null
+    },
+    {
+      "id": "statsbomb:player:131575:statsbomb:team:965",
+      "group": "FB",
+      "eligible": true,
+      "interceptions": null,
+      "longPasses": null
+    },
+    {
+      "id": "statsbomb:player:131586:statsbomb:team:968",
+      "group": "DM",
+      "eligible": true,
+      "interceptions": null,
+      "longPasses": null
+    },
+    {
+      "id": "statsbomb:player:131588:statsbomb:team:966",
+      "group": "GK",
+      "eligible": true,
+      "interceptions": null,
+      "longPasses": null
+    },
+    {
+      "id": "statsbomb:player:131589:statsbomb:team:2647",
+      "group": "GK",
+      "eligible": false,
+      "interceptions": null,
+      "longPasses": null
+    },
+    {
+      "id": "statsbomb:player:131653:statsbomb:team:972",
+      "group": "DM",
+      "eligible": false,
+      "interceptions": null,
+      "longPasses": null
+    },
+    {
+      "id": "statsbomb:player:132033:statsbomb:team:2652",
+      "group": "FB",
+      "eligible": true,
+      "interceptions": null,
+      "longPasses": null
+    },
+    {
+      "id": "statsbomb:player:132034:statsbomb:team:749",
+      "group": "FB",
+      "eligible": true,
+      "interceptions": null,
+      "longPasses": null
+    },
+    {
+      "id": "statsbomb:player:135753:statsbomb:team:2652",
+      "group": "CM",
+      "eligible": false,
+      "interceptions": null,
+      "longPasses": null
+    },
+    {
+      "id": "statsbomb:player:135758:statsbomb:team:966",
+      "group": "ST",
+      "eligible": false,
+      "interceptions": null,
+      "longPasses": null
+    },
+    {
+      "id": "statsbomb:player:135759:statsbomb:team:2652",
+      "group": "W",
+      "eligible": true,
+      "interceptions": null,
+      "longPasses": null
+    },
+    {
+      "id": "statsbomb:player:135947:statsbomb:team:2647",
+      "group": "DM",
+      "eligible": true,
+      "interceptions": null,
+      "longPasses": null
+    },
+    {
+      "id": "statsbomb:player:15290:statsbomb:team:971",
+      "group": "FB",
+      "eligible": true,
+      "interceptions": null,
+      "longPasses": null
+    },
+    {
+      "id": "statsbomb:player:15357:statsbomb:team:971",
+      "group": "CB",
+      "eligible": true,
+      "interceptions": 1.9701801623620827,
+      "longPasses": 9.313578949348027
+    },
+    {
+      "id": "statsbomb:player:15421:statsbomb:team:2647",
+      "group": "CM",
+      "eligible": false,
+      "interceptions": null,
+      "longPasses": null
+    },
+    {
+      "id": "statsbomb:player:15547:statsbomb:team:966",
+      "group": "ST",
+      "eligible": false,
+      "interceptions": null,
+      "longPasses": null
+    },
+    {
+      "id": "statsbomb:player:15549:statsbomb:team:971",
+      "group": "DM",
+      "eligible": true,
+      "interceptions": null,
+      "longPasses": null
+    },
+    {
+      "id": "statsbomb:player:15550:statsbomb:team:749",
+      "group": "ST",
+      "eligible": true,
+      "interceptions": null,
+      "longPasses": null
+    },
+    {
+      "id": "statsbomb:player:15554:statsbomb:team:966",
+      "group": "CB",
+      "eligible": true,
+      "interceptions": 0.7912280936963517,
+      "longPasses": 9.099123077508045
+    },
+    {
+      "id": "statsbomb:player:15555:statsbomb:team:746",
+      "group": "W",
+      "eligible": false,
+      "interceptions": null,
+      "longPasses": null
+    },
+    {
+      "id": "statsbomb:player:15559:statsbomb:team:2647",
+      "group": "ST",
+      "eligible": false,
+      "interceptions": null,
+      "longPasses": null
+    },
+    {
+      "id": "statsbomb:player:15560:statsbomb:team:971",
+      "group": "GK",
+      "eligible": true,
+      "interceptions": null,
+      "longPasses": null
+    },
+    {
+      "id": "statsbomb:player:15562:statsbomb:team:2647",
+      "group": "DM",
+      "eligible": false,
+      "interceptions": null,
+      "longPasses": null
+    },
+    {
+      "id": "statsbomb:player:15570:statsbomb:team:746",
+      "group": "W",
+      "eligible": true,
+      "interceptions": null,
+      "longPasses": null
+    },
+    {
+      "id": "statsbomb:player:15571:statsbomb:team:2647",
+      "group": "CB",
+      "eligible": false,
+      "interceptions": null,
+      "longPasses": null
+    },
+    {
+      "id": "statsbomb:player:15573:statsbomb:team:972",
+      "group": "DM",
+      "eligible": false,
+      "interceptions": null,
+      "longPasses": null
+    },
+    {
+      "id": "statsbomb:player:15575:statsbomb:team:1475",
+      "group": "FB",
+      "eligible": false,
+      "interceptions": null,
+      "longPasses": null
+    },
+    {
+      "id": "statsbomb:player:15577:statsbomb:team:749",
+      "group": "FB",
+      "eligible": true,
+      "interceptions": null,
+      "longPasses": null
+    },
+    {
+      "id": "statsbomb:player:15616:statsbomb:team:968",
+      "group": "DM",
+      "eligible": false,
+      "interceptions": null,
+      "longPasses": null
+    },
+    {
+      "id": "statsbomb:player:15618:statsbomb:team:966",
+      "group": "FB",
+      "eligible": true,
+      "interceptions": null,
+      "longPasses": null
+    },
+    {
+      "id": "statsbomb:player:15619:statsbomb:team:968",
+      "group": "W",
+      "eligible": true,
+      "interceptions": null,
+      "longPasses": null
+    },
+    {
+      "id": "statsbomb:player:15620:statsbomb:team:968",
+      "group": "FB",
+      "eligible": true,
+      "interceptions": null,
+      "longPasses": null
+    },
+    {
+      "id": "statsbomb:player:15623:statsbomb:team:968",
+      "group": "AM",
+      "eligible": false,
+      "interceptions": null,
+      "longPasses": null
+    },
+    {
+      "id": "statsbomb:player:15629:statsbomb:team:973",
+      "group": "CB",
+      "eligible": false,
+      "interceptions": null,
+      "longPasses": null
+    },
+    {
+      "id": "statsbomb:player:15631:statsbomb:team:971",
+      "group": "FB",
+      "eligible": false,
+      "interceptions": null,
+      "longPasses": null
+    },
+    {
+      "id": "statsbomb:player:15648:statsbomb:team:971",
+      "group": "DM",
+      "eligible": true,
+      "interceptions": null,
+      "longPasses": null
+    },
+    {
+      "id": "statsbomb:player:15706:statsbomb:team:973",
+      "group": "DM",
+      "eligible": true,
+      "interceptions": null,
+      "longPasses": null
+    },
+    {
+      "id": "statsbomb:player:15709:statsbomb:team:972",
+      "group": "GK",
+      "eligible": false,
+      "interceptions": null,
+      "longPasses": null
+    },
+    {
+      "id": "statsbomb:player:15716:statsbomb:team:973",
+      "group": "DM",
+      "eligible": true,
+      "interceptions": null,
+      "longPasses": null
+    },
+    {
+      "id": "statsbomb:player:15720:statsbomb:team:2652",
+      "group": "CB",
+      "eligible": false,
+      "interceptions": null,
+      "longPasses": null
+    },
+    {
+      "id": "statsbomb:player:15724:statsbomb:team:2647",
+      "group": "FB",
+      "eligible": false,
+      "interceptions": null,
+      "longPasses": null
+    },
+    {
+      "id": "statsbomb:player:15788:statsbomb:team:973",
+      "group": "ST",
+      "eligible": false,
+      "interceptions": null,
+      "longPasses": null
+    },
+    {
+      "id": "statsbomb:player:16374:statsbomb:team:2652",
+      "group": "ST",
+      "eligible": false,
+      "interceptions": null,
+      "longPasses": null
+    },
+    {
+      "id": "statsbomb:player:16376:statsbomb:team:965",
+      "group": "GK",
+      "eligible": true,
+      "interceptions": null,
+      "longPasses": null
+    },
+    {
+      "id": "statsbomb:player:16381:statsbomb:team:1475",
+      "group": "FB",
+      "eligible": true,
+      "interceptions": null,
+      "longPasses": null
+    },
+    {
+      "id": "statsbomb:player:16382:statsbomb:team:967",
+      "group": "FB",
+      "eligible": true,
+      "interceptions": null,
+      "longPasses": null
+    },
+    {
+      "id": "statsbomb:player:16386:statsbomb:team:967",
+      "group": "FB",
+      "eligible": true,
+      "interceptions": null,
+      "longPasses": null
+    },
+    {
+      "id": "statsbomb:player:16389:statsbomb:team:973",
+      "group": "ST",
+      "eligible": false,
+      "interceptions": null,
+      "longPasses": null
+    },
+    {
+      "id": "statsbomb:player:16393:statsbomb:team:749",
+      "group": "W",
+      "eligible": false,
+      "interceptions": null,
+      "longPasses": null
+    },
+    {
+      "id": "statsbomb:player:17274:statsbomb:team:965",
+      "group": "FB",
+      "eligible": true,
+      "interceptions": null,
+      "longPasses": null
+    },
+    {
+      "id": "statsbomb:player:17275:statsbomb:team:1475",
+      "group": "FB",
+      "eligible": true,
+      "interceptions": null,
+      "longPasses": null
+    },
+    {
+      "id": "statsbomb:player:17524:statsbomb:team:968",
+      "group": "CB",
+      "eligible": false,
+      "interceptions": null,
+      "longPasses": null
+    },
+    {
+      "id": "statsbomb:player:18145:statsbomb:team:749",
+      "group": "DM",
+      "eligible": false,
+      "interceptions": null,
+      "longPasses": null
+    },
+    {
+      "id": "statsbomb:player:18146:statsbomb:team:966",
+      "group": "ST",
+      "eligible": true,
+      "interceptions": null,
+      "longPasses": null
+    },
+    {
+      "id": "statsbomb:player:18153:statsbomb:team:2647",
+      "group": "W",
+      "eligible": false,
+      "interceptions": null,
+      "longPasses": null
+    },
+    {
+      "id": "statsbomb:player:18158:statsbomb:team:749",
+      "group": "GK",
+      "eligible": true,
+      "interceptions": null,
+      "longPasses": null
+    },
+    {
+      "id": "statsbomb:player:182500:statsbomb:team:2652",
+      "group": "W",
+      "eligible": false,
+      "interceptions": null,
+      "longPasses": null
+    },
+    {
+      "id": "statsbomb:player:18253:statsbomb:team:2652",
+      "group": "W",
+      "eligible": true,
+      "interceptions": null,
+      "longPasses": null
+    },
+    {
+      "id": "statsbomb:player:18254:statsbomb:team:967",
+      "group": "CB",
+      "eligible": true,
+      "interceptions": 0.383122320306704,
+      "longPasses": 6.640786885316203
+    },
+    {
+      "id": "statsbomb:player:185543:statsbomb:team:973",
+      "group": "W",
+      "eligible": false,
+      "interceptions": null,
+      "longPasses": null
+    },
+    {
+      "id": "statsbomb:player:185544:statsbomb:team:973",
+      "group": "FB",
+      "eligible": false,
+      "interceptions": null,
+      "longPasses": null
+    },
+    {
+      "id": "statsbomb:player:185545:statsbomb:team:973",
+      "group": "CB",
+      "eligible": true,
+      "interceptions": 1.2487711882278099,
+      "longPasses": 4.816688868878694
+    },
+    {
+      "id": "statsbomb:player:18999:statsbomb:team:968",
+      "group": "CB",
+      "eligible": true,
+      "interceptions": 1.5157893318559688,
+      "longPasses": 24.126313532040836
+    },
+    {
+      "id": "statsbomb:player:191850:statsbomb:team:749",
+      "group": "DM",
+      "eligible": true,
+      "interceptions": null,
+      "longPasses": null
+    },
+    {
+      "id": "statsbomb:player:191851:statsbomb:team:746",
+      "group": "FB",
+      "eligible": false,
+      "interceptions": null,
+      "longPasses": null
+    },
+    {
+      "id": "statsbomb:player:19416:statsbomb:team:746",
+      "group": "CM",
+      "eligible": true,
+      "interceptions": null,
+      "longPasses": null
+    },
+    {
+      "id": "statsbomb:player:19417:statsbomb:team:973",
+      "group": "DM",
+      "eligible": true,
+      "interceptions": null,
+      "longPasses": null
+    },
+    {
+      "id": "statsbomb:player:19422:statsbomb:team:971",
+      "group": "CB",
+      "eligible": true,
+      "interceptions": 0.7880255821603368,
+      "longPasses": 12.098510408461642
+    },
+    {
+      "id": "statsbomb:player:19498:statsbomb:team:746",
+      "group": "CM",
+      "eligible": true,
+      "interceptions": null,
+      "longPasses": null
+    },
+    {
+      "id": "statsbomb:player:19499:statsbomb:team:973",
+      "group": "ST",
+      "eligible": false,
+      "interceptions": null,
+      "longPasses": null
+    },
+    {
+      "id": "statsbomb:player:19500:statsbomb:team:2647",
+      "group": "FB",
+      "eligible": false,
+      "interceptions": null,
+      "longPasses": null
+    },
+    {
+      "id": "statsbomb:player:19501:statsbomb:team:1475",
+      "group": "DM",
+      "eligible": true,
+      "interceptions": null,
+      "longPasses": null
+    },
+    {
+      "id": "statsbomb:player:19503:statsbomb:team:1475",
+      "group": "FB",
+      "eligible": false,
+      "interceptions": null,
+      "longPasses": null
+    },
+    {
+      "id": "statsbomb:player:19687:statsbomb:team:966",
+      "group": "FB",
+      "eligible": true,
+      "interceptions": null,
+      "longPasses": null
+    },
+    {
+      "id": "statsbomb:player:19777:statsbomb:team:966",
+      "group": "CB",
+      "eligible": true,
+      "interceptions": 1.3552098785096172,
+      "longPasses": 8.582995897227574
+    },
+    {
+      "id": "statsbomb:player:20725:statsbomb:team:965",
+      "group": "W",
+      "eligible": true,
+      "interceptions": null,
+      "longPasses": null
+    },
+    {
+      "id": "statsbomb:player:21021:statsbomb:team:749",
+      "group": "CB",
+      "eligible": true,
+      "interceptions": 0.8512964269138075,
+      "longPasses": 10.375175203012027
+    },
+    {
+      "id": "statsbomb:player:21023:statsbomb:team:749",
+      "group": "FB",
+      "eligible": true,
+      "interceptions": null,
+      "longPasses": null
+    },
+    {
+      "id": "statsbomb:player:21048:statsbomb:team:749",
+      "group": "W",
+      "eligible": false,
+      "interceptions": null,
+      "longPasses": null
+    },
+    {
+      "id": "statsbomb:player:21059:statsbomb:team:965",
+      "group": "W",
+      "eligible": true,
+      "interceptions": null,
+      "longPasses": null
+    },
+    {
+      "id": "statsbomb:player:22032:statsbomb:team:971",
+      "group": "GK",
+      "eligible": true,
+      "interceptions": null,
+      "longPasses": null
+    },
+    {
+      "id": "statsbomb:player:221888:statsbomb:team:746",
+      "group": "FB",
+      "eligible": false,
+      "interceptions": null,
+      "longPasses": null
+    },
+    {
+      "id": "statsbomb:player:22337:statsbomb:team:1475",
+      "group": "CB",
+      "eligible": true,
+      "interceptions": 0.602350581676943,
+      "longPasses": 18.753181442875494
+    },
+    {
+      "id": "statsbomb:player:224149:statsbomb:team:967",
+      "group": "CB",
+      "eligible": true,
+      "interceptions": 0.7544671557859643,
+      "longPasses": 7.293182505930989
+    },
+    {
+      "id": "statsbomb:player:224167:statsbomb:team:749",
+      "group": "W",
+      "eligible": false,
+      "interceptions": null,
+      "longPasses": null
+    },
+    {
+      "id": "statsbomb:player:224822:statsbomb:team:2652",
+      "group": "W",
+      "eligible": true,
+      "interceptions": null,
+      "longPasses": null
+    },
+    {
+      "id": "statsbomb:player:224845:statsbomb:team:973",
+      "group": "DM",
+      "eligible": false,
+      "interceptions": null,
+      "longPasses": null
+    },
+    {
+      "id": "statsbomb:player:224866:statsbomb:team:972",
+      "group": "DM",
+      "eligible": false,
+      "interceptions": null,
+      "longPasses": null
+    },
+    {
+      "id": "statsbomb:player:225020:statsbomb:team:965",
+      "group": "GK",
+      "eligible": false,
+      "interceptions": null,
+      "longPasses": null
+    },
+    {
+      "id": "statsbomb:player:225180:statsbomb:team:2652",
+      "group": "DM",
+      "eligible": false,
+      "interceptions": null,
+      "longPasses": null
+    },
+    {
+      "id": "statsbomb:player:225576:statsbomb:team:2647",
+      "group": "DM",
+      "eligible": false,
+      "interceptions": null,
+      "longPasses": null
+    },
+    {
+      "id": "statsbomb:player:225576:statsbomb:team:966",
+      "group": "ST",
+      "eligible": false,
+      "interceptions": null,
+      "longPasses": null
+    },
+    {
+      "id": "statsbomb:player:229194:statsbomb:team:749",
+      "group": "DM",
+      "eligible": true,
+      "interceptions": null,
+      "longPasses": null
+    },
+    {
+      "id": "statsbomb:player:23320:statsbomb:team:972",
+      "group": "DM",
+      "eligible": false,
+      "interceptions": null,
+      "longPasses": null
+    },
+    {
+      "id": "statsbomb:player:23412:statsbomb:team:973",
+      "group": "ST",
+      "eligible": false,
+      "interceptions": null,
+      "longPasses": null
+    },
+    {
+      "id": "statsbomb:player:23413:statsbomb:team:973",
+      "group": "CB",
+      "eligible": true,
+      "interceptions": 0.7884939337803274,
+      "longPasses": 13.155398789913884
+    },
+    {
+      "id": "statsbomb:player:23465:statsbomb:team:967",
+      "group": "FB",
+      "eligible": false,
+      "interceptions": null,
+      "longPasses": null
+    },
+    {
+      "id": "statsbomb:player:241634:statsbomb:team:2652",
+      "group": "ST",
+      "eligible": false,
+      "interceptions": null,
+      "longPasses": null
+    },
+    {
+      "id": "statsbomb:player:24237:statsbomb:team:966",
+      "group": "CM",
+      "eligible": true,
+      "interceptions": null,
+      "longPasses": null
+    },
+    {
+      "id": "statsbomb:player:24400:statsbomb:team:749",
+      "group": "GK",
+      "eligible": true,
+      "interceptions": null,
+      "longPasses": null
+    },
+    {
+      "id": "statsbomb:player:24461:statsbomb:team:749",
+      "group": "W",
+      "eligible": false,
+      "interceptions": null,
+      "longPasses": null
+    },
+    {
+      "id": "statsbomb:player:24706:statsbomb:team:966",
+      "group": "ST",
+      "eligible": true,
+      "interceptions": null,
+      "longPasses": null
+    },
+    {
+      "id": "statsbomb:player:25453:statsbomb:team:965",
+      "group": "W",
+      "eligible": false,
+      "interceptions": null,
+      "longPasses": null
+    },
+    {
+      "id": "statsbomb:player:25513:statsbomb:team:1475",
+      "group": "W",
+      "eligible": true,
+      "interceptions": null,
+      "longPasses": null
+    },
+    {
+      "id": "statsbomb:player:25543:statsbomb:team:1475",
+      "group": "ST",
+      "eligible": false,
+      "interceptions": null,
+      "longPasses": null
+    },
+    {
+      "id": "statsbomb:player:25554:statsbomb:team:746",
+      "group": "ST",
+      "eligible": true,
+      "interceptions": null,
+      "longPasses": null
+    },
+    {
+      "id": "statsbomb:player:25601:statsbomb:team:2652",
+      "group": "W",
+      "eligible": true,
+      "interceptions": null,
+      "longPasses": null
+    },
+    {
+      "id": "statsbomb:player:25604:statsbomb:team:2652",
+      "group": "DM",
+      "eligible": true,
+      "interceptions": null,
+      "longPasses": null
+    },
+    {
+      "id": "statsbomb:player:25612:statsbomb:team:971",
+      "group": "AM",
+      "eligible": false,
+      "interceptions": null,
+      "longPasses": null
+    },
+    {
+      "id": "statsbomb:player:25624:statsbomb:team:972",
+      "group": "DM",
+      "eligible": false,
+      "interceptions": null,
+      "longPasses": null
+    },
+    {
+      "id": "statsbomb:player:25632:statsbomb:team:746",
+      "group": "DM",
+      "eligible": true,
+      "interceptions": null,
+      "longPasses": null
+    },
+    {
+      "id": "statsbomb:player:25662:statsbomb:team:2652",
+      "group": "FB",
+      "eligible": true,
+      "interceptions": null,
+      "longPasses": null
+    },
+    {
+      "id": "statsbomb:player:25697:statsbomb:team:968",
+      "group": "W",
+      "eligible": false,
+      "interceptions": null,
+      "longPasses": null
+    },
+    {
+      "id": "statsbomb:player:25785:statsbomb:team:1475",
+      "group": "FB",
+      "eligible": true,
+      "interceptions": null,
+      "longPasses": null
+    },
+    {
+      "id": "statsbomb:player:25834:statsbomb:team:972",
+      "group": "W",
+      "eligible": false,
+      "interceptions": null,
+      "longPasses": null
+    },
+    {
+      "id": "statsbomb:player:26092:statsbomb:team:968",
+      "group": "CB",
+      "eligible": true,
+      "interceptions": 0.41476483548145415,
+      "longPasses": 10.120261985747481
+    },
+    {
+      "id": "statsbomb:player:26093:statsbomb:team:967",
+      "group": "CB",
+      "eligible": true,
+      "interceptions": 0.8708396442329772,
+      "longPasses": 10.014655908679238
+    },
+    {
+      "id": "statsbomb:player:26093:statsbomb:team:971",
+      "group": "CB",
+      "eligible": true,
+      "interceptions": 1.2006525000586683,
+      "longPasses": 11.78822454603056
+    },
+    {
+      "id": "statsbomb:player:26094:statsbomb:team:965",
+      "group": "DM",
+      "eligible": false,
+      "interceptions": null,
+      "longPasses": null
+    },
+    {
+      "id": "statsbomb:player:26520:statsbomb:team:2652",
+      "group": "CM",
+      "eligible": true,
+      "interceptions": null,
+      "longPasses": null
+    },
+    {
+      "id": "statsbomb:player:276301:statsbomb:team:965",
+      "group": "ST",
+      "eligible": true,
+      "interceptions": null,
+      "longPasses": null
+    },
+    {
+      "id": "statsbomb:player:276304:statsbomb:team:965",
+      "group": "CB",
+      "eligible": true,
+      "interceptions": 1.0212106125023819,
+      "longPasses": 9.027501814521056
+    },
+    {
+      "id": "statsbomb:player:276443:statsbomb:team:967",
+      "group": "CM",
+      "eligible": false,
+      "interceptions": null,
+      "longPasses": null
+    },
+    {
+      "id": "statsbomb:player:276443:statsbomb:team:968",
+      "group": "DM",
+      "eligible": false,
+      "interceptions": null,
+      "longPasses": null
+    },
+    {
+      "id": "statsbomb:player:276896:statsbomb:team:965",
+      "group": "GK",
+      "eligible": false,
+      "interceptions": null,
+      "longPasses": null
+    },
+    {
+      "id": "statsbomb:player:276907:statsbomb:team:972",
+      "group": "CB",
+      "eligible": false,
+      "interceptions": null,
+      "longPasses": null
+    },
+    {
+      "id": "statsbomb:player:299860:statsbomb:team:966",
+      "group": "DM",
+      "eligible": true,
+      "interceptions": null,
+      "longPasses": null
+    },
+    {
+      "id": "statsbomb:player:30856:statsbomb:team:2652",
+      "group": "CB",
+      "eligible": true,
+      "interceptions": 1.851135538939454,
+      "longPasses": 11.053923646809881
+    },
+    {
+      "id": "statsbomb:player:31157:statsbomb:team:972",
+      "group": "CB",
+      "eligible": false,
+      "interceptions": null,
+      "longPasses": null
+    },
+    {
+      "id": "statsbomb:player:31527:statsbomb:team:2647",
+      "group": "W",
+      "eligible": false,
+      "interceptions": null,
+      "longPasses": null
+    },
+    {
+      "id": "statsbomb:player:31531:statsbomb:team:971",
+      "group": "W",
+      "eligible": false,
+      "interceptions": null,
+      "longPasses": null
+    },
+    {
+      "id": "statsbomb:player:31532:statsbomb:team:2647",
+      "group": "W",
+      "eligible": false,
+      "interceptions": null,
+      "longPasses": null
+    },
+    {
+      "id": "statsbomb:player:31533:statsbomb:team:749",
+      "group": "CB",
+      "eligible": true,
+      "interceptions": 1.2408170918418344,
+      "longPasses": 8.134245379852025
+    },
+    {
+      "id": "statsbomb:player:31534:statsbomb:team:1475",
+      "group": "AM",
+      "eligible": true,
+      "interceptions": null,
+      "longPasses": null
+    },
+    {
+      "id": "statsbomb:player:31536:statsbomb:team:1475",
+      "group": "CB",
+      "eligible": true,
+      "interceptions": 1.0744252454363385,
+      "longPasses": 8.471429819786517
+    },
+    {
+      "id": "statsbomb:player:31538:statsbomb:team:1475",
+      "group": "GK",
+      "eligible": true,
+      "interceptions": null,
+      "longPasses": null
+    },
+    {
+      "id": "statsbomb:player:31539:statsbomb:team:1475",
+      "group": "W",
+      "eligible": false,
+      "interceptions": null,
+      "longPasses": null
+    },
+    {
+      "id": "statsbomb:player:31540:statsbomb:team:1475",
+      "group": "DM",
+      "eligible": true,
+      "interceptions": null,
+      "longPasses": null
+    },
+    {
+      "id": "statsbomb:player:31551:statsbomb:team:749",
+      "group": "DM",
+      "eligible": true,
+      "interceptions": null,
+      "longPasses": null
+    },
+    {
+      "id": "statsbomb:player:31555:statsbomb:team:967",
+      "group": "GK",
+      "eligible": true,
+      "interceptions": null,
+      "longPasses": null
+    },
+    {
+      "id": "statsbomb:player:31558:statsbomb:team:749",
+      "group": "ST",
+      "eligible": true,
+      "interceptions": null,
+      "longPasses": null
+    },
+    {
+      "id": "statsbomb:player:31563:statsbomb:team:1475",
+      "group": "ST",
+      "eligible": true,
+      "interceptions": null,
+      "longPasses": null
+    },
+    {
+      "id": "statsbomb:player:31614:statsbomb:team:1475",
+      "group": "W",
+      "eligible": false,
+      "interceptions": null,
+      "longPasses": null
+    },
+    {
+      "id": "statsbomb:player:31936:statsbomb:team:972",
+      "group": "AM",
+      "eligible": false,
+      "interceptions": null,
+      "longPasses": null
+    },
+    {
+      "id": "statsbomb:player:32074:statsbomb:team:966",
+      "group": "CB",
+      "eligible": true,
+      "interceptions": 0.8523703124927242,
+      "longPasses": 7.623978906184923
+    },
+    {
+      "id": "statsbomb:player:32169:statsbomb:team:973",
+      "group": "FB",
+      "eligible": false,
+      "interceptions": null,
+      "longPasses": null
+    },
+    {
+      "id": "statsbomb:player:32210:statsbomb:team:746",
+      "group": "CB",
+      "eligible": false,
+      "interceptions": null,
+      "longPasses": null
+    },
+    {
+      "id": "statsbomb:player:322143:statsbomb:team:2647",
+      "group": "GK",
+      "eligible": false,
+      "interceptions": null,
+      "longPasses": null
+    },
+    {
+      "id": "statsbomb:player:32222:statsbomb:team:966",
+      "group": "CM",
+      "eligible": false,
+      "interceptions": null,
+      "longPasses": null
+    },
+    {
+      "id": "statsbomb:player:32227:statsbomb:team:972",
+      "group": "W",
+      "eligible": false,
+      "interceptions": null,
+      "longPasses": null
+    },
+    {
+      "id": "statsbomb:player:32229:statsbomb:team:967",
+      "group": "FB",
+      "eligible": false,
+      "interceptions": null,
+      "longPasses": null
+    },
+    {
+      "id": "statsbomb:player:32230:statsbomb:team:967",
+      "group": "CB",
+      "eligible": false,
+      "interceptions": null,
+      "longPasses": null
+    },
+    {
+      "id": "statsbomb:player:322322:statsbomb:team:972",
+      "group": "W",
+      "eligible": false,
+      "interceptions": null,
+      "longPasses": null
+    },
+    {
+      "id": "statsbomb:player:322325:statsbomb:team:972",
+      "group": "CM",
+      "eligible": false,
+      "interceptions": null,
+      "longPasses": null
+    },
+    {
+      "id": "statsbomb:player:322359:statsbomb:team:966",
+      "group": "CM",
+      "eligible": true,
+      "interceptions": null,
+      "longPasses": null
+    },
+    {
+      "id": "statsbomb:player:32339:statsbomb:team:2647",
+      "group": "GK",
+      "eligible": false,
+      "interceptions": null,
+      "longPasses": null
+    },
+    {
+      "id": "statsbomb:player:32403:statsbomb:team:966",
+      "group": "FB",
+      "eligible": false,
+      "interceptions": null,
+      "longPasses": null
+    },
+    {
+      "id": "statsbomb:player:326618:statsbomb:team:973",
+      "group": "CB",
+      "eligible": true,
+      "interceptions": 1.0750239649053783,
+      "longPasses": 5.554290485344454
+    },
+    {
+      "id": "statsbomb:player:326619:statsbomb:team:973",
+      "group": "GK",
+      "eligible": true,
+      "interceptions": null,
+      "longPasses": null
+    },
+    {
+      "id": "statsbomb:player:326622:statsbomb:team:973",
+      "group": "ST",
+      "eligible": false,
+      "interceptions": null,
+      "longPasses": null
+    },
+    {
+      "id": "statsbomb:player:32694:statsbomb:team:968",
+      "group": "CB",
+      "eligible": true,
+      "interceptions": 0.8882654216036678,
+      "longPasses": 7.994388794433011
+    },
+    {
+      "id": "statsbomb:player:329372:statsbomb:team:966",
+      "group": "ST",
+      "eligible": false,
+      "interceptions": null,
+      "longPasses": null
+    },
+    {
+      "id": "statsbomb:player:33010:statsbomb:team:2647",
+      "group": "FB",
+      "eligible": false,
+      "interceptions": null,
+      "longPasses": null
+    },
+    {
+      "id": "statsbomb:player:33067:statsbomb:team:973",
+      "group": "GK",
+      "eligible": true,
+      "interceptions": null,
+      "longPasses": null
+    },
+    {
+      "id": "statsbomb:player:33664:statsbomb:team:966",
+      "group": "GK",
+      "eligible": true,
+      "interceptions": null,
+      "longPasses": null
+    },
+    {
+      "id": "statsbomb:player:33675:statsbomb:team:2647",
+      "group": "CM",
+      "eligible": false,
+      "interceptions": null,
+      "longPasses": null
+    },
+    {
+      "id": "statsbomb:player:33675:statsbomb:team:746",
+      "group": "CM",
+      "eligible": false,
+      "interceptions": null,
+      "longPasses": null
+    },
+    {
+      "id": "statsbomb:player:337710:statsbomb:team:973",
+      "group": "CB",
+      "eligible": true,
+      "interceptions": 1.4405432856216829,
+      "longPasses": 4.452588337376111
+    },
+    {
+      "id": "statsbomb:player:337744:statsbomb:team:972",
+      "group": "W",
+      "eligible": false,
+      "interceptions": null,
+      "longPasses": null
+    },
+    {
+      "id": "statsbomb:player:337745:statsbomb:team:2647",
+      "group": "ST",
+      "eligible": false,
+      "interceptions": null,
+      "longPasses": null
+    },
+    {
+      "id": "statsbomb:player:338059:statsbomb:team:967",
+      "group": "DM",
+      "eligible": false,
+      "interceptions": null,
+      "longPasses": null
+    },
+    {
+      "id": "statsbomb:player:338201:statsbomb:team:968",
+      "group": "W",
+      "eligible": false,
+      "interceptions": null,
+      "longPasses": null
+    },
+    {
+      "id": "statsbomb:player:338202:statsbomb:team:968",
+      "group": "CB",
+      "eligible": false,
+      "interceptions": null,
+      "longPasses": null
+    },
+    {
+      "id": "statsbomb:player:34232:statsbomb:team:966",
+      "group": "CB",
+      "eligible": true,
+      "interceptions": 1.1530420425285677,
+      "longPasses": 8.277194662437218
+    },
+    {
+      "id": "statsbomb:player:34499:statsbomb:team:967",
+      "group": "CM",
+      "eligible": false,
+      "interceptions": null,
+      "longPasses": null
+    },
+    {
+      "id": "statsbomb:player:34500:statsbomb:team:965",
+      "group": "FB",
+      "eligible": true,
+      "interceptions": null,
+      "longPasses": null
+    },
+    {
+      "id": "statsbomb:player:345061:statsbomb:team:973",
+      "group": "W",
+      "eligible": false,
+      "interceptions": null,
+      "longPasses": null
+    },
+    {
+      "id": "statsbomb:player:353151:statsbomb:team:967",
+      "group": "CB",
+      "eligible": false,
+      "interceptions": null,
+      "longPasses": null
+    },
+    {
+      "id": "statsbomb:player:35693:statsbomb:team:746",
+      "group": "W",
+      "eligible": true,
+      "interceptions": null,
+      "longPasses": null
+    },
+    {
+      "id": "statsbomb:player:361311:statsbomb:team:971",
+      "group": "ST",
+      "eligible": false,
+      "interceptions": null,
+      "longPasses": null
+    },
+    {
+      "id": "statsbomb:player:36801:statsbomb:team:2652",
+      "group": "DM",
+      "eligible": false,
+      "interceptions": null,
+      "longPasses": null
+    },
+    {
+      "id": "statsbomb:player:370018:statsbomb:team:972",
+      "group": "CB",
+      "eligible": false,
+      "interceptions": null,
+      "longPasses": null
+    },
+    {
+      "id": "statsbomb:player:386105:statsbomb:team:1475",
+      "group": "DM",
+      "eligible": true,
+      "interceptions": null,
+      "longPasses": null
+    },
+    {
+      "id": "statsbomb:player:388473:statsbomb:team:965",
+      "group": "CB",
+      "eligible": true,
+      "interceptions": 1.7022673823250931,
+      "longPasses": 7.0644096366491365
+    },
+    {
+      "id": "statsbomb:player:389365:statsbomb:team:971",
+      "group": "W",
+      "eligible": false,
+      "interceptions": null,
+      "longPasses": null
+    },
+    {
+      "id": "statsbomb:player:395055:statsbomb:team:972",
+      "group": "ST",
+      "eligible": false,
+      "interceptions": null,
+      "longPasses": null
+    },
+    {
+      "id": "statsbomb:player:401930:statsbomb:team:972",
+      "group": "ST",
+      "eligible": false,
+      "interceptions": null,
+      "longPasses": null
+    },
+    {
+      "id": "statsbomb:player:401932:statsbomb:team:1475",
+      "group": "CM",
+      "eligible": true,
+      "interceptions": null,
+      "longPasses": null
+    },
+    {
+      "id": "statsbomb:player:402025:statsbomb:team:749",
+      "group": "W",
+      "eligible": false,
+      "interceptions": null,
+      "longPasses": null
+    },
+    {
+      "id": "statsbomb:player:405180:statsbomb:team:965",
+      "group": "FB",
+      "eligible": true,
+      "interceptions": null,
+      "longPasses": null
+    },
+    {
+      "id": "statsbomb:player:405188:statsbomb:team:965",
+      "group": "ST",
+      "eligible": false,
+      "interceptions": null,
+      "longPasses": null
+    },
+    {
+      "id": "statsbomb:player:40985:statsbomb:team:973",
+      "group": "GK",
+      "eligible": false,
+      "interceptions": null,
+      "longPasses": null
+    },
+    {
+      "id": "statsbomb:player:410041:statsbomb:team:967",
+      "group": "ST",
+      "eligible": false,
+      "interceptions": null,
+      "longPasses": null
+    },
+    {
+      "id": "statsbomb:player:410042:statsbomb:team:967",
+      "group": "CM",
+      "eligible": false,
+      "interceptions": null,
+      "longPasses": null
+    },
+    {
+      "id": "statsbomb:player:410047:statsbomb:team:973",
+      "group": "FB",
+      "eligible": false,
+      "interceptions": null,
+      "longPasses": null
+    },
+    {
+      "id": "statsbomb:player:410668:statsbomb:team:2652",
+      "group": "ST",
+      "eligible": false,
+      "interceptions": null,
+      "longPasses": null
+    },
+    {
+      "id": "statsbomb:player:412877:statsbomb:team:972",
+      "group": "CB",
+      "eligible": false,
+      "interceptions": null,
+      "longPasses": null
+    },
+    {
+      "id": "statsbomb:player:417523:statsbomb:team:973",
+      "group": "ST",
+      "eligible": false,
+      "interceptions": null,
+      "longPasses": null
+    },
+    {
+      "id": "statsbomb:player:41812:statsbomb:team:746",
+      "group": "DM",
+      "eligible": false,
+      "interceptions": null,
+      "longPasses": null
+    },
+    {
+      "id": "statsbomb:player:422963:statsbomb:team:965",
+      "group": "W",
+      "eligible": false,
+      "interceptions": null,
+      "longPasses": null
+    },
+    {
+      "id": "statsbomb:player:422964:statsbomb:team:965",
+      "group": "CB",
+      "eligible": false,
+      "interceptions": null,
+      "longPasses": null
+    },
+    {
+      "id": "statsbomb:player:423419:statsbomb:team:967",
+      "group": "W",
+      "eligible": false,
+      "interceptions": null,
+      "longPasses": null
+    },
+    {
+      "id": "statsbomb:player:423420:statsbomb:team:967",
+      "group": "CB",
+      "eligible": false,
+      "interceptions": null,
+      "longPasses": null
+    },
+    {
+      "id": "statsbomb:player:424095:statsbomb:team:967",
+      "group": "ST",
+      "eligible": false,
+      "interceptions": null,
+      "longPasses": null
+    },
+    {
+      "id": "statsbomb:player:425870:statsbomb:team:965",
+      "group": "W",
+      "eligible": false,
+      "interceptions": null,
+      "longPasses": null
+    },
+    {
+      "id": "statsbomb:player:42787:statsbomb:team:972",
+      "group": "GK",
+      "eligible": false,
+      "interceptions": null,
+      "longPasses": null
+    },
+    {
+      "id": "statsbomb:player:42836:statsbomb:team:973",
+      "group": "FB",
+      "eligible": true,
+      "interceptions": null,
+      "longPasses": null
+    },
+    {
+      "id": "statsbomb:player:429638:statsbomb:team:966",
+      "group": "CM",
+      "eligible": false,
+      "interceptions": null,
+      "longPasses": null
+    },
+    {
+      "id": "statsbomb:player:432915:statsbomb:team:966",
+      "group": "DM",
+      "eligible": false,
+      "interceptions": null,
+      "longPasses": null
+    },
+    {
+      "id": "statsbomb:player:45737:statsbomb:team:967",
+      "group": "ST",
+      "eligible": true,
+      "interceptions": null,
+      "longPasses": null
+    },
+    {
+      "id": "statsbomb:player:4636:statsbomb:team:965",
+      "group": "CB",
+      "eligible": false,
+      "interceptions": null,
+      "longPasses": null
+    },
+    {
+      "id": "statsbomb:player:4638:statsbomb:team:749",
+      "group": "AM",
+      "eligible": false,
+      "interceptions": null,
+      "longPasses": null
+    },
+    {
+      "id": "statsbomb:player:4641:statsbomb:team:971",
+      "group": "AM",
+      "eligible": false,
+      "interceptions": null,
+      "longPasses": null
+    },
+    {
+      "id": "statsbomb:player:4642:statsbomb:team:971",
+      "group": "CB",
+      "eligible": true,
+      "interceptions": 1.118517183151182,
+      "longPasses": 15.752450329379146
+    },
+    {
+      "id": "statsbomb:player:46459:statsbomb:team:967",
+      "group": "ST",
+      "eligible": true,
+      "interceptions": null,
+      "longPasses": null
+    },
+    {
+      "id": "statsbomb:player:4649:statsbomb:team:746",
+      "group": "FB",
+      "eligible": true,
+      "interceptions": null,
+      "longPasses": null
+    },
+    {
+      "id": "statsbomb:player:4651:statsbomb:team:746",
+      "group": "FB",
+      "eligible": false,
+      "interceptions": null,
+      "longPasses": null
+    },
+    {
+      "id": "statsbomb:player:46533:statsbomb:team:749",
+      "group": "DM",
+      "eligible": false,
+      "interceptions": null,
+      "longPasses": null
+    },
+    {
+      "id": "statsbomb:player:4654:statsbomb:team:1475",
+      "group": "W",
+      "eligible": false,
+      "interceptions": null,
+      "longPasses": null
+    },
+    {
+      "id": "statsbomb:player:46541:statsbomb:team:2652",
+      "group": "FB",
+      "eligible": false,
+      "interceptions": null,
+      "longPasses": null
+    },
+    {
+      "id": "statsbomb:player:46541:statsbomb:team:749",
+      "group": "FB",
+      "eligible": false,
+      "interceptions": null,
+      "longPasses": null
+    },
+    {
+      "id": "statsbomb:player:4660:statsbomb:team:971",
+      "group": "DM",
+      "eligible": true,
+      "interceptions": null,
+      "longPasses": null
+    },
+    {
+      "id": "statsbomb:player:46635:statsbomb:team:972",
+      "group": "W",
+      "eligible": false,
+      "interceptions": null,
+      "longPasses": null
+    },
+    {
+      "id": "statsbomb:player:46641:statsbomb:team:967",
+      "group": "GK",
+      "eligible": false,
+      "interceptions": null,
+      "longPasses": null
+    },
+    {
+      "id": "statsbomb:player:46738:statsbomb:team:967",
+      "group": "W",
+      "eligible": false,
+      "interceptions": null,
+      "longPasses": null
+    },
+    {
+      "id": "statsbomb:player:46740:statsbomb:team:749",
+      "group": "W",
+      "eligible": false,
+      "interceptions": null,
+      "longPasses": null
+    },
+    {
+      "id": "statsbomb:player:46741:statsbomb:team:973",
+      "group": "CB",
+      "eligible": true,
+      "interceptions": 1.291580859778499,
+      "longPasses": 8.426027513793064
+    },
+    {
+      "id": "statsbomb:player:46742:statsbomb:team:973",
+      "group": "GK",
+      "eligible": false,
+      "interceptions": null,
+      "longPasses": null
+    },
+    {
+      "id": "statsbomb:player:46972:statsbomb:team:749",
+      "group": "CB",
+      "eligible": true,
+      "interceptions": 0.7023684241643117,
+      "longPasses": 7.789904340731456
+    },
+    {
+      "id": "statsbomb:player:46973:statsbomb:team:968",
+      "group": "FB",
+      "eligible": false,
+      "interceptions": null,
+      "longPasses": null
+    },
+    {
+      "id": "statsbomb:player:46974:statsbomb:team:966",
+      "group": "CM",
+      "eligible": true,
+      "interceptions": null,
+      "longPasses": null
+    },
+    {
+      "id": "statsbomb:player:46988:statsbomb:team:2652",
+      "group": "GK",
+      "eligible": true,
+      "interceptions": null,
+      "longPasses": null
+    },
+    {
+      "id": "statsbomb:player:47008:statsbomb:team:971",
+      "group": "DM",
+      "eligible": false,
+      "interceptions": null,
+      "longPasses": null
+    },
+    {
+      "id": "statsbomb:player:47521:statsbomb:team:968",
+      "group": "ST",
+      "eligible": true,
+      "interceptions": null,
+      "longPasses": null
+    },
+    {
+      "id": "statsbomb:player:4848:statsbomb:team:749",
+      "group": "FB",
+      "eligible": true,
+      "interceptions": null,
+      "longPasses": null
+    },
+    {
+      "id": "statsbomb:player:4865:statsbomb:team:2652",
+      "group": "CB",
+      "eligible": true,
+      "interceptions": 1.1826570847455933,
+      "longPasses": 7.095942508473559
+    },
+    {
+      "id": "statsbomb:player:4961:statsbomb:team:971",
+      "group": "ST",
+      "eligible": true,
+      "interceptions": null,
+      "longPasses": null
+    },
+    {
+      "id": "statsbomb:player:49697:statsbomb:team:968",
+      "group": "CB",
+      "eligible": true,
+      "interceptions": 1.1018913595946953,
+      "longPasses": 19.309334301468944
+    },
+    {
+      "id": "statsbomb:player:4979:statsbomb:team:972",
+      "group": "DM",
+      "eligible": false,
+      "interceptions": null,
+      "longPasses": null
+    },
+    {
+      "id": "statsbomb:player:4984:statsbomb:team:2647",
+      "group": "CB",
+      "eligible": false,
+      "interceptions": null,
+      "longPasses": null
+    },
+    {
+      "id": "statsbomb:player:49938:statsbomb:team:746",
+      "group": "CM",
+      "eligible": false,
+      "interceptions": null,
+      "longPasses": null
+    },
+    {
+      "id": "statsbomb:player:5000:statsbomb:team:968",
+      "group": "FB",
+      "eligible": false,
+      "interceptions": null,
+      "longPasses": null
+    },
+    {
+      "id": "statsbomb:player:50150:statsbomb:team:1475",
+      "group": "AM",
+      "eligible": false,
+      "interceptions": null,
+      "longPasses": null
+    },
+    {
+      "id": "statsbomb:player:50193:statsbomb:team:972",
+      "group": "FB",
+      "eligible": true,
+      "interceptions": null,
+      "longPasses": null
+    },
+    {
+      "id": "statsbomb:player:5058:statsbomb:team:2647",
+      "group": "ST",
+      "eligible": false,
+      "interceptions": null,
+      "longPasses": null
+    },
+    {
+      "id": "statsbomb:player:5074:statsbomb:team:749",
+      "group": "FB",
+      "eligible": false,
+      "interceptions": null,
+      "longPasses": null
+    },
+    {
+      "id": "statsbomb:player:5074:statsbomb:team:972",
+      "group": "CB",
+      "eligible": true,
+      "interceptions": 1.23052785481064,
+      "longPasses": 11.186616861914908
+    },
+    {
+      "id": "statsbomb:player:5078:statsbomb:team:746",
+      "group": "CB",
+      "eligible": true,
+      "interceptions": 0.7470187537926293,
+      "longPasses": 11.680656877484749
+    },
+    {
+      "id": "statsbomb:player:5102:statsbomb:team:968",
+      "group": "GK",
+      "eligible": false,
+      "interceptions": null,
+      "longPasses": null
+    },
+    {
+      "id": "statsbomb:player:53188:statsbomb:team:971",
+      "group": "ST",
+      "eligible": false,
+      "interceptions": null,
+      "longPasses": null
+    },
+    {
+      "id": "statsbomb:player:55069:statsbomb:team:966",
+      "group": "FB",
+      "eligible": false,
+      "interceptions": null,
+      "longPasses": null
+    },
+    {
+      "id": "statsbomb:player:61467:statsbomb:team:749",
+      "group": "ST",
+      "eligible": false,
+      "interceptions": null,
+      "longPasses": null
+    },
+    {
+      "id": "statsbomb:player:62666:statsbomb:team:746",
+      "group": "CM",
+      "eligible": true,
+      "interceptions": null,
+      "longPasses": null
+    },
+    {
+      "id": "statsbomb:player:62709:statsbomb:team:971",
+      "group": "DM",
+      "eligible": false,
+      "interceptions": null,
+      "longPasses": null
+    },
+    {
+      "id": "statsbomb:player:62710:statsbomb:team:971",
+      "group": "W",
+      "eligible": true,
+      "interceptions": null,
+      "longPasses": null
+    },
+    {
+      "id": "statsbomb:player:62713:statsbomb:team:971",
+      "group": "GK",
+      "eligible": true,
+      "interceptions": null,
+      "longPasses": null
+    },
+    {
+      "id": "statsbomb:player:62906:statsbomb:team:968",
+      "group": "W",
+      "eligible": true,
+      "interceptions": null,
+      "longPasses": null
+    },
+    {
+      "id": "statsbomb:player:62951:statsbomb:team:971",
+      "group": "CB",
+      "eligible": false,
+      "interceptions": null,
+      "longPasses": null
+    },
+    {
+      "id": "statsbomb:player:63308:statsbomb:team:967",
+      "group": "CB",
+      "eligible": false,
+      "interceptions": null,
+      "longPasses": null
+    },
+    {
+      "id": "statsbomb:player:63784:statsbomb:team:2652",
+      "group": "GK",
+      "eligible": true,
+      "interceptions": null,
+      "longPasses": null
+    },
+    {
+      "id": "statsbomb:player:63788:statsbomb:team:968",
+      "group": "DM",
+      "eligible": true,
+      "interceptions": null,
+      "longPasses": null
+    },
+    {
+      "id": "statsbomb:player:64240:statsbomb:team:973",
+      "group": "GK",
+      "eligible": true,
+      "interceptions": null,
+      "longPasses": null
+    },
+    {
+      "id": "statsbomb:player:77717:statsbomb:team:2647",
+      "group": "CM",
+      "eligible": false,
+      "interceptions": null,
+      "longPasses": null
+    },
+    {
+      "id": "statsbomb:player:78072:statsbomb:team:2647",
+      "group": "CB",
+      "eligible": false,
+      "interceptions": null,
+      "longPasses": null
+    },
+    {
+      "id": "statsbomb:player:81580:statsbomb:team:971",
+      "group": "W",
+      "eligible": false,
+      "interceptions": null,
+      "longPasses": null
+    },
+    {
+      "id": "statsbomb:player:8297:statsbomb:team:2647",
+      "group": "W",
+      "eligible": false,
+      "interceptions": null,
+      "longPasses": null
+    },
+    {
+      "id": "statsbomb:player:84765:statsbomb:team:973",
+      "group": "DM",
+      "eligible": false,
+      "interceptions": null,
+      "longPasses": null
+    },
+    {
+      "id": "statsbomb:player:84901:statsbomb:team:971",
+      "group": "ST",
+      "eligible": false,
+      "interceptions": null,
+      "longPasses": null
+    },
+    {
+      "id": "statsbomb:player:85004:statsbomb:team:965",
+      "group": "DM",
+      "eligible": true,
+      "interceptions": null,
+      "longPasses": null
+    },
+    {
+      "id": "statsbomb:player:87188:statsbomb:team:965",
+      "group": "DM",
+      "eligible": false,
+      "interceptions": null,
+      "longPasses": null
+    },
+    {
+      "id": "statsbomb:player:87191:statsbomb:team:967",
+      "group": "W",
+      "eligible": false,
+      "interceptions": null,
+      "longPasses": null
+    },
+    {
+      "id": "statsbomb:player:87194:statsbomb:team:749",
+      "group": "W",
+      "eligible": true,
+      "interceptions": null,
+      "longPasses": null
+    },
+    {
+      "id": "statsbomb:player:92248:statsbomb:team:746",
+      "group": "GK",
+      "eligible": true,
+      "interceptions": null,
+      "longPasses": null
+    }
+  ],
+  "target": {
+    "id": "statsbomb:player:10088:statsbomb:team:967",
+    "name": "Katrine Veje",
+    "team": "Everton LFC",
+    "minutes": 973.4631833333333,
+    "profile": {
+      "passes_attempted": 62.03624444553981,
+      "long_passes": 7.950994072006592,
+      "carries": 50.84938069306542,
+      "carry_displacement": 325.08347236565606,
+      "shots": 0.27736025832581135,
+      "nonpenalty_xg": 0.007143995817270337,
+      "pressures": 8.228354330332404,
+      "interceptions": 1.1094410333032454,
+      "tackles": 1.1094410333032454,
+      "recoveries": 6.74909961926141,
+      "final_third_actions": 17.566149693968054,
+      "box_actions": 1.2018944527451827
+    }
+  },
+  "peers": [
+    {
+      "id": "statsbomb:player:4865:statsbomb:team:2652",
+      "name": "Josie Green",
+      "distance": 2.435536769525622,
+      "similarity": 29.107533031529154,
+      "similarityRank": 1
+    },
+    {
+      "id": "statsbomb:player:19422:statsbomb:team:971",
+      "name": "Jessica Carter",
+      "distance": 2.9634580301081166,
+      "similarity": 25.230492978696223,
+      "similarityRank": 2
+    },
+    {
+      "id": "statsbomb:player:10395:statsbomb:team:971",
+      "name": "Maren Nævdal Mjelde",
+      "distance": 3.1276754828068807,
+      "similarity": 24.22671075197959,
+      "similarityRank": 3
+    },
+    {
+      "id": "statsbomb:player:32694:statsbomb:team:968",
+      "name": "Laia Codina Panedas",
+      "distance": 3.857637085045587,
+      "similarity": 20.586140596598632,
+      "similarityRank": 4
+    },
+    {
+      "id": "statsbomb:player:5074:statsbomb:team:972",
+      "name": "Shelina Laura Zadorsky",
+      "distance": 4.03193326369689,
+      "similarity": 19.8730775547948,
+      "similarityRank": 5
+    },
+    {
+      "id": "statsbomb:player:22337:statsbomb:team:1475",
+      "name": "Maya Le Tissier",
+      "distance": 4.465281105449831,
+      "similarity": 18.29732049835144,
+      "similarityRank": 6
+    },
+    {
+      "id": "statsbomb:player:30856:statsbomb:team:2652",
+      "name": "Julie Thibaud",
+      "distance": 4.465792539940786,
+      "similarity": 18.29560841712506,
+      "similarityRank": 7
+    },
+    {
+      "id": "statsbomb:player:276304:statsbomb:team:965",
+      "name": "Guro Bergsvand",
+      "distance": 4.533035551694284,
+      "similarity": 18.073261786539355,
+      "similarityRank": 8
+    },
+    {
+      "id": "statsbomb:player:34232:statsbomb:team:966",
+      "name": "Grace Fisk",
+      "distance": 4.5590859515183615,
+      "similarity": 17.988568781291615,
+      "similarityRank": 9
+    },
+    {
+      "id": "statsbomb:player:26093:statsbomb:team:971",
+      "name": "Gun Nathalie Björn",
+      "distance": 4.643917270691469,
+      "similarity": 17.718190257552873,
+      "similarityRank": 10
+    },
+    {
+      "id": "statsbomb:player:46972:statsbomb:team:749",
+      "name": "Luana Bühler",
+      "distance": 4.759974488350996,
+      "similarity": 17.361188005648383,
+      "similarityRank": 11
+    },
+    {
+      "id": "statsbomb:player:224149:statsbomb:team:967",
+      "name": "Elise Isolde Stenevik",
+      "distance": 4.895974073601101,
+      "similarity": 16.960725870173768,
+      "similarityRank": 12
+    },
+    {
+      "id": "statsbomb:player:5078:statsbomb:team:746",
+      "name": "Alanna Stephanie Kennedy",
+      "distance": 5.101437159668012,
+      "similarity": 16.38958123850302,
+      "similarityRank": 13
+    },
+    {
+      "id": "statsbomb:player:15357:statsbomb:team:971",
+      "name": "Kadeisha Buchanan",
+      "distance": 5.266548705142585,
+      "similarity": 15.957747191518024,
+      "similarityRank": 14
+    },
+    {
+      "id": "statsbomb:player:32074:statsbomb:team:966",
+      "name": "Jenna Clark",
+      "distance": 5.305701038213597,
+      "similarity": 15.858664943672936,
+      "similarityRank": 15
+    },
+    {
+      "id": "statsbomb:player:23413:statsbomb:team:973",
+      "name": "Megan Connolly",
+      "distance": 5.3552030363025915,
+      "similarity": 15.735138504430731,
+      "similarityRank": 16
+    },
+    {
+      "id": "statsbomb:player:326618:statsbomb:team:973",
+      "name": "Chloe Mustaki",
+      "distance": 5.411431620575355,
+      "similarity": 15.597140532402046,
+      "similarityRank": 17
+    },
+    {
+      "id": "statsbomb:player:19777:statsbomb:team:966",
+      "name": "Niamh Fahey",
+      "distance": 5.437512467370876,
+      "similarity": 15.533950498249004,
+      "similarityRank": 18
+    },
+    {
+      "id": "statsbomb:player:388473:statsbomb:team:965",
+      "name": "Jorelyn Andrea Daniela Carabalí Martínez",
+      "distance": 5.4528010650169385,
+      "similarity": 15.49714596691003,
+      "similarityRank": 19
+    },
+    {
+      "id": "statsbomb:player:21021:statsbomb:team:749",
+      "name": "Molly Bartrip",
+      "distance": 5.474824034579221,
+      "similarity": 15.444435163943215,
+      "similarityRank": 20
+    },
+    {
+      "id": "statsbomb:player:31533:statsbomb:team:749",
+      "name": "Amy Turner",
+      "distance": 5.564314524284384,
+      "similarity": 15.23388308559173,
+      "similarityRank": 21
+    },
+    {
+      "id": "statsbomb:player:18999:statsbomb:team:968",
+      "name": "Leah Williamson",
+      "distance": 5.872362564123492,
+      "similarity": 14.551036716549326,
+      "similarityRank": 22
+    },
+    {
+      "id": "statsbomb:player:49697:statsbomb:team:968",
+      "name": "Carlotte Wubben-Moy",
+      "distance": 5.962882335569628,
+      "similarity": 14.361868430427682,
+      "similarityRank": 23
+    },
+    {
+      "id": "statsbomb:player:26092:statsbomb:team:968",
+      "name": "Amanda Ilestedt",
+      "distance": 6.212648214544842,
+      "similarity": 13.864533112587212,
+      "similarityRank": 24
+    },
+    {
+      "id": "statsbomb:player:337710:statsbomb:team:973",
+      "name": "Cecilie Maag Struck",
+      "distance": 6.248364245735709,
+      "similarity": 13.796216168196995,
+      "similarityRank": 25
+    },
+    {
+      "id": "statsbomb:player:18254:statsbomb:team:967",
+      "name": "Megan Finnigan",
+      "distance": 6.2782814610305095,
+      "similarity": 13.739507126156303,
+      "similarityRank": 26
+    },
+    {
+      "id": "statsbomb:player:15554:statsbomb:team:966",
+      "name": "Gemma Bonner",
+      "distance": 6.29429616541935,
+      "similarity": 13.709341892926963,
+      "similarityRank": 27
+    },
+    {
+      "id": "statsbomb:player:4642:statsbomb:team:971",
+      "name": "Millie Bright",
+      "distance": 6.393338411880341,
+      "similarity": 13.525689536855257,
+      "similarityRank": 28
+    },
+    {
+      "id": "statsbomb:player:31536:statsbomb:team:1475",
+      "name": "Millie Turner",
+      "distance": 6.432593992605451,
+      "similarity": 13.454252996933256,
+      "similarityRank": 29
+    },
+    {
+      "id": "statsbomb:player:46741:statsbomb:team:973",
+      "name": "Naomi Layzell",
+      "distance": 6.807556439180663,
+      "similarity": 12.808104658478031,
+      "similarityRank": 30
+    },
+    {
+      "id": "statsbomb:player:185545:statsbomb:team:973",
+      "name": "Brooke Aspin",
+      "distance": 7.6647654118682,
+      "similarity": 11.540993350267648,
+      "similarityRank": 31
+    }
+  ],
+  "candidates": [
+    {
+      "id": "statsbomb:player:4865:statsbomb:team:2652",
+      "name": "Josie Green",
+      "distance": 2.435536769525622,
+      "similarity": 29.107533031529154,
+      "similarityRank": 1,
+      "team": "Leicester City WFC",
+      "rank": 10,
+      "score": 57.291666666666664,
+      "minutes": 1065.3975833333332,
+      "components": {
+        "interceptions": {
+          "contribution": 32.03125,
+          "coverage": 1.0,
+          "direction": "higher",
+          "normalized_weight": 0.5,
+          "percentile": 64.0625,
+          "unit": "per90",
+          "value": 1.1826570847455933
+        },
+        "long_passes": {
+          "contribution": 2.864583333333333,
+          "coverage": 1.0,
+          "direction": "higher",
+          "normalized_weight": 0.16666666666666666,
+          "percentile": 17.1875,
+          "unit": "per90",
+          "value": 7.095942508473559
+        },
+        "tackles": {
+          "contribution": 22.395833333333332,
+          "coverage": 1.0,
+          "direction": "higher",
+          "normalized_weight": 0.3333333333333333,
+          "percentile": 67.1875,
+          "unit": "per90",
+          "value": 1.6050346150118766
+        }
+      },
+      "profile": {
+        "passes_attempted": 52.205862740912615,
+        "long_passes": 7.095942508473559,
+        "carries": 40.29481638740343,
+        "carry_displacement": 286.50891931368847,
+        "shots": 0.1689510121065133,
+        "nonpenalty_xg": 0.008110676648021307,
+        "pressures": 12.671325907988498,
+        "interceptions": 1.1826570847455933,
+        "tackles": 1.6050346150118766,
+        "recoveries": 6.08223643583448,
+        "final_third_actions": 12.333423883775472,
+        "box_actions": 1.2671325907988498
+      }
+    },
+    {
+      "id": "statsbomb:player:15357:statsbomb:team:971",
+      "name": "Kadeisha Buchanan",
+      "distance": 5.266548705142585,
+      "similarity": 15.957747191518024,
+      "similarityRank": 14,
+      "team": "Chelsea FCW",
+      "rank": 1,
+      "score": 91.66666666666667,
+      "minutes": 502.4921166666667,
+      "components": {
+        "interceptions": {
+          "contribution": 49.21875,
+          "coverage": 1.0,
+          "direction": "higher",
+          "normalized_weight": 0.5,
+          "percentile": 98.4375,
+          "unit": "per90",
+          "value": 1.9701801623620827
+        },
+        "long_passes": {
+          "contribution": 9.635416666666666,
+          "coverage": 1.0,
+          "direction": "higher",
+          "normalized_weight": 0.16666666666666666,
+          "percentile": 57.8125,
+          "unit": "per90",
+          "value": 9.313578949348027
+        },
+        "tackles": {
+          "contribution": 32.8125,
+          "coverage": 1.0,
+          "direction": "higher",
+          "normalized_weight": 0.3333333333333333,
+          "percentile": 98.4375,
+          "unit": "per90",
+          "value": 3.223931174774317
+        }
+      },
+      "profile": {
+        "passes_attempted": 66.0905890828735,
+        "long_passes": 9.313578949348027,
+        "carries": 51.941113371364004,
+        "carry_displacement": 276.76909768611233,
+        "shots": 0.35821457497492415,
+        "nonpenalty_xg": 0.03661138511393562,
+        "pressures": 10.209115386785339,
+        "interceptions": 1.9701801623620827,
+        "tackles": 3.223931174774317,
+        "recoveries": 5.731433199598786,
+        "final_third_actions": 8.955364374373104,
+        "box_actions": 3.044823887286855
+      }
+    },
+    {
+      "id": "statsbomb:player:30856:statsbomb:team:2652",
+      "name": "Julie Thibaud",
+      "distance": 4.465792539940786,
+      "similarity": 18.29560841712506,
+      "similarityRank": 7,
+      "team": "Leicester City WFC",
+      "rank": 2,
+      "score": 87.5,
+      "minutes": 1701.6582166666667,
+      "components": {
+        "interceptions": {
+          "contribution": 47.65625,
+          "coverage": 1.0,
+          "direction": "higher",
+          "normalized_weight": 0.5,
+          "percentile": 95.3125,
+          "unit": "per90",
+          "value": 1.851135538939454
+        },
+        "long_passes": {
+          "contribution": 11.197916666666666,
+          "coverage": 1.0,
+          "direction": "higher",
+          "normalized_weight": 0.16666666666666666,
+          "percentile": 67.1875,
+          "unit": "per90",
+          "value": 11.053923646809881
+        },
+        "tackles": {
+          "contribution": 28.645833333333332,
+          "coverage": 1.0,
+          "direction": "higher",
+          "normalized_weight": 0.3333333333333333,
+          "percentile": 85.9375,
+          "unit": "per90",
+          "value": 2.06269388624682
+        }
+      },
+      "profile": {
+        "passes_attempted": 55.26961823404941,
+        "long_passes": 11.053923646809881,
+        "carries": 42.10011111416586,
+        "carry_displacement": 246.81764903274845,
+        "shots": 0.2644479341342077,
+        "nonpenalty_xg": 0.03134357191568032,
+        "pressures": 15.549538527091412,
+        "interceptions": 1.851135538939454,
+        "tackles": 2.06269388624682,
+        "recoveries": 5.976523311433094,
+        "final_third_actions": 8.356554718640963,
+        "box_actions": 0.9520125628831477
+      }
+    },
+    {
+      "id": "statsbomb:player:46741:statsbomb:team:973",
+      "name": "Naomi Layzell",
+      "distance": 6.807556439180663,
+      "similarity": 12.808104658478031,
+      "similarityRank": 30,
+      "team": "Bristol City WFC",
+      "rank": 3,
+      "score": 78.64583333333333,
+      "minutes": 1463.3230166666665,
+      "components": {
+        "interceptions": {
+          "contribution": 39.84375,
+          "coverage": 1.0,
+          "direction": "higher",
+          "normalized_weight": 0.5,
+          "percentile": 79.6875,
+          "unit": "per90",
+          "value": 1.291580859778499
+        },
+        "long_passes": {
+          "contribution": 7.03125,
+          "coverage": 1.0,
+          "direction": "higher",
+          "normalized_weight": 0.16666666666666666,
+          "percentile": 42.1875,
+          "unit": "per90",
+          "value": 8.426027513793064
+        },
+        "tackles": {
+          "contribution": 31.770833333333332,
+          "coverage": 1.0,
+          "direction": "higher",
+          "normalized_weight": 0.3333333333333333,
+          "percentile": 95.3125,
+          "unit": "per90",
+          "value": 2.644665570022641
+        }
+      },
+      "profile": {
+        "passes_attempted": 32.228017643996836,
+        "long_passes": 8.426027513793064,
+        "carries": 18.697170541555415,
+        "carry_displacement": 114.95040924907705,
+        "shots": 0.4920308037251425,
+        "nonpenalty_xg": 0.03481812757654863,
+        "pressures": 17.344085831311272,
+        "interceptions": 1.291580859778499,
+        "tackles": 2.644665570022641,
+        "recoveries": 3.259704074679069,
+        "final_third_actions": 7.564973607274066,
+        "box_actions": 1.7836116635036416
+      }
+    },
+    {
+      "id": "statsbomb:player:19777:statsbomb:team:966",
+      "name": "Niamh Fahey",
+      "distance": 5.437512467370876,
+      "similarity": 15.533950498249004,
+      "similarityRank": 18,
+      "team": "Liverpool WFC",
+      "rank": 5,
+      "score": 76.04166666666667,
+      "minutes": 597.6934,
+      "components": {
+        "interceptions": {
+          "contribution": 41.40625,
+          "coverage": 1.0,
+          "direction": "higher",
+          "normalized_weight": 0.5,
+          "percentile": 82.8125,
+          "unit": "per90",
+          "value": 1.3552098785096172
+        },
+        "long_passes": {
+          "contribution": 8.072916666666666,
+          "coverage": 1.0,
+          "direction": "higher",
+          "normalized_weight": 0.16666666666666666,
+          "percentile": 48.4375,
+          "unit": "per90",
+          "value": 8.582995897227574
+        },
+        "tackles": {
+          "contribution": 26.5625,
+          "coverage": 1.0,
+          "direction": "higher",
+          "normalized_weight": 0.3333333333333333,
+          "percentile": 79.6875,
+          "unit": "per90",
+          "value": 1.957525380069447
+        }
+      },
+      "profile": {
+        "passes_attempted": 46.378293620106895,
+        "long_passes": 8.582995897227574,
+        "carries": 33.2779314611806,
+        "carry_displacement": 174.58972294621876,
+        "shots": 0.45173662616987237,
+        "nonpenalty_xg": 0.02924671436893899,
+        "pressures": 14.003835411266044,
+        "interceptions": 1.3552098785096172,
+        "tackles": 1.957525380069447,
+        "recoveries": 3.915050760138894,
+        "final_third_actions": 3.4633141339690217,
+        "box_actions": 2.4092620062393193
+      }
+    }
+  ],
+  "brief": {
+    "name": "CB defensive activity",
+    "weights": { "interceptions": 3.0, "long_passes": 1.0, "tackles": 2.0 },
+    "normalizedWeights": {
+      "interceptions": 0.5,
+      "long_passes": 0.16666666666666666,
+      "tackles": 0.3333333333333333
+    }
+  },
+  "featureNames": [
+    "passes_attempted",
+    "long_passes",
+    "carries",
+    "carry_displacement",
+    "shots",
+    "nonpenalty_xg",
+    "pressures",
+    "interceptions",
+    "tackles",
+    "recoveries",
+    "final_third_actions",
+    "box_actions"
+  ]
+}

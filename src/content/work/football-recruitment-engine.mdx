@@ -1,0 +1,87 @@
+---
+title: 'Football Recruitment Intelligence Engine'
+summary: 'A reproducible decision-support system for profiling players, finding comparable peers, and ranking candidates against an explicit recruitment brief.'
+date: 2026-10-01
+year: 2026
+status: 'V1 finalized'
+role: 'Independent engineering and analytical product development'
+stack: [Python, FastAPI, Pydantic, pytest, uv, Ruff]
+domains: [ML Systems, Football Analytics, Data]
+tags: [Reproducibility, Decision support]
+featured: true
+cover: /images/recruitment-interface-empty.webp
+github: https://github.com/HyzenTech/football-recruitment-intelligence-engine
+writing: football-recruitment-intelligence-engine
+---
+
+import Technical from '../../components/Technical.astro';
+
+## What is this?
+
+A recruitment tool should help someone ask a better question about a player. This system turns a pinned season of event data into player profiles, comparable peers, and explainable rankings. It keeps the source, assumptions, and limitations next to the result.
+
+The finished V1 is a local analytical product with a FastAPI interface. The screenshot shows the actual interface before selecting a query. The interactive example on this portfolio teaches the scoring arithmetic; it is not connected to the player database.
+
+## The problem
+
+A player can resemble someone you already know and still be a poor match for your recruitment brief. Similarity asks, “Who has a comparable statistical profile?” Ranking asks, “Who meets these priorities?” Combining those questions without explaining the difference can make an attractive shortlist misleading.
+
+## My role
+
+I developed the analytical pipeline, API, interface, validation, and reproducible release. The goal was an inspectable baseline that could be reviewed before adding predictive features.
+
+## Approach
+
+Start with events, build player–team–season profiles, establish eligible same-position peers, and then separate similarity from recruitment ranking. A result includes its evidence and contribution breakdown rather than an unexplained overall score.
+
+## Architecture
+
+![Source data passes through validation, profiles and query services to the local interface.](/images/recruitment-architecture.svg)
+
+The Python pipeline creates a reproducible analytical snapshot. FastAPI and Pydantic expose validated queries to the interface. Source versions and artifact hashes support provenance.
+
+<Technical title="Technical decisions: peers, similarity, and ranking">
+Similarity uses candidate-only standardized Euclidean distance. Zero-variance dimensions are omitted. The displayed index is 100 / (1 + distance); it is not a probability. A query excludes the same player's other team spells.
+
+Ranking uses weighted percentiles from a common, complete reference population. Candidate filters apply after establishing that reference. This distinction prevents a UI filter from silently changing the meaning of a percentile.
+
+</Technical>
+
+## Data
+
+The pinned StatsBomb WSL 2023/24 snapshot contains 132 matches and 495,189 events. Processing yields 303 player–team–season profiles, representing 295 players. Of those profiles, 139 meet basic eligibility.
+
+These are counts from the released pipeline, not population-wide claims. The project implements 41 metrics and eight presets.
+
+<Technical title="Eligibility and missing evidence">
+  The baseline requires 450 minutes, 60% dominant positional exposure, and at
+  least ten complete peers for the applicable comparison. Some AM and CM groups
+  have too few peers, so the system suppresses unsupported comparisons.
+  Goalkeeper coverage is distribution only.
+</Technical>
+
+## Implementation and results
+
+V1 was frozen with 220 tests; six later export checks bring the source validation total to 226. Two clean builds checked reproducibility. Twenty perturbations examined stability: striker similarity was available in 202 of 280 checks, and striker ranking in 18 of 20.
+
+These checks establish software behavior and evidence boundaries. They do not establish scouting accuracy or predictive performance.
+
+## Limitations
+
+One centre-back qualitative review, CASE-03, remains limited. Its sample contains 30 observations, with unknown continuous viewing duration. Expert/scout validation and predictive validation have not been performed.
+
+Age, price, contract, injury, availability, team context, and league adjustments are absent. A shortlist still needs football judgment and additional evidence. The code's MIT license does not replace provider data rights.
+
+## What I learned
+
+A complete pipeline is only useful if the meaning of its outputs survives filtering, missing peers, and reproduction. Clear suppression is a better product behavior than returning a confident-looking number without enough evidence.
+
+## What's next
+
+The released baseline remains frozen. Future work should begin with independent review and validation, not extra scoring complexity. Read the [engineering story](/writing/football-recruitment-intelligence-engine/).
+
+## Repository and release
+
+[Source and V1 release](https://github.com/HyzenTech/football-recruitment-intelligence-engine) include reproduction instructions and validation boundaries. A hosted player-data demo is not currently published.
+
+[StatsBomb Open Data source pinned for V1](https://github.com/hudl/open-data/tree/4b73468fc5b0f1950f9f66fada70ad3a4f9327cb).

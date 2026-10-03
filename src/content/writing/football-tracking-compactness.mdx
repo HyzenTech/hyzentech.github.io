@@ -1,0 +1,117 @@
+---
+title: 'What changed in eleven seconds of defensive shape?'
+summary: 'A descriptive tracking-data study of one Metrica sequence: team shape, ball distance, and the limits of a single passage.'
+date: 2026-09-25
+category: 'Football Analytics'
+tags: [Tracking Data, Metrica, Reproducibility]
+featured: true
+draft: false
+
+updated: 2026-10-03
+status: Published
+authors: [Muhammad Hafiz]
+cover: /previews/football-tracking-compactness.svg
+story:
+  type: scrolly
+  id: football-tracking-compactness
+  estimatedReadTime: 5
+  chapters:
+    - positions
+    - shape
+    - disruption
+    - compactness
+    - gap
+    - interpretation
+sources:
+  - label: Analysis repository / pinned 596501b
+    url: https://github.com/HyzenTech/football-tracking-compactness-analysis/tree/596501b7fcda1c082bf1a0e0bff181c9ea7b9cb0
+  - label: Metrica source / pinned e706dd5
+    url: https://github.com/metrica-sports/sample-data/tree/e706dd506b360d69d9d123d5b8026e7294b13996
+---
+
+import Step from '../../components/writing/ArticleStep.astro';
+import Technical from '../../components/writing/TechnicalDetail.astro';
+
+<Step story="football-tracking-compactness" id="positions">
+
+Start with **one observed passage**, not a team-wide judgement: 298.88–310.12 seconds in period one of Metrica Sample Game 1.
+
+Each marker is a real Home outfield position. The ball and anonymized player identifiers stay traceable to the pinned source.
+
+<Technical title="Coordinates and eligibility">
+
+A 105 × 68 m pitch converts normalized x and flipped y coordinates into metres. Only the Home half is shown for legibility. Player11 is excluded as goalkeeper by minimum distance of median x to the defended goal. There are 257 valid analysis frames after ball-coordinate exclusions.
+
+</Technical>
+
+</Step>
+
+<Step story="football-tracking-compactness" id="shape">
+
+Connect the outside players and mark the mean position. The team now has a visible **boundary and centre**.
+
+Width is the range of y positions; length is the range of x positions. The convex hull shows spatial context, while these two axis ranges measure spread.
+
+<Technical title="Definitions">
+
+Centroid is the arithmetic mean of valid outfield positions. Width=max(y)-min(y), length=max(x)-min(x). The initial centroid is (24.311, 44.604) m, width 30.861 m, length 25.481 m. Hull area is not used as the article’s compactness metric.
+
+</Technical>
+
+</Step>
+
+<Step story="football-tracking-compactness" id="disruption">
+
+At **303.08 seconds**, the distance between the Home centroid and the ball reaches **22.007 metres**.
+
+The same player markers move to the next observed snapshot. The measurement adds context to shape; it does not explain why the team moved.
+
+<Technical title="Observed snapshots, not reconstructed motion">
+
+The animation connects real sampled positions for explanation. It is not a replay of every tracking frame or a measured interpolated trajectory. Distance is Euclidean between the outfield centroid and ball.
+
+</Technical>
+
+</Step>
+
+<Step story="football-tracking-compactness" id="compactness">
+
+By 310.12 seconds, Home width falls from **30.861 to 24.900 metres**. Length changes from 25.481 to 24.180 metres.
+
+The centroid moves **5.073 metres** overall, including 3.876 metres toward the defended goal. A smaller spread describes the shape; it does not prove successful defending.
+
+<Technical title="Endpoint and extrema">
+
+Final centroid=(20.435, 41.330) m; centroid-to-ball distance=6.594 m versus 4.853 initially. Width peaks at 33.802 m at 307.08; length reaches 21.660 m at 303.36. The source summary and derived metric CSV supply these values.
+
+</Technical>
+
+</Step>
+
+<Step story="football-tracking-compactness" id="gap">
+
+Between the observed frames at **307.92 and 308.96 seconds**, ball positions are missing. The trace breaks; it does not draw an invented path across the gap.
+
+The event record identifies **Away recovery at 308.96**, correcting the legacy article’s Home-regain wording. An event label and a tracked position are different kinds of evidence.
+
+<Technical title="Source correction and missing data">
+
+The synchronized source summary identifies the 308.96 event as Away / RECOVERY / Player21. Missing-ball frames are excluded from the analysis, leaving 257 valid frames. The 1.04-second interval is shown even though a chart could conceal it.
+
+</Technical>
+
+</Step>
+
+<Step story="football-tracking-compactness" id="interpretation">
+
+The passage ends with an **Away off-target shot** at 310.12 seconds. Keep that event timeline beside the spatial measurements.
+
+This is a descriptive study of one sequence. It cannot establish causation, coaching intent, or a general defensive-quality rating.
+
+<Technical title="Reproducibility">
+
+Metrica input is pinned at e706dd506b360d69d9d123d5b8026e7294b13996; analysis is pinned at 596501b7fcda1c082bf1a0e0bff181c9ea7b9cb0. The Home source SHA-256 was verified and the endpoint centroid/width values replayed. Only selected derived snapshots and a metric trace are included; raw tracking CSVs are not served.
+
+</Technical>
+
+</Step>

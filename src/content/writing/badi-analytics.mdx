@@ -1,0 +1,120 @@
+---
+title: 'Building BADI across machine learning, mobile, and cloud'
+summary: 'What a Bangkit team prototype taught me about turning small-business data into an understandable application.'
+date: 2022-07-20
+category: 'ML / AI'
+tags: [Bangkit, Forecasting, Team engineering]
+featured: false
+draft: false
+work: badi
+
+updated: 2026-10-03
+status: Published
+authors: [Muhammad Hafiz]
+cover: /previews/badi-analytics.svg
+story:
+  type: scrolly
+  id: badi-analytics
+  estimatedReadTime: 5
+  chapters:
+    - records
+    - window
+    - forecast
+    - insights
+    - contract
+    - evidence
+sources:
+  - label: ML source / pinned 9e0c419
+    url: https://github.com/BADI-C22-PS174/C22-PS174-Machine-Learning/tree/9e0c419259badb07f1bb5d36f43e88f54ac9d834
+  - label: Flask source / pinned 863c1c3
+    url: https://github.com/BADI-C22-PS174/Flask-ML/tree/863c1c3cd491cb0a187df054a64a7804f645f498
+  - label: Android source
+    url: https://github.com/BADI-C22-PS174/C22-PS174-Mobile-Development
+---
+
+import Step from '../../components/writing/ArticleStep.astro';
+import Technical from '../../components/writing/TechnicalDetail.astro';
+
+<Step story="badi-analytics" id="records">
+
+BADI began with a product question: how could a small-business owner understand records without working directly with model code?
+
+The repository provides a **monthly item-sales example**. Its observed values show why a sequence matters. They are not verified customer income or a forecast of future business performance.
+
+<Technical title="Data provenance">
+
+The ML repository contains 334 monthly observations in sales_forcasting.csv. This story exports only the last 36 values. The column is item_sold; units must not be relabelled as revenue. The legacy write-up’s 7–30 day horizon is not the monthly horizon used in this example implementation.
+
+</Technical>
+
+</Step>
+
+<Step story="badi-analytics" id="window">
+
+The forecasting code forms a **12-step window**, fits scaling on training observations, and keeps an **18-step tail** for evaluation.
+
+Preparation gives the model a defined input. It also defines what an evaluation could mean; a chart alone does not establish out-of-sample accuracy.
+
+<Technical title="Preprocessing and split">
+
+The script uses MinMaxScaler.fit(train), transforms train and test separately, and TimeseriesGenerator(length=12, batch_size=1). The last 18 observations form the held-out segment. An aggregate accuracy claim is absent from the inspected source evidence.
+
+</Technical>
+
+</Step>
+
+<Step story="badi-analytics" id="forecast">
+
+An **LSTM with 64 units** produces one value through Dense(1). During rollout, the predicted value enters the next input window.
+
+The script repeats that process for **12 monthly steps**. The feedback loop explains the implementation; no prediction values are plotted because no saved output series was verified.
+
+<Technical title="Training and exports">
+
+The code compiles Adam with MSE, uses early stopping, trains an initial model, then refits on the full series. It exports H5 and TFLite artifacts. Repository files establish an implementation, not current runtime performance or generalization to new businesses.
+
+</Technical>
+
+</Step>
+
+<Step story="badi-analytics" id="insights">
+
+Not every business question is a forecast. A second analysis groups **9,465 example baskets** and explores frequent items and associations.
+
+Coffee and Bread appear together in **852 baskets**. Those counts describe the repository dataset. Co-occurrence alone does not establish why people buy them together.
+
+<Technical title="Association analysis">
+
+Bakery.csv has 20,507 item rows. Basket sets are grouped by TransactionNo and duplicate items within a basket removed. The source uses Apriori with minimum support 0.02 and association rules with lift threshold 1. The story’s co-occurrence count is a direct aggregation, not a claimed learned recommendation or forecast.
+
+</Technical>
+
+</Step>
+
+<Step story="badi-analytics" id="contract">
+
+I led machine learning work alongside Android and cloud teammates. That meant agreeing on how analytical results crossed a **service boundary**.
+
+The inspected Flask route calculates forecasts, but returns the original dataframe records. The visual keeps calculation and response separate: implemented model logic does not guarantee a complete API contract.
+
+<Technical title="What the source actually returns">
+
+Flask-ML app.py defines /db and /prediction/&lt;string:filee&gt;. The prediction method creates forecast_df, then returns df.to_json(orient=records). The monthly example horizon is 12, unlike the legacy 7–30 day description. These differences are preserved as source findings; no current working prediction endpoint is claimed.
+
+</Technical>
+
+</Step>
+
+<Step story="badi-analytics" id="evidence">
+
+The team completed the prototype and presented it at **Bangkit graduation in 2022**. It remains earlier work, with source code and integration lessons worth preserving.
+
+A functional prototype is one kind of evidence. Verified adoption, customer impact, and a reproducible forecasting benchmark would require separate evidence.
+
+<Technical title="My role and outcome">
+
+The original portfolio records machine learning leadership, data preparation, predictive work, and collaboration with Android and Cloud Computing. The sources do not provide verified users, revenue improvement, production monitoring, or an externally validated model-performance table.
+
+</Technical>
+
+</Step>

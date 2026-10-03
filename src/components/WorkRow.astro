@@ -1,0 +1,37 @@
+---
+import type { CollectionEntry } from 'astro:content';
+interface Props {
+  entry: CollectionEntry<'work'>;
+}
+const { entry } = Astro.props;
+const { title, summary, domains, stack, status, year } = entry.data;
+---
+
+<article class="work-row" data-filter-item data-domains={domains.join('|')}>
+  <div class="work-year">
+    {year}
+    <span>{status}</span>
+  </div>
+  <div>
+    <p class="eyebrow">{domains.join(' · ')}</p>
+    <h2>
+      <a href={`/work/${entry.id}/`}>{title}</a>
+    </h2>
+    <p>{summary}</p>
+    <ul class="tag-list" aria-label="Technologies">
+      {stack.map((item) => (
+        <li>{item}</li>
+      ))}
+    </ul>
+    <div class="project-links">
+      {entry.data.github && <a href={entry.data.github}>Repository ↗</a>}
+      {entry.data.paper && <a href={entry.data.paper}>Publication ↗</a>}
+      {entry.data.writing && (
+        <a href={'/writing/' + entry.data.writing + '/'}>Writing →</a>
+      )}
+    </div>
+  </div>
+  <a class="row-arrow" href={`/work/${entry.id}/`} aria-label={`Read ${title}`}>
+    <span aria-hidden="true">↗</span>
+  </a>
+</article>

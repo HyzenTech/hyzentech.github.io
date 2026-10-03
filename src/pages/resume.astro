@@ -1,0 +1,44 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+const pdf = '/resume/Muhammad_Hafiz_CV_AI_Engineer.pdf';
+---
+
+<BaseLayout title="Resume">
+  <div class="container resume-page">
+    <header class="page-head">
+      <p class="eyebrow">Muhammad Hafiz</p>
+      <h1>Resume</h1>
+      <p>AI engineering, machine learning, and research experience.</p>
+      <div class="hero-cta">
+        <a class="pill-button" href={pdf} target="_blank" rel="noopener">
+          View Resume ↗
+        </a>
+        <a
+          class="pill-button secondary"
+          href={pdf}
+          download="Muhammad_Hafiz_CV_AI_Engineer.pdf"
+        >
+          Download PDF ↓
+        </a>
+      </div>
+    </header>
+    <a
+      href={pdf}
+      target="_blank"
+      rel="noopener"
+      class="resume-preview"
+      aria-label="Open the full resume PDF"
+    >
+      <img
+        src="/resume/resume-preview.webp"
+        alt="Preview of Muhammad Hafiz's supplied AI Engineer resume"
+        width="1191"
+        height="1684"
+      />
+    </a>
+    <p class="surface-caption">
+      Preview of the supplied resume. Open or download the PDF for the full-size
+      document.
+    </p>
+  </div>
+</BaseLayout>

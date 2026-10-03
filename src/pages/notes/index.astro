@@ -1,0 +1,41 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { getCollection } from 'astro:content';
+import { dateLabel } from '../../lib/content';
+const entries = (await getCollection('notes')).sort(
+  (a, b) => b.data.date.getTime() - a.data.date.getTime(),
+);
+---
+
+<BaseLayout title="Notes">
+  <div class="container">
+    <header class="page-head">
+      <p class="eyebrow">Working observations</p>
+      <h1>
+        Small findings.
+        <br />
+        Clear boundaries.
+      </h1>
+      <p>
+        Short technical observations and development notes, separate from
+        polished articles.
+      </p>
+    </header>
+    <section class="note-list">
+      {entries.map((e) => (
+        <article>
+          <p class="eyebrow">
+            {e.data.status} · {dateLabel(e.data.date)}
+          </p>
+          <h2>
+            <a href={'/notes/' + e.id + '/'}>{e.data.title}</a>
+          </h2>
+          <p>{e.data.summary}</p>
+          <a class="arrow-link" href={'/notes/' + e.id + '/'}>
+            Read note ↗
+          </a>
+        </article>
+      ))}
+    </section>
+  </div>
+</BaseLayout>

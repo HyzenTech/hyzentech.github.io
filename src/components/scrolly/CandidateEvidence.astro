@@ -1,0 +1,27 @@
+---
+import data from '../../data/scrolly/recruitment-data.json';
+---
+
+<table class="recruitment-evidence-table">
+  <caption>
+    Selected real candidates; ranks refer to the full reference sets.
+  </caption>
+  <thead>
+    <tr>
+      <th scope="col">Candidate</th>
+      <th scope="col">Similarity rank</th>
+      <th scope="col">Brief rank</th>
+      <th scope="col">Score / 100</th>
+    </tr>
+  </thead>
+  <tbody>
+    {data.candidates.map((c) => (
+      <tr>
+        <th scope="row">{c.name}</th>
+        <td>{c.similarityRank}</td>
+        <td>{c.rank}</td>
+        <td>{c.score.toFixed(2)}</td>
+      </tr>
+    ))}
+  </tbody>
+</table>

@@ -1,109 +1,48 @@
-# Muhammad Hafiz - Portfolio
+# Muhammad Hafiz — Portfolio V2
 
-🌐 **Live Site:** [https://hyzentech.github.io](https://hyzentech.github.io)
+Astro 5 static portfolio. All four Writing articles are scrollytelling; the separate Visual section is merged into Writing. Production target: [hyzentech.github.io](https://hyzentech.github.io/). The existing GitHub Pages workflow builds and validates the site before deploying pushes to `main`.
 
-A personal portfolio website showcasing my work as an AI/ML Engineer & Researcher, featuring research publications, machine learning projects, and technical blog posts.
+## Run
 
----
+Use Node 20.19+ or 22.12+.
 
-## ✨ Features
-
-- **Anthropic-Inspired Design** — Modern, minimalist aesthetic with warm color palette
-- **Dark/Light Mode** — Theme toggle with full site adaptation
-- **Responsive** — Mobile-first design with hamburger navigation
-- **Blog with Illustrations** — Story-driven articles with theme-adaptive infographics
-- **Performance** — Static site generation with Astro
-
----
-
-## 🔗 Quick Links
-
-| Page | Description |
-|------|-------------|
-| [**Home**](https://hyzentech.github.io/) | Featured ML research projects |
-| [**About**](https://hyzentech.github.io/about/) | Background, education & skills |
-| [**Blog**](https://hyzentech.github.io/blog/) | Technical articles & research insights |
-| [**Contact**](https://hyzentech.github.io/contact/) | Get in touch |
-
----
-
-## 🛠️ Tech Stack
-
-- **Framework:** [Astro](https://astro.build/) v5
-- **Typography:** DM Sans + Lora
-- **Styling:** Vanilla CSS with CSS custom properties
-- **Deployment:** GitHub Pages + GitHub Actions
-
----
-
-## 🚀 Development
-
-```bash
-# Install dependencies
-npm install
-
-# Start dev server
+```sh
+npm ci
 npm run dev
+```
 
-# Build for production
+Production search is generated during the build:
+
+```sh
 npm run build
-
-# Preview production build
 npm run preview
+npm run lint
+npm run check
+npm test
+npm run check:links
 ```
 
----
+Build before tests and link checks. Lint checks formatting; Astro check supplies typed diagnostics.
 
-## 📁 Project Structure
+## Content
 
-```
-src/
-├── layouts/
-│   └── BaseLayout.astro      # Global layout with theme toggle
-├── components/
-│   └── ProjectCard.astro     # Project cards
-└── pages/
-    ├── index.astro           # Home page
-    ├── about.astro           # About page
-    ├── blog.astro            # Blog listing
-    ├── contact.astro         # Contact page
-    └── blog/                 # Individual blog posts
-public/
-├── images/                   # Project & blog images
-├── scripts/interactive.js    # Interactive effects
-└── styles/interactive.css    # Effect styles
-```
+- src/content/{work,writing,notes}: collection-driven source MDX.
+- src/components/writing and src/layouts/VisualWritingLayout.astro: shared visual article shell, chapters, stage, reading depth, fallback figures and sources.
+- src/scripts/writing/controller.ts: one native-scroll lifecycle used by all four articles.
+- src/visual/writing and src/data/writing: custom Thermal, Tracking and BADI scenes, persistent states and source-labelled evidence.
+- src/layouts/RecruitmentLayout.astro, src/data/scrolly and src/visual/recruitment: approved Recruitment design retained through the shared engine.
+- src/pages/previews: static SVG previews generated from the same scene renderers/data as each story.
+- scripts/new-story.mjs and templates/visual-story: registered draft starter (`npm run new:story -- my-investigation`).
+- src/scripts/site.ts: themes, navigation, reading depth, filters, lazy search, and About typing.
+- SkillsTicker.astro: vertical CV-sourced skills. Motion defaults on and honors device reduced-motion settings.
+- public/resume: unchanged user-supplied PDF and rendered preview; View and Download links work.
 
----
+Pagefind indexes eight authored Work, Writing, and Notes pages. Ctrl/Cmd+K opens grouped search. Use the production preview for search. Old Blog, project, and Visual URLs forward to current destinations.
 
-## 📬 Contact
+Self-hosted Inter and JetBrains Mono use Fontsource Latin variable subsets; OFL licenses are in public/fonts.
 
-- **Email:** techhafiz81@gmail.com
-- **LinkedIn:** [muhammadhafiz1206](https://linkedin.com/in/muhammadhafiz1206)
-- **GitHub:** [HyzenTech](https://github.com/HyzenTech)
+## Boundaries
 
----
+Research and football claims keep their original evidence limitations. The thermal validation discrepancy remains explicitly unresolved. Visual schematics are labeled, not fabricated datasets. Build Logs and Future Projects remain empty. The dependency audit still flags four packages; see docs/DEPENDENCY_REVIEW.md for scope and upgrade requirements. Astro 5 is retained as requested.
 
-Built with ❤️ using Astro
-
-
-## Local football recruitment portfolio preparation
-
-Stage D adds a featured project and dedicated project page. Publication remains
-pending; see [integration handoff](docs/RECRUITMENT_PORTFOLIO_HANDOFF.md) and
-[validation evidence](docs/STAGE_D_VALIDATION.json).
-
-
-## Local technical article - Stage E
-
-The recruitment case study is integrated into the blog listing and project links.
-This remains a local review draft. See [article handoff](docs/RECRUITMENT_ARTICLE_HANDOFF.md)
-and [Stage E validation](docs/STAGE_E_VALIDATION.json). Private review captures
-are kept outside this source tree and excluded from the source archive.
-
-
-## Local Skills update - Stage F
-
-Eight source-supported skills and five project evidence links extend the existing
-Skills grid; all prior tags remain. See [Skills audit and handoff](docs/RECRUITMENT_SKILLS_HANDOFF.md)
-and [validation](docs/STAGE_F_VALIDATION.json). This branch remains local.
+See [WRITING_SYSTEM.md](WRITING_SYSTEM.md) for architecture, evidence boundaries and the exact authoring workflow. See docs/UNIVERSAL_VISUAL_WRITING.md for the latest four-article migration report. docs/SCROLLYTELLING_REDESIGN.md records the approved Recruitment benchmark. See docs/PORTFOLIO_V2.md for current feedback changes, routes, checks, and delivery details. PORTFOLIO_V2_PHASE1A.md is historical.

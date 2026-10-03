@@ -1,0 +1,24 @@
+---
+import {
+  sceneById,
+  scenes,
+  type Scene,
+} from '../../data/scrolly/recruitment-story';
+import { renderScene } from '../../visual/recruitment/renderer';
+import StoryStep from '../writing/StoryStep.astro';
+interface Props {
+  id: Scene;
+  title?: string;
+}
+const { id, title } = Astro.props;
+---
+
+<StoryStep
+  config={sceneById(id)}
+  index={scenes.findIndex((s) => s.id === id)}
+  visual={renderScene(id, true)}
+  prefix="recruitment"
+  title={title}
+>
+  <slot />
+</StoryStep>

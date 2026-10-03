@@ -1,0 +1,58 @@
+---
+import Technical from '../Technical.astro';
+import data from '../../data/scrolly/recruitment-data.json';
+---
+
+<div class="recruitment-notes">
+  <Technical title="Validation note — what the checks establish">
+    <p>
+      The frozen baseline passed 220 tests; six export checks bring the source
+      total to 226. Two clean rebuilds checked reproducibility. Twenty
+      perturbations examined stability: striker similarity was available in
+      202/280 checks and striker ranking in 18/20. These are software and
+      analytical checks, not recruitment success rates.
+    </p>
+    <p>
+      CASE-03 is a limited centre-back review with 30 sampled observations and
+      unknown continuous viewing duration. Expert/scout and predictive
+      validation remain unperformed. Price, contracts, age, injury,
+      availability, and context adjustments are outside the baseline.
+    </p>
+  </Technical>
+  <Technical title="Data note — pinned source and verified artifacts">
+    <p>
+      This story uses the frozen V1 reproduction receipt, profile export,
+      similarity query for Katrine Veje, and stored CB defensive-activity
+      ranking. All 10 stored nearest-neighbor results were replayed from the
+      saved twelve-feature scaler within 1e-10. Every selected candidate’s
+      contributions sum to its score within 1e-10.
+    </p>
+    <p>
+      Profile counts and coordinates are real. Opening placement, cluster
+      packing, event particles, and architecture positions are explanatory
+      layouts. No raw events or complete derived profile tables are served.
+    </p>
+    <dl>
+      <dt>StatsBomb source revision</dt>
+      <dd>
+        <code>{data.source.revision}</code>
+      </dd>
+      {Object.entries(data.source.verifiedArtifacts).map(([stage, value]) => (
+        <Fragment>
+          <dt>{stage} manifest SHA-256</dt>
+          <dd>
+            <code>{value.manifest}</code>
+          </dd>
+          {'artifact' in value && (
+            <Fragment>
+              <dt>{stage} artifact SHA-256</dt>
+              <dd>
+                <code>{value.artifact}</code>
+              </dd>
+            </Fragment>
+          )}
+        </Fragment>
+      ))}
+    </dl>
+  </Technical>
+</div>

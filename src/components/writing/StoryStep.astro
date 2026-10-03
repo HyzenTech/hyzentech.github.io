@@ -1,0 +1,45 @@
+---
+import type { ChapterConfig } from '../../scripts/writing/controller';
+interface Props {
+  config: ChapterConfig;
+  index: number;
+  visual: string;
+  prefix?: string;
+  title?: string;
+}
+const {
+  config,
+  index,
+  visual,
+  prefix = 'story',
+  title = config.title,
+} = Astro.props;
+const id = config.id;
+---
+
+<section
+  id={id}
+  class:list={[prefix + '-step', { [prefix + '-step-wide']: config.wide }]}
+  data-writing-step={id}
+  data-wide={String(!!config.wide)}
+  data-recruitment-step={prefix === 'recruitment' ? id : undefined}
+  aria-labelledby={id + '-title'}
+>
+  <div class={prefix + '-copy'} data-story-copy>
+    <p class="eyebrow">
+      {String(index + 1).padStart(2, '0')} / {config.label}
+    </p>
+    <h2 id={id + '-title'}>{title}</h2>
+    <div class={prefix + '-prose'}>
+      <slot />
+    </div>
+  </div>
+  <figure
+    class={prefix + '-inline'}
+    data-writing-inline={id}
+    data-recruitment-inline={prefix === 'recruitment' ? id : undefined}
+  >
+    <Fragment set:html={visual} />
+    <figcaption>{config.caption}</figcaption>
+  </figure>
+</section>

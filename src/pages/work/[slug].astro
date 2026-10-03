@@ -1,0 +1,32 @@
+---
+import { getCollection, render } from 'astro:content';
+import EntryLayout from '../../layouts/EntryLayout.astro';
+export async function getStaticPaths() {
+  return (await getCollection('work')).map((entry) => ({
+    params: { slug: entry.id },
+    props: { entry },
+  }));
+}
+const { entry } = Astro.props;
+const { Content, headings } = await render(entry);
+const d = entry.data;
+const links: [string, string][] = [];
+if (d.github) links.push(['Repository', d.github]);
+if (d.demo) links.push(['Demo', d.demo]);
+if (d.paper) links.push(['Publication', d.paper]);
+if (d.writing) links.push(['Engineering story', '/writing/' + d.writing + '/']);
+---
+
+<EntryLayout
+  title={d.title}
+  summary={d.summary}
+  date={d.date}
+  type="Work"
+  role={d.role}
+  status={d.status}
+  cover={d.cover}
+  links={links}
+  headings={headings}
+>
+  <Content />
+</EntryLayout>

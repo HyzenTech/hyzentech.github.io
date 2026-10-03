@@ -1,0 +1,26 @@
+import configs from '../../data/writing/stories.json';
+import { composeScene } from './stage';
+import { text, line, svg } from './primitives';
+import type { MarkState } from './types';
+const config = configs['__SLUG__'];
+
+// Illustrative identities, not measured observations. Replace before publication.
+export function state(id: string, mobile = false): MarkState[] {
+  const w = mobile ? 380 : 900;
+  return Array.from({length: 12}, (_, i) => ({
+    id: 'example-' + i,
+    x: id === 'representation' ? w / 2 + (i % 4 - 1.5) * 32 : 30 + i * (w - 60) / 11,
+    y: id === 'representation' ? 160 + Math.floor(i / 4) * 32 : 230,
+    opacity: id === 'reflection' ? 0.25 : 1,
+  }));
+}
+function annotation(id: string, mobile: boolean) {
+  const w = mobile ? 380 : 900;
+  const chapter = config.scenes.find(c => c.id === id)!;
+  return text(w / 2, 65, chapter.label, 'v-strong', 'middle') +
+    line(30, 300, w - 30, 300) +
+    text(w / 2, 380, 'Illustrative starter · replace before publishing', 'v-small', 'middle');
+}
+export const render = (id: string, mobile = false, persistent = false) =>
+  composeScene('__SLUG__', id, config.scenes, annotation, state, mobile, persistent);
+export const opening = () => svg('__SLUG__-hero', 'Illustrative starter', 'No measured data', annotation('question', false));

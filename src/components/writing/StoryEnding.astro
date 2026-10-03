@@ -1,0 +1,32 @@
+---
+import type { StoryDefinition } from '../../visual/writing/types';
+import SourceNote from './SourceNote.astro';
+interface Props {
+  story: StoryDefinition;
+  work?: string;
+  related?: { title: string; url: string }[];
+  sources: { label: string; url: string }[];
+}
+const { story, work, related = [], sources } = Astro.props;
+---
+
+<footer class="story-ending">
+  <p class="eyebrow">What this work taught me</p>
+  <h2>{story.ending.title}</h2>
+  <p>{story.ending.text}</p>
+  <nav aria-label="Continue exploring">
+    {work && <a href={'/work/' + work + '/'}>Project case study ↗</a>}
+    <a href="/writing/">Explore more writing →</a>
+  </nav>
+  <SourceNote sources={sources}>
+    <slot />
+  </SourceNote>
+  {related.length > 0 && (
+    <aside class="story-related">
+      <p class="eyebrow">Continue reading</p>
+      {related.map((r) => (
+        <a href={r.url}>{r.title} →</a>
+      ))}
+    </aside>
+  )}
+</footer>

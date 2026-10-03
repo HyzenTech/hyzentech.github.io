@@ -1,0 +1,63 @@
+---
+title: 'BADI — Business Analytics Dashboard'
+summary: 'A Bangkit 2022 team prototype that turns small-business income records into trends and forecasting tools.'
+date: 2022-07-20
+year: 2022
+status: 'Completed team prototype'
+role: 'Machine learning lead'
+stack: [Python, Flask, scikit-learn, Pandas, NumPy, TensorFlow]
+domains: [Applied AI, Data]
+tags: [Bangkit 2022, Team project]
+featured: false
+cover: /images/project-badi.webp
+github: https://github.com/BADI-C22-PS174
+writing: badi-analytics
+---
+
+import Technical from '../../components/Technical.astro';
+
+## What is this?
+
+BADI is a business analytics prototype created during Bangkit 2022. It helps small-business owners inspect income trends and explore forecasts through a shared application.
+
+## The problem and why it matters
+
+Transaction records become useful when someone can see what changed and what might happen next. The team aimed to make those patterns easier to access without requiring a business owner to work directly with a model.
+
+## My role
+
+I led the machine learning work and collaborated with Android and Cloud Computing teammates. My work connected data preparation and predictive components to the application.
+
+## Approach
+
+The prototype combined income analysis with forecasting. The existing project story describes 7–30 day predictions, anomaly exploration, seasonal patterns, and comparisons. These are prototype capabilities described by the team, not validated claims of business impact.
+
+## Architecture and implementation
+
+Python handled the analytical work. Flask exposed the components to the application, with scikit-learn, Pandas, NumPy, and TensorFlow included in the original stack.
+
+<Technical title="The boundary between a model and a usable application">
+  The important integration problem was agreeing on inputs and outputs across
+  machine learning, Android, and cloud work. A useful response needs predictable
+  structure and understandable meaning, not just a numerical prediction.
+</Technical>
+
+## Data and technical decisions
+
+The original portfolio does not supply a reproducible benchmark dataset, model evaluation table, or production monitoring record. Those details should be sourced from the team repository before adding model-performance claims.
+
+## Outcome
+
+The team completed the prototype and presented it at Bangkit graduation. The existing source describes functional predictions; there are no verified adoption, revenue, or external production-performance figures.
+
+## Limitations
+
+A completed prototype is not evidence of forecasting accuracy for new businesses. Data quality, time horizon, and changing business conditions all require evaluation before operational use.
+
+## What I learned
+
+Team interfaces matter as much as individual model experiments. The analytical work has to fit the way someone enters data, receives a result, and understands uncertainty.
+
+## What's next and links
+
+BADI remains an earlier team project. Its [team repositories](https://github.com/BADI-C22-PS174) and [rewritten project story](/writing/badi-analytics/) preserve the work without claiming a current production service.

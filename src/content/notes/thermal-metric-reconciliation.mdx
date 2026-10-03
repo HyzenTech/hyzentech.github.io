@@ -1,0 +1,20 @@
+---
+title: 'A validation metric that needs reconciliation'
+summary: 'The thermal article and original About page report different ResNet50 validation accuracies.'
+date: 2026-10-02
+tags: [Source audit, Research, Reporting]
+status: 'Observation'
+featured: false
+---
+
+## Observation
+
+During the portfolio content audit, the existing thermal article reported ResNet50 + XGBoost validation accuracy of **85.63%**. The existing About page reported **73.17%**. Both reported VGG16 + XGBoost validation accuracy of **72.89%**.
+
+## Why it matters
+
+The two ResNet50 values should not be silently merged or selected for a stronger headline. The new [case study](/work/breast-thermal-classification/#experiments-and-results) keeps both values and labels their sources.
+
+## Next evidence needed
+
+Check the final IEEE CENIM 2024 paper and original experiment records to establish which run, split, and metric each number describes. Until that reconciliation is complete, the portfolio treats the ResNet50 comparison as unresolved.

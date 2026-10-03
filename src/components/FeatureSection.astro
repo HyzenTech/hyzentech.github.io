@@ -1,0 +1,34 @@
+---
+interface Props {
+  eyebrow: string;
+  title: string;
+  summary: string;
+  href: string;
+  linkLabel: string;
+  reverse?: boolean;
+  id?: string;
+}
+const {
+  eyebrow,
+  title,
+  summary,
+  href,
+  linkLabel,
+  reverse = false,
+  id,
+} = Astro.props;
+---
+
+<section id={id} class:list={['feature-section', { reverse }]} data-reveal>
+  <div class="feature-copy">
+    <p class="eyebrow">{eyebrow}</p>
+    <h2>{title}</h2>
+    <p>{summary}</p>
+    <a class="arrow-link" href={href}>
+      {linkLabel} <span aria-hidden="true">→</span>
+    </a>
+  </div>
+  <div class="feature-visual">
+    <slot />
+  </div>
+</section>

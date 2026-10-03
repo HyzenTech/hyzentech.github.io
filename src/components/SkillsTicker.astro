@@ -1,0 +1,38 @@
+---
+const groups = [
+  [
+    'AI / ML',
+    'Machine Learning · Deep Learning · Computer Vision · NLP · Model Evaluation',
+  ],
+  [
+    'Programming / Data',
+    'Python · SQL · Pandas · NumPy · scikit-learn · XGBoost · Data Pipelines',
+  ],
+  [
+    'Frameworks / Systems',
+    'TensorFlow / Keras · FastAPI · Pydantic · sentence-transformers · ChromaDB · Ollama',
+  ],
+  ['Tools', 'Git · GitHub · pytest · Jupyter · Google Colab · uv · Ruff'],
+];
+---
+
+<section class="skills-section" aria-labelledby="skills-title">
+  <h2 id="skills-title">Skills I work with</h2>
+  <ul class="sr-only">
+    {groups.map(([label, skills]) => (
+      <li>
+        {label}: {skills}
+      </li>
+    ))}
+  </ul>
+  <div class="skills-window" aria-hidden="true">
+    <div class="skills-reel">
+      {[...groups, groups[0]].map(([label, skills]) => (
+        <div class="skills-row">
+          <strong>{label}</strong>
+          <span>{skills}</span>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>

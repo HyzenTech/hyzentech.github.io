@@ -1,0 +1,45 @@
+{
+  "classes": ["Healthy", "Benign", "Malignant"],
+  "rawImages": 5483,
+  "patients": 425,
+  "curated": 1842,
+  "perClass": 614,
+  "splits": [
+    {
+      "label": "Training",
+      "perClass": 430,
+      "total": 1290
+    },
+    {
+      "label": "Validation",
+      "perClass": 123,
+      "total": 369
+    },
+    {
+      "label": "Test",
+      "perClass": 61,
+      "total": 183
+    }
+  ],
+  "results": [
+    {
+      "label": "VGG16 + XGBoost",
+      "train": 87.44,
+      "validation": 72.89
+    },
+    {
+      "label": "ResNet50 + XGBoost",
+      "train": 99.45,
+      "validation": 85.63,
+      "alternative": 73.17
+    }
+  ],
+  "notebook": {
+    "url": "https://www.kaggle.com/code/hyzentech/xgboost-resnet50",
+    "version": 1,
+    "sha256": "0d0dd62d94ed46413a19505db3e30a960f5ddeeae75d59a35780367ee81751fa",
+    "savedOutputs": 0
+  },
+  "confusionMatrix": null,
+  "testAccuracy": null
+}

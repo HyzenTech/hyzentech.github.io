@@ -1,0 +1,19 @@
+---
+interface Props {
+  options: string[];
+  label: string;
+}
+const { options, label } = Astro.props;
+---
+
+<div class="filter-controls" role="group" aria-label={label}>
+  <button type="button" data-filter="All" aria-pressed="true">
+    All
+  </button>
+  {options.map((option) => (
+    <button type="button" data-filter={option} aria-pressed="false">
+      {option}
+    </button>
+  ))}
+</div>
+<p class="filter-result" role="status" data-filter-status></p>

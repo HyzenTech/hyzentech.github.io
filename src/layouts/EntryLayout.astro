@@ -1,0 +1,103 @@
+---
+import BaseLayout from './BaseLayout.astro';
+import ReadingMode from '../components/ReadingMode.astro';
+import { dateLabel } from '../lib/content';
+interface Props {
+  title: string;
+  summary: string;
+  date: Date;
+  type: string;
+  category?: string;
+  cover?: string;
+  role?: string;
+  status?: string;
+  links?: [string, string][];
+  headings?: { depth: number; slug: string; text: string }[];
+}
+const {
+  title,
+  summary,
+  date,
+  type,
+  category,
+  cover,
+  role,
+  status,
+  links = [],
+  headings = [],
+} = Astro.props;
+const activeNav =
+  type === 'Work' ? 'work' : type === 'Writing' ? 'writing' : '';
+---
+
+<BaseLayout
+  title={title}
+  description={summary}
+  activeNav={activeNav}
+  socialImage={cover}
+  searchable
+  contentType={type}
+>
+  <div class="container">
+    <header class="entry-hero">
+      <a
+        class="back-link"
+        href={
+          type === 'Work'
+            ? '/work/'
+            : type === 'Writing'
+              ? '/writing/'
+              : '/notes/'
+        }
+      >
+        ← All {type.toLowerCase()}
+      </a>
+      <p class="eyebrow">{category || type}</p>
+      <h1 data-pagefind-meta="title">{title}</h1>
+      <p class="entry-summary">{summary}</p>
+      <div class="entry-meta">
+        <time datetime={date.toISOString()}>{dateLabel(date)}</time>
+        {status && <span>{status}</span>}
+        {role && <span>{role}</span>}
+      </div>
+      <div class="publication-line">
+        {links.map(([label, url]) => (
+          <a href={url}>{label} ↗</a>
+        ))}
+      </div>
+      <ReadingMode />
+    </header>
+    {cover && (
+      <figure class="entry-cover">
+        <img
+          src={cover}
+          alt={
+            title === 'Football Recruitment Intelligence Engine'
+              ? 'Actual recruitment engine interface in its empty query state'
+              : title + ' project imagery'
+          }
+          width="1120"
+          height="700"
+        />
+        <figcaption>Project source imagery.</figcaption>
+      </figure>
+    )}
+    <div class="article-layout">
+      <article class="prose">
+        <slot />
+      </article>
+      <aside class="entry-sidebar" aria-label="On this page">
+        <h2>On this page</h2>
+        {headings
+          .filter((h) => h.depth === 2)
+          .map((h) => (
+            <a href={'#' + h.slug}>{h.text}</a>
+          ))}
+        <p class="small-note">
+          Story keeps the main thread visible. Technical opens the methodology
+          details.
+        </p>
+      </aside>
+    </div>
+  </div>
+</BaseLayout>

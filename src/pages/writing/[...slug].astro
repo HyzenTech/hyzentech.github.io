@@ -1,0 +1,76 @@
+---
+import { render } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import VisualWritingLayout from '../../layouts/VisualWritingLayout.astro';
+import RecruitmentLayout from '../../layouts/RecruitmentLayout.astro';
+import WritingRow from '../../components/WritingRow.astro';
+import { publishedWriting, categories } from '../../lib/content';
+import { validateStory } from '../../visual/writing/registry';
+export async function getStaticPaths() {
+  const entries = await publishedWriting();
+  entries.forEach((entry) =>
+    validateStory(entry.data.story.id, entry.data.story.chapters),
+  );
+  return [
+    ...entries.map((entry) => ({
+      params: { slug: entry.id },
+      props: { kind: 'article', entry, category: undefined, entries: [] },
+    })),
+    ...categories.map(([slug, category]) => ({
+      params: { slug },
+      props: {
+        kind: 'category',
+        entry: undefined,
+        category,
+        entries: entries.filter((e) => e.data.category === category),
+      },
+    })),
+  ];
+}
+const { kind, entry, category, entries } = Astro.props;
+const rendered = entry ? await render(entry) : undefined;
+---
+
+{kind === 'article' && entry && rendered ? (
+  entry.id === 'football-recruitment-intelligence-engine' ? (
+    <RecruitmentLayout title={entry.data.title} summary={entry.data.summary}>
+      <rendered.Content />
+    </RecruitmentLayout>
+  ) : (
+    <VisualWritingLayout
+      title={entry.data.title}
+      summary={entry.data.summary}
+      story={entry.data.story.id}
+      work={entry.data.work}
+      sources={entry.data.sources}
+      related={(await publishedWriting())
+        .filter((e) => e.id !== entry.id)
+        .slice(0, 2)
+        .map((e) => ({ title: e.data.title, url: '/writing/' + e.id + '/' }))}
+    >
+      <rendered.Content />
+    </VisualWritingLayout>
+  )
+) : (
+  <BaseLayout title={category + ' writing'} activeNav="writing">
+    <div class="container">
+      <header class="page-head">
+        <a class="back-link" href="/writing/">
+          ← All writing
+        </a>
+        <h1>{category}</h1>
+        <p>Published writing in this category.</p>
+      </header>
+      <section class="list-section">
+        {entries.length ? (
+          entries.map((e) => <WritingRow level={2} entry={e} />)
+        ) : (
+          <p class="empty-state">
+            No published articles in this category yet.{' '}
+            <a href="/writing/">Explore all writing →</a>
+          </p>
+        )}
+      </section>
+    </div>
+  </BaseLayout>
+)}

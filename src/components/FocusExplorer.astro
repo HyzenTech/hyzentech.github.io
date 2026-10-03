@@ -1,0 +1,91 @@
+<section id="focus" class="container">
+  <div class="section-intro">
+    <div>
+      <p class="eyebrow">What I work on</p>
+      <h2>
+        From an idea
+        <br />
+        to a useful system.
+      </h2>
+    </div>
+    <p>
+      Research asks what might work. Engineering makes the answer inspectable,
+      repeatable, and useful.
+    </p>
+  </div>
+  <div class="focus-tabs" role="group" aria-label="Explore focus areas">
+    {['ML Systems', 'Applied AI', 'Research', 'Football Intelligence'].map(
+      (name, i) => (
+        <button data-focus={i} aria-pressed={i === 0}>
+          {name}
+        </button>
+      ),
+    )}
+  </div>
+  {[
+    [
+      'ML Systems',
+      'Make the pipeline part of the product.',
+      'I care about the path from source data to a result someone can inspect: validation, clear interfaces, testing, and reproducibility.',
+      ['Data', 'Pipeline', 'Product'],
+    ],
+    [
+      'Applied AI',
+      'Start with a problem, then choose a model.',
+      'The thermal classification research and BADI prototype explore how learned representations and predictions can serve a specific task.',
+      ['Question', 'Model', 'Evaluation'],
+    ],
+    [
+      'Research',
+      'A result needs its boundaries.',
+      'Experiments are useful when methods, evidence, and limitations travel with the headline number.',
+      ['Hypothesis', 'Experiment', 'Evidence'],
+    ],
+    [
+      'Football Intelligence',
+      'Turn football data into better questions.',
+      'I build tools to compare profiles and inspect recruitment priorities, while keeping the distinction between analytics and a scouting decision clear.',
+      ['Profile', 'Compare', 'Review'],
+    ],
+  ].map(([name, title, copy, nodes], i) => (
+    <div class="focus-stage" data-focus-panel={i} hidden={i !== 0}>
+      <div>
+        <p class="eyebrow">{name}</p>
+        <h3>{title}</h3>
+        <p>{copy}</p>
+        <a class="arrow-link" href="/work/">
+          Explore the work <span>↗</span>
+        </a>
+      </div>
+      <div class="focus-diagram" aria-label={`${name} workflow`}>
+        {Array.isArray(nodes) &&
+          nodes.map((node, j) => (
+            <>
+              <div class="focus-node">{node}</div>
+              {j < 2 && (
+                <span class="focus-flow" aria-hidden="true">
+                  →
+                </span>
+              )}
+            </>
+          ))}
+      </div>
+    </div>
+  ))}
+</section>
+<script>
+  document
+    .querySelectorAll<HTMLButtonElement>('[data-focus]')
+    .forEach((button) =>
+      button.addEventListener('click', () => {
+        document
+          .querySelectorAll('[data-focus]')
+          .forEach((b) => b.setAttribute('aria-pressed', String(b === button)));
+        document
+          .querySelectorAll<HTMLElement>('[data-focus-panel]')
+          .forEach(
+            (p) => (p.hidden = p.dataset.focusPanel !== button.dataset.focus),
+          );
+      }),
+    );
+</script>
