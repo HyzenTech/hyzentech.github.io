@@ -1,6 +1,6 @@
 # Muhammad Hafiz — Portfolio V2
 
-Astro 5 static portfolio. All four Writing articles are scrollytelling; the separate Visual section is merged into Writing. Production target: [hyzentech.github.io](https://hyzentech.github.io/). The existing GitHub Pages workflow builds and validates the site before deploying pushes to `main`.
+Astro 5 static portfolio. All four Writing articles are scrollytelling; the separate Visual section is merged into Writing. Production target: [hyzentech.github.io](https://hyzentech.github.io/). The existing GitHub Pages workflow builds the site and deploys pushes to `main`. Run the release checks below before publishing and verify the live site afterward.
 
 ## Run
 
